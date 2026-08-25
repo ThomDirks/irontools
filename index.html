@@ -866,6 +866,83 @@ body.gl-booting .gl-glass{backdrop-filter:none; -webkit-backdrop-filter:none}
 
 
 </style>
+<style>
+/* vale - original stylesheet, every selector scoped to #view-vale */
+#view-vale{
+  --panel:rgba(255,255,255,.045); --panel2:rgba(255,255,255,.075);
+  --line:rgba(255,255,255,.12); --text:#efe7d2; --dim:rgba(239,231,210,.62);
+  --brass:#e9cb72; --xp:#ffe14d; --good:#84cf6d; --bad:#f0836b; --leaf:#8fcf72;
+  --serif:"Cinzel",Georgia,serif; --mono:ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+#view-vale,#view-vale *{box-sizing:border-box}
+#view-vale{margin:0; padding:6px 14px 26px; color:var(--text); background:transparent;
+  font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;}
+#view-vale h1,#view-vale h2,#view-vale h3{margin:0}
+#view-vale .top{border-bottom:1px solid var(--line); padding:8px 0 18px; margin-bottom:18px}
+#view-vale .eyebrow{font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--brass)}
+#view-vale .top h1{font-family:var(--serif); font-size:29px; font-weight:600; margin:6px 0 4px}
+#view-vale .top p{margin:0; color:var(--dim); font-size:14px}
+#view-vale .reqs{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px}
+#view-vale .reqs span{font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; padding:4px 8px;
+  border-radius:7px; background:var(--panel2); border:1px solid var(--line); color:var(--dim)}
+#view-vale .reqs b{color:var(--brass)}
+#view-vale .card{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+  padding:18px; margin-bottom:16px; box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
+#view-vale .card > h2{font-family:var(--serif); font-size:18px; font-weight:600; margin-bottom:14px}
+#view-vale .card > h2 .sub{font-family:inherit; font-size:12px; font-weight:400; color:var(--dim); margin-left:8px}
+#view-vale .grid{display:grid; gap:13px}
+#view-vale .g2{grid-template-columns:repeat(2,1fr)}
+#view-vale .g3{grid-template-columns:repeat(3,1fr)}
+#view-vale .g4{grid-template-columns:repeat(4,1fr)}
+#view-vale .field{display:flex; flex-direction:column; gap:5px}
+#view-vale .field label,#view-vale .flabel{font-family:var(--mono); font-size:9px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--dim)}
+#view-vale input,#view-vale select{width:100%; padding:9px 11px; border-radius:9px; background:rgba(6,12,16,.5);
+  border:1px solid rgba(255,255,255,.16); color:var(--text); font:14px var(--mono)}
+#view-vale input:focus,#view-vale select:focus{outline:none; border-color:var(--brass); box-shadow:0 0 0 3px rgba(233,203,114,.14)}
+#view-vale .hint{font-size:11px; color:var(--dim); font-family:var(--mono)}
+#view-vale .chips{display:flex; flex-wrap:wrap; gap:8px}
+#view-vale .chip{display:flex; align-items:center; gap:8px; padding:9px 12px; border-radius:10px; cursor:pointer;
+  background:rgba(6,12,16,.4); border:1px solid var(--line); color:var(--text); font-size:13px; text-align:left}
+#view-vale .chip .tick{width:15px; height:15px; border-radius:4px; border:1px solid rgba(255,255,255,.3);
+  display:grid; place-items:center; font-size:10px; color:transparent; flex:none}
+#view-vale .chip[aria-pressed="true"]{border-color:var(--brass); background:rgba(233,203,114,.12)}
+#view-vale .chip[aria-pressed="true"] .tick{background:var(--brass); border-color:var(--brass); color:#171208}
+#view-vale .chip em{display:block; font-style:normal; font-size:10.5px; color:var(--dim); font-family:var(--mono)}
+#view-vale .statrow{display:grid; grid-template-columns:repeat(4,1fr); gap:11px}
+#view-vale .stat{background:rgba(6,12,16,.35); border:1px solid var(--line); border-radius:11px; padding:11px 12px}
+#view-vale .stat .sv{display:block; font-family:var(--mono); font-size:19px}
+#view-vale .stat.big .sv{font-family:var(--serif); font-size:29px}
+#view-vale .stat.accent .sv{color:var(--brass)}
+#view-vale .stat.leaf .sv{color:var(--leaf)}
+#view-vale .stat.bad .sv{color:var(--bad)}
+#view-vale .stat .sl{font-family:var(--mono); font-size:9px; letter-spacing:.09em; text-transform:uppercase; color:var(--dim)}
+#view-vale table{width:100%; border-collapse:collapse; font-size:13px}
+#view-vale th{font-family:var(--mono); font-size:9px; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--brass); text-align:right; padding:8px 9px; border-bottom:1px solid var(--line)}
+#view-vale th.l,#view-vale td.l{text-align:left}
+#view-vale td{text-align:right; padding:8px 9px; border-bottom:1px solid rgba(255,255,255,.06); font-family:var(--mono)}
+#view-vale tbody tr.best td{background:rgba(233,203,114,.09)}
+#view-vale tbody tr.best td.l{color:var(--brass)}
+#view-vale tbody tr.locked td{color:var(--dim)}
+#view-vale .tablewrap{overflow-x:auto; margin:0 -4px}
+#view-vale .line{display:flex; justify-content:space-between; gap:14px; padding:7px 0;
+  border-bottom:1px solid rgba(255,255,255,.06); font-size:13.5px}
+#view-vale .line b{font-family:var(--mono)}
+#view-vale .line.strong{color:var(--brass); font-weight:600}
+#view-vale .foot{font-size:12px; color:var(--dim); line-height:1.6; margin:12px 0 0}
+#view-vale .warn{background:rgba(240,131,107,.12); border:1px solid rgba(240,131,107,.4); color:#ffcbbd;
+  border-radius:10px; padding:10px 12px; font-size:12.5px; margin-top:12px}
+#view-vale .note{background:rgba(132,207,109,.1); border:1px solid rgba(132,207,109,.3); color:#dcecca;
+  border-radius:10px; padding:10px 12px; font-size:12.5px; margin-top:12px}
+@media (max-width:820px){#view-vale .g3,#view-vale .g4{grid-template-columns:repeat(2,1fr)}
+#view-vale .statrow{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){#view-vale .g2,#view-vale .g3,#view-vale .g4{grid-template-columns:1fr}}
+
+/* glass re-skin */
+
+
+</style>
 </head>
 <body class="gl-booting">
 
@@ -942,7 +1019,20 @@ body.gl-booting .gl-glass{backdrop-filter:none; -webkit-backdrop-filter:none}
         <svg class="gl-go" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
       </button>
 
-      <div class="gl-tile gl-glass gl-soon gl-rise" style="--d:.54s">
+      <button class="gl-tile gl-glass gl-rise" style="--d:.54s" data-open="vale" type="button">
+        <span class="gl-sigil">
+          <svg viewBox="0 0 24 24"><path d="M12 21V9"/><path d="M12 9L7.5 5.5 12 3l4.5 2.5L12 9z"/><path d="M12 13l-4 -2.5M12 13l4 -2.5M12 17l-3.5 -2M12 17l3.5 -2"/><path d="M8.5 21h7"/></svg>
+        </span>
+        <span class="gl-tbody">
+          <span class="gl-place">AUBURN VALLEY · RANULPH</span>
+          <h2>Vale Totems</h2>
+          <p>Logs in, rounds out. Time, offerings and research points for the totem loop.</p>
+          <span class="gl-skills"><span>FLETCHING</span></span>
+        </span>
+        <svg class="gl-go" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+
+      <div class="gl-tile gl-glass gl-soon gl-rise" style="--d:.62s">
         <span class="gl-sigil">
           <svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg>
         </span>
@@ -1284,7 +1374,7 @@ body.gl-booting .gl-glass{backdrop-filter:none; -webkit-backdrop-filter:none}
     <span><b>15</b> Smithing</span>
     <span>Quest: <b>Sleeping Giants</b></span>
     <span><b>28</b> bars per sword</span>
-    <span class="pricetag">shop prices</span>
+    <span class="pricetag">shop prices, no GE</span>
   </div>
 </div>
 
@@ -1440,6 +1530,116 @@ body.gl-booting .gl-glass{backdrop-filter:none; -webkit-backdrop-filter:none}
 </div>
   </div>
 </section>
+
+<section class="gl-deep" data-view="vale">
+  <div class="gl-deepwrap gl-glass">
+    <div id="view-vale">
+
+<div class="top">
+  <p class="eyebrow">AUBURN VALLEY &middot; RANULPH'S RESEARCH</p>
+  <h1>Vale Totems</h1>
+  <p>Eight totem sites, five logs each. Put in what you have and see the rounds, the logs, the offerings and the hours.</p>
+  <div class="reqs">
+    <span><b>20</b> Fletching</span>
+    <span>Miniquest: <b>Vale Totems</b></span>
+    <span><b>8</b> sites a round</span>
+    <span><b>5</b> logs a totem</span>
+  </div>
+</div>
+
+<section class="card">
+  <h2>What this run comes to</h2>
+  <div class="statrow" id="sum"></div>
+  <p class="foot" id="sum-note"></p>
+</section>
+
+<section class="card">
+  <h2>Your Fletching</h2>
+  <div class="grid g4">
+    <div class="field"><label>Level</label><input id="vt-lvl" type="number" min="1" max="99" value="75"></div>
+    <div class="field"><label>XP</label><input id="vt-xp" type="number" min="0" value="1210421"></div>
+    <div class="field"><label>Goal</label>
+      <select id="vt-goaltype">
+        <option value="level">Level</option>
+        <option value="xp">XP</option>
+        <option value="logs">Use up my logs</option>
+        <option value="offerings">Offerings</option>
+        <option value="points">Research points</option>
+      </select></div>
+    <div class="field"><label>Target</label><input id="vt-goal" type="number" min="0" value="99"></div>
+  </div>
+  <p class="hint" id="vt-note" style="margin-top:9px"></p>
+</section>
+
+<section class="card">
+  <h2>Logs and kit</h2>
+  <div class="grid g3">
+    <div class="field"><label>Log type</label><select id="vt-log"></select>
+      <span class="hint" id="vt-logh"></span></div>
+    <div class="field"><label>Logs in your bank</label><input id="vt-have" type="number" min="0" value="0">
+      <span class="hint" id="vt-haveh"></span></div>
+    <div class="field"><label>Decoration</label><select id="vt-dec"></select>
+      <span class="hint" id="vt-dech"></span></div>
+  </div>
+  <div class="chips" style="margin-top:14px">
+    <button class="chip" id="vt-knife" aria-pressed="false" type="button">
+      <span class="tick">&#10003;</span><span>Fletching knife<em>one tick off every fletch</em></span></button>
+    <button class="chip" id="vt-basket" aria-pressed="false" type="button">
+      <span class="tick">&#10003;</span><span>Log basket<em>a full round without banking</em></span></button>
+    <button class="chip" id="vt-fletch" aria-pressed="true" type="button">
+      <span class="tick">&#10003;</span><span>Fletch as you run<em>decorations made between sites</em></span></button>
+    <button class="chip" id="vt-house" aria-pressed="false" type="button">
+      <span class="tick">&#10003;</span><span>I own a house<em>Construction xp per build</em></span></button>
+  </div>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="field"><label>Wrong carvings a totem</label>
+      <select id="vt-wrong">
+        <option value="0">None, all three right</option>
+        <option value="1">One wrong</option>
+        <option value="2">Two wrong</option>
+        <option value="3">All three wrong</option>
+      </select><span class="hint">each wrong spirit costs 25% of the totem's xp</span></div>
+    <div class="field"><label>Totems an hour</label><input id="vt-rate" type="number" min="10" max="200" value="104">
+      <span class="hint" id="vt-rateh"></span></div>
+    <div class="field"><label>Construction level</label><input id="vt-con" type="number" min="1" max="99" value="70">
+      <span class="hint">1 xp per level, per totem built</span></div>
+  </div>
+  <div id="vt-warn"></div>
+</section>
+
+<section class="card">
+  <h2>The round <span class="sub">eight sites, start and finish at the Auburnvale bank</span></h2>
+  <div class="statrow" id="round-stats"></div>
+  <div id="round-lines" style="margin-top:16px"></div>
+  <p class="foot" id="round-foot"></p>
+</section>
+
+<section class="card">
+  <h2>What the ents leave you</h2>
+  <div class="statrow" id="off-stats"></div>
+  <p class="foot">Offerings are set by the totem's log type alone, not by what you decorate it with. Rummaging them
+  is what yields research points and the drops: the <strong>Fletching knife</strong> at roughly 1 in 333 and the
+  <strong>Greenman's mask</strong> at about 1 in 500, alongside ent branches and bow string spools. A hundred
+  offerings is worth one research point at Ranulph, so the two currencies move together.</p>
+  <div id="off-drops"></div>
+</section>
+
+<section class="card">
+  <h2>Every log type <span class="sub">at your level and kit</span></h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="l">Totem</th><th>Fletching</th><th>XP each</th><th>Offerings</th>
+      <th>Durability</th><th>XP an hour</th><th>Logs an hour</th></tr></thead>
+    <tbody id="tier-rows"></tbody>
+  </table></div>
+  <p class="foot">Experience per totem is the build, three carvings and four decorations together, straight from the
+  wiki's table. Durability is how many ent visits a totem survives before it collapses, so higher tiers stand longer
+  and need rebuilding less often.</p>
+</section>
+
+
+</div>
+  </div>
+</section>
 </main>
 
 <div id="gl-intro">
@@ -1468,7 +1668,8 @@ body.gl-booting .gl-glass{backdrop-filter:none; -webkit-backdrop-filter:none}
   var TOOLS = [
     { id:"mixology", title:"Mixology & Herblore planner", place:"ALDARIN",    x:421,  y:1255 },
     { id:"golem",    title:"Golem crafting calculator",   place:"WYRMSCRAIG", x:1515, y:1612 },
-    { id:"smithing", title:"Smithing & Giants' Foundry",   place:"GIANTS' PLATEAU", x:2350, y:1031 }
+    { id:"smithing", title:"Smithing & Giants' Foundry",   place:"GIANTS' PLATEAU", x:2350, y:1031 },
+    { id:"vale",     title:"Vale Totems",                  place:"AUBURN VALLEY",   x:443,  y:884 }
   ];
 
   var SVGNS = "http://www.w3.org/2000/svg";
@@ -1644,7 +1845,8 @@ body.gl-booting .gl-glass{backdrop-filter:none; -webkit-backdrop-filter:none}
     { id:"craftXp", skill:"crafting", label:"Crafting" },
     { id:"huntXp",  skill:"hunter",   label:"Hunter"   },
     { id:"mineXp",  skill:"mining",   label:"Mining"   },
-    { id:"sm-xp",   skill:"smithing", label:"Smithing" }
+    { id:"sm-xp",   skill:"smithing", label:"Smithing" },
+    { id:"vt-xp",   skill:"fletching", label:"Fletching" }
   ];
 
   var rsnForm = document.getElementById("gl-rsn");
@@ -3253,6 +3455,249 @@ $("mo-none").addEventListener("click", function(){
   unlocked = {};
   $("mo-list").querySelectorAll(".chip").forEach(function(b){ b.setAttribute("aria-pressed","false"); });
   render();
+});
+render();
+})();
+
+</script>
+<script>
+/* vale - self contained; wrapped so its globals stay private */
+(function(){
+function $(id){ return document.getElementById(id); }
+function num(v){ var n = parseFloat(String(v).replace(/[^0-9.\-]/g,"")); return isNaN(n)?0:n; }
+function fmt(n){ return Math.round(n).toLocaleString("en-GB"); }
+function dur(h){
+  if(h <= 0) return "\u2014";
+  if(h < 1) return Math.round(h*60) + " min";
+  var w = Math.floor(h), m = Math.round((h-w)*60);
+  if(m === 60){ w++; m = 0; }
+  return w + "h" + (m ? " " + m + "m" : "");
+}
+var XP = [0,0];
+(function(){ var a = 0; for(var l = 1; l < 99; l++){ a += Math.floor(l + 300*Math.pow(2, l/7)); XP[l+1] = Math.floor(a/4); } })();
+function xpForLevel(l){ return XP[Math.max(1,Math.min(99,l))] || 0; }
+function levelFromXp(x){ var l = 1; while(l < 99 && XP[l+1] <= x) l++; return l; }
+var MAXXP = 200000000;
+
+/* OSRS Wiki, Vale Totems/Strategies "Base Totem XP and Offerings".
+   XP total = one build + three carvings + four decorations.
+   Oak durability 2 and redwood 7 are stated; the tiers between are the even
+   steps that fit the seven-leaf indicator. */
+var TIERS = [
+  { id:"oak",     name:"Oak",     lvl:20, carve:12.5,  dec:51.2,  total:254.8,   off:20,  durab:2 },
+  { id:"willow",  name:"Willow",  lvl:35, carve:31.7,  dec:126.9, total:634.4,   off:30,  durab:3 },
+  { id:"maple",   name:"Maple",   lvl:50, carve:50.8,  dec:201,   total:1007.2,  off:40,  durab:4 },
+  { id:"yew",     name:"Yew",     lvl:65, carve:82.6,  dec:326.2, total:1635.2,  off:65,  durab:5 },
+  { id:"magic",   name:"Magic",   lvl:80, carve:156.1, dec:619.8, total:3103.6,  off:90,  durab:6 },
+  { id:"redwood", name:"Redwood", lvl:90, carve:221.3, dec:725.5, total:3787.2,  off:105, durab:7 }
+];
+
+/* Decorations: logs each, the level to make them, and the ordinary fletching xp
+   they give if you make them yourself. Oak through yew are derived from the
+   wiki's "Fletching Decorations Between Totems" totals; magic and redwood use
+   the standard fletching values for those products. */
+var DECS = {
+  oak:     [["Shortbow (u)",1,20,16.5],["Stock",1,24,16],["Longbow (u)",1,25,25],["Shield",2,27,50]],
+  willow:  [["Shortbow (u)",1,35,33.3],["Stock",1,39,22],["Longbow (u)",1,40,41.5],["Shield",2,42,83]],
+  maple:   [["Shortbow (u)",1,50,50],["Stock",1,54,32],["Longbow (u)",1,55,58.3],["Shield",2,57,116.5]],
+  yew:     [["Shortbow (u)",1,65,67.5],["Stock",1,69,50],["Longbow (u)",1,70,75],["Shield",2,72,150]],
+  magic:   [["Shortbow (u)",1,80,83.3],["Stock",1,80,70],["Longbow (u)",1,85,91.5],["Shield",2,87,183]],
+  redwood: [["Hiking staff",1,90,0],["Shield",2,92,216]]
+};
+var SITES = 8;
+
+var rateTouched = false;
+function tierOf(id){ return TIERS.filter(function(t){ return t.id === id; })[0] || TIERS[0]; }
+
+function build(){
+  TIERS.forEach(function(t){
+    var o = document.createElement("option");
+    o.value = t.id; o.textContent = t.name + " \u00b7 " + t.lvl + " Fletching";
+    $("vt-log").appendChild(o);
+  });
+  $("vt-log").value = "yew";
+  fillDecs();
+}
+function fillDecs(){
+  var t = $("vt-log").value, sel = $("vt-dec"), cur = sel.value;
+  sel.innerHTML = "";
+  (DECS[t] || []).forEach(function(d){
+    var o = document.createElement("option");
+    o.value = d[0]; o.textContent = d[0] + " \u00b7 " + d[1] + " log" + (d[1] > 1 ? "s" : "") + " \u00b7 lvl " + d[2];
+    sel.appendChild(o);
+  });
+  if([].slice.call(sel.options).some(function(o){ return o.value === cur; })) sel.value = cur;
+}
+
+function calc(){
+  var level = Math.max(1, Math.min(99, num($("vt-lvl").value) || 1));
+  var curXp = num($("vt-xp").value);
+  var tier  = tierOf($("vt-log").value);
+  var decs  = DECS[tier.id] || [];
+  var dec   = decs.filter(function(d){ return d[0] === $("vt-dec").value; })[0] || decs[0];
+
+  var knife   = $("vt-knife").getAttribute("aria-pressed")  === "true";
+  var basket  = $("vt-basket").getAttribute("aria-pressed") === "true";
+  var fletch  = $("vt-fletch").getAttribute("aria-pressed") === "true";
+  var house   = $("vt-house").getAttribute("aria-pressed")  === "true";
+  var wrong   = num($("vt-wrong").value);
+  var conLvl  = Math.max(1, num($("vt-con").value));
+  var have    = num($("vt-have").value);
+
+  /* 1 log builds the totem, 4 decorations on top */
+  var logsPerTotem = 1 + 4*dec[1];
+
+  /* wrong spirits cost a quarter of the totem's experience each */
+  var mult = Math.max(0, 1 - 0.25*wrong);
+  var totemXp = tier.total*mult;
+  var fletchXp = fletch ? 4*dec[3] : 0;
+  var xpPerTotem = totemXp + fletchXp;
+  var conXp = house ? conLvl : 0;
+
+  /* the wiki compares everything at 13 loops, 104 totems, an hour. These
+     adjustments are my own reading of its notes, so the rate stays editable. */
+  var baseRate = 104, mods = [];
+  if(fletch){ baseRate *= 0.95; mods.push("fletching as you run, 5% slower"); }
+  if(fletch && !knife){ baseRate *= 0.88; mods.push("no fletching knife, 12% slower again"); }
+  if(!basket){ baseRate *= 0.95; mods.push("no log basket, an extra bank stop"); }
+  var suggested = Math.round(baseRate);
+  /* follow the kit unless the rate has been typed over by hand */
+  if(!rateTouched && num($("vt-rate").value) !== suggested) $("vt-rate").value = suggested;
+  var rate = Math.max(1, num($("vt-rate").value));
+
+  var goalType = $("vt-goaltype").value, goal = num($("vt-goal").value);
+  var totems;
+  if(goalType === "logs")          totems = Math.floor(have/logsPerTotem);
+  else if(goalType === "offerings")totems = Math.ceil(goal/tier.off);
+  else if(goalType === "points")   totems = Math.ceil(goal/(tier.off/100));
+  else {
+    var goalXp = goalType === "level" ? xpForLevel(Math.round(goal)) : goal;
+    var toGo = Math.max(0, Math.min(MAXXP, goalXp) - curXp);
+    totems = xpPerTotem > 0 ? Math.ceil(toGo/xpPerTotem) : 0;
+  }
+  totems = Math.max(0, totems);
+
+  var rounds     = totems/SITES;
+  var logsNeeded = totems*logsPerTotem;
+  var logsShort  = Math.max(0, logsNeeded - have);
+  var hours      = totems/rate;
+  var offerings  = totems*tier.off;
+  var points     = offerings/100;
+  var totalXp    = totems*xpPerTotem;
+  var endXp      = Math.min(MAXXP, curXp + totalXp);
+  /* a basket lets you clear all eight sites; without one you reset halfway */
+  var bankTrips  = Math.ceil(totems/(basket ? SITES : SITES/2));
+
+  return { level:level, curXp:curXp, tier:tier, dec:dec, decs:decs, knife:knife, basket:basket,
+    fletch:fletch, house:house, wrong:wrong, mult:mult, logsPerTotem:logsPerTotem,
+    totemXp:totemXp, fletchXp:fletchXp, xpPerTotem:xpPerTotem, conXp:conXp,
+    totems:totems, rounds:rounds, logsNeeded:logsNeeded, have:have, logsShort:logsShort,
+    hours:hours, rate:rate, suggested:suggested, mods:mods, offerings:offerings, points:points,
+    totalXp:totalXp, endXp:endXp, bankTrips:bankTrips, goalType:goalType };
+}
+
+function stat(v,l,cls){ return '<div class="stat ' + (cls||"") + '"><span class="sv">' + v + '</span><span class="sl">' + l + '</span></div>'; }
+function line(k,v,strong){ return '<div class="line' + (strong?" strong":"") + '"><span>' + k + '</span><b>' + v + '</b></div>'; }
+
+function render(){
+  var R = calc();
+
+  $("sum").innerHTML =
+    stat(fmt(R.logsNeeded), "logs needed", "big") +
+    stat(dur(R.hours), "time to run it", "accent") +
+    stat(fmt(Math.ceil(R.rounds)), "rounds of eight", "accent") +
+    stat(fmt(R.totems), "totems", "leaf");
+  $("sum-note").innerHTML = R.logsShort > 0
+    ? "You have <strong>" + fmt(R.have) + "</strong> " + R.tier.name.toLowerCase() +
+      " logs, so you are <strong>" + fmt(R.logsShort) + "</strong> short. That is " +
+      fmt(Math.floor(R.have/R.logsPerTotem)) + " totems' worth on hand."
+    : (R.have > 0
+        ? "Your <strong>" + fmt(R.have) + "</strong> logs cover the whole thing with " +
+          fmt(R.have - R.logsNeeded) + " to spare."
+        : "Each totem takes <strong>" + R.logsPerTotem + "</strong> logs: one for the base and four for decorations.");
+
+  $("vt-note").textContent = "Level " + levelFromXp(R.curXp) + " \u00b7 " +
+    fmt(Math.max(0, xpForLevel(Math.min(99, levelFromXp(R.curXp)+1)) - R.curXp)) + " xp to the next level";
+  $("vt-logh").textContent = R.tier.total.toLocaleString("en-GB") + " xp and " + R.tier.off + " offerings a totem";
+  $("vt-haveh").textContent = R.have > 0 ? Math.floor(R.have/R.logsPerTotem) + " totems' worth" : "leave at 0 if buying as you go";
+  $("vt-dech").textContent = R.dec[1] + " log" + (R.dec[1] > 1 ? "s" : "") + " each" +
+    (R.fletch ? " \u00b7 " + R.dec[3] + " fletching xp each" : " \u00b7 pre-made, no extra xp");
+  $("vt-rateh").innerHTML = "wiki compares at 104 an hour" + (R.mods.length ? " \u00b7 your kit suggests " + R.suggested : "");
+
+  var warn = "";
+  if(R.level < R.tier.lvl) warn = "You need " + R.tier.lvl + " Fletching for " + R.tier.name.toLowerCase() + " totems and you are " + R.level + ".";
+  else if(R.level < R.dec[2]) warn = R.tier.name + " " + R.dec[0].toLowerCase() + " needs " + R.dec[2] + " Fletching. Decorating with one needs the same level as making it.";
+  $("vt-warn").innerHTML = warn ? '<div class="warn">' + warn + '</div>' : "";
+
+  /* the round */
+  $("round-stats").innerHTML =
+    stat(fmt(R.logsPerTotem*SITES), "logs a round") +
+    stat(fmt(SITES*R.xpPerTotem), "xp a round", "accent") +
+    stat(fmt(SITES*R.tier.off), "offerings a round", "leaf") +
+    stat(fmt(R.bankTrips), "bank stops in total");
+
+  var lines = line("Totem experience", fmt(R.totemXp) + " each" + (R.wrong ? " (" + Math.round(R.mult*100) + "% after " + R.wrong + " wrong)" : "")) +
+    (R.fletch ? line("Fletching the four decorations", "+" + fmt(R.fletchXp) + " each") : "") +
+    line("Experience a totem", fmt(R.xpPerTotem) + "", true) +
+    line("Experience an hour", fmt(R.xpPerTotem*R.rate)) +
+    (R.house ? line("Construction experience", "+" + fmt(R.conXp*R.totems) + " over the run") : "") +
+    line("Total Fletching experience", "+" + fmt(R.totalXp)) +
+    line("Level you land on", String(levelFromXp(R.endXp)), true);
+  $("round-lines").innerHTML = lines;
+
+  var foot = [];
+  foot.push("A round is all eight sites, " + (R.basket
+    ? "and the log basket carries enough to finish one without banking."
+    : "and without a log basket you reset at Nemus Retreat halfway, so two stops a round."));
+  if(R.mods.length) foot.push("Rate suggestion accounts for: " + R.mods.join("; ") + ".");
+  foot.push("Building a totem restores 15% run energy, and admiring scenery alongside an ent gives 20% more, " +
+    "so run energy is rarely the limit. Stepping on both halves of an ent trail gives 15% more experience for the " +
+    "next four build and carve actions and doubles that ent's next offering.");
+  $("round-foot").innerHTML = foot.join(" ");
+
+  /* offerings */
+  $("off-stats").innerHTML =
+    stat(fmt(R.offerings), "vale offerings", "big") +
+    stat(fmt(R.points), "research points", "leaf") +
+    stat(fmt(R.tier.off*R.rate), "offerings an hour") +
+    stat(R.tier.durab, "ent visits a totem", "accent");
+  var expKnife = R.offerings/333, expMask = R.offerings/500;
+  $("off-drops").innerHTML = '<div style="margin-top:14px">' +
+    line("Fletching knife at ~1/333", expKnife >= 1 ? fmt(expKnife) + " expected" : (expKnife*100).toFixed(1) + "% chance") +
+    line("Greenman's mask at ~1/500", expMask >= 1 ? fmt(expMask) + " expected" : (expMask*100).toFixed(1) + "% chance") +
+    '</div>';
+
+  /* every tier */
+  $("tier-rows").innerHTML = TIERS.map(function(t){
+    var d = (DECS[t.id]||[])[0];
+    var lpt = 1 + 4*d[1];
+    var f = R.fletch ? 4*d[3] : 0;
+    var xpt = t.total*R.mult + f;
+    var locked = R.level < t.lvl;
+    var cls = t.id === R.tier.id ? "best" : (locked ? "locked" : "");
+    return '<tr' + (cls ? ' class="' + cls + '"' : '') + '><td class="l">' + t.name +
+      (locked ? " \u2014 locked" : "") + '</td><td>' + t.lvl + '</td><td>' + fmt(xpt) +
+      '</td><td>' + t.off + '</td><td>' + t.durab + '</td><td>' + fmt(xpt*R.rate) +
+      '</td><td>' + fmt(lpt*R.rate) + '</td></tr>';
+  }).join("");
+}
+
+build();
+["vt-lvl","vt-xp","vt-goal","vt-have","vt-rate","vt-con"].forEach(function(id){
+  $(id).addEventListener("input", function(){
+    if(id === "vt-rate") rateTouched = true;
+    if(id === "vt-lvl") $("vt-xp").value = xpForLevel(Math.round(num($("vt-lvl").value)));
+    if(id === "vt-xp")  $("vt-lvl").value = levelFromXp(num($("vt-xp").value));
+    render();
+  });
+});
+["vt-goaltype","vt-dec","vt-wrong"].forEach(function(id){ $(id).addEventListener("change", render); });
+$("vt-log").addEventListener("change", function(){ fillDecs(); render(); });
+["vt-knife","vt-basket","vt-fletch","vt-house"].forEach(function(id){
+  $(id).addEventListener("click", function(){
+    var b = $(id), on = b.getAttribute("aria-pressed") === "true";
+    b.setAttribute("aria-pressed", on ? "false" : "true"); render();
+  });
 });
 render();
 })();
