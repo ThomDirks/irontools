@@ -839,6 +839,7 @@ body.gl-booting .gl-glass{backdrop-filter:none; -webkit-backdrop-filter:none}
 #view-smithing th.l,#view-smithing td.l{text-align:left}
 #view-smithing td{text-align:right; padding:8px 9px; border-bottom:1px solid rgba(255,255,255,.06); font-family:var(--mono)}
 #view-smithing tbody tr.best td{background:rgba(233,203,114,.09)}
+#view-smithing tbody tr.mine td{color:var(--dim)}
 #view-smithing tbody tr.best td.l{color:var(--brass)}
 #view-smithing .tablewrap{overflow-x:auto; margin:0 -4px}
 #view-smithing .line{display:flex; justify-content:space-between; gap:14px; padding:7px 0;
@@ -1283,7 +1284,7 @@ body.gl-booting .gl-glass{backdrop-filter:none; -webkit-backdrop-filter:none}
     <span><b>15</b> Smithing</span>
     <span>Quest: <b>Sleeping Giants</b></span>
     <span><b>28</b> bars per sword</span>
-    <span id="req-live" class="pricetag">prices: estimates</span>
+    <span class="pricetag">shop prices, no GE</span>
   </div>
 </div>
 
@@ -1327,13 +1328,20 @@ body.gl-booting .gl-glass{backdrop-filter:none; -webkit-backdrop-filter:none}
 <section class="card">
   <h2>What you feed it</h2>
   <div class="row" style="margin-bottom:14px">
-    <button class="chip" id="fs-bf" aria-pressed="false" type="button">
+    <button class="chip" id="fs-bf" aria-pressed="true" type="button">
       <span class="tick">&#10003;</span><span>Blast Furnace<em>half the coal per bar</em></span></button>
     <button class="chip" id="fs-items" aria-pressed="true" type="button">
-      <span class="tick">&#10003;</span><span>Buy items, not bars<em>warhammers, platebodies and the like</em></span></button>
+      <span class="tick">&#10003;</span><span>Buy items, not ore<em>straight into the crucible</em></span></button>
+    <button class="chip" id="fs-jat" aria-pressed="false" type="button">
+      <span class="tick">&#10003;</span><span>Jatizso only<em>the two mithril shops</em></span></button>
+    <button class="chip" id="fs-claws" aria-pressed="true" type="button">
+      <span class="tick">&#10003;</span><span>Skip claws<em>cheapest per bar, but stock is hopeless</em></span></button>
     <span class="spacer"></span>
-    <button class="btn" id="fs-prices" type="button">Load live GE prices</button>
+    <span class="hint">No shop sells bars, so metal comes from items or your own smelting.</span>
   </div>
+
+  <p class="flabel" style="margin:4px 0 8px">Where each metal comes from</p>
+  <div class="grid g2" id="fs-src"></div>
 
   <p class="flabel" style="margin:4px 0 8px">Bars already in your bank</p>
   <div class="grid g3" id="fs-bars"></div>
@@ -1344,11 +1352,53 @@ body.gl-booting .gl-glass{backdrop-filter:none; -webkit-backdrop-filter:none}
 </section>
 
 <section class="card">
+  <h2>Where to buy it</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="l">Metal</th><th class="l">Shop</th><th class="l">What it is good for</th></tr></thead>
+    <tbody id="guide-rows"></tbody>
+  </table></div>
+  <p class="foot">Prices for the two Jatizso shops are their own tables: four of each in stock, one restocking
+  a minute, sold at 110% of base and climbing 3% for every one you buy. Everything else uses the wiki's lowest
+  price across all shops that stock it, so treat those as the best case and expect to pay a little more if the
+  nearest shop is not the cheapest one.</p>
+</section>
+
+<section class="card">
+  <h2>Shop prices per bar <span class="sub">what a bar of each metal really costs</span></h2>
+  <div class="row" style="margin-bottom:12px">
+    <label class="flabel" for="ip-metal">Metal</label>
+    <select id="ip-metal" style="width:auto"></select>
+  </div>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="l">Item</th><th class="l">Shop</th><th>Bars each</th><th>Price</th><th>Per bar</th><th class="l">Notes</th></tr></thead>
+    <tbody id="ip-rows"></tbody>
+  </table></div>
+  <p class="foot" id="ip-foot"></p>
+</section>
+
+<section class="card">
+  <h2>Ore, if you would rather smelt <span class="sub">Ordan, Ore seller &middot; Blast Furnace, Keldagrim</span></h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="l">Ore</th><th>Price each</th><th>Stock</th><th>Restock</th><th class="l">Notes</th></tr></thead>
+    <tbody id="shop-rows"></tbody>
+  </table></div>
+  <p class="foot">Prices here are fixed for every account type and do not move with the Grand Exchange. Stock caps at
+  100 of each ore; a Dwarven Miner tops up 20 to 40 of one random ore every 27 seconds, so a big order means hopping
+  worlds or waiting between buyouts. Ordan stops at mithril, so adamantite and runite bars have to come from ore you mined
+  yourself. Buying the finished adamant or rune item and melting it down avoids that entirely.</p>
+</section>
+
+<section class="card">
   <h2>The run</h2>
   <div class="statrow" id="rn-stats"></div>
   <div class="tablewrap" style="margin-top:16px"><table id="rn-table">
-    <thead><tr><th class="l">Metal</th><th>Bars needed</th><th>From bank</th><th>Smelted</th><th>To buy</th><th>Cheapest source</th><th>Cost</th></tr></thead>
+    <thead><tr><th class="l">Metal</th><th>Bars needed</th><th>Bars in bank</th><th>To source</th><th class="l">Where they come from</th><th>Cost</th></tr></thead>
     <tbody id="rn-rows"></tbody>
+  </table></div>
+  <p class="flabel" style="margin:18px 0 8px">Shopping list</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="l">Buy</th><th>Amount</th><th>Each</th><th>Cost</th><th class="l">Yields</th></tr></thead>
+    <tbody id="buy-rows"></tbody>
   </table></div>
   <div id="rn-money" style="margin-top:16px"></div>
   <p class="foot" id="rn-foot"></p>
@@ -1368,10 +1418,11 @@ body.gl-booting .gl-glass{backdrop-filter:none; -webkit-backdrop-filter:none}
 <section class="card">
   <h2>Alloy table <span class="sub">every pairing at your level and moulds</span></h2>
   <div class="tablewrap"><table>
-    <thead><tr><th class="l">Alloy</th><th>Metal score</th><th>Sections</th><th>Quality</th><th>XP / sword</th><th>Cost / sword</th><th>GP / XP</th></tr></thead>
+    <thead><tr><th class="l">Alloy</th><th>Metal score</th><th>Sections</th><th>Quality</th><th>XP / sword</th><th>Shop cost / sword</th><th>GP / XP</th></tr></thead>
     <tbody id="tbl-rows"></tbody>
   </table></div>
-  <p class="foot">Cost per experience counts the coins Kovac pays back, so a negative figure means the alloy makes money
+  <p class="foot">Cost uses the cheapest shop route for each metal, whether that is ore you smelt or a finished item
+  you melt down. Gp per experience counts the coins Kovac pays back, so a negative figure means the alloy pays you
   while you train. Sorted by experience per sword.</p>
 </section>
 
@@ -2622,10 +2673,117 @@ var ORES = [
   {id:"mithril",    name:"Mithril ore"},    {id:"adamantite", name:"Adamantite ore"},
   {id:"runite",     name:"Runite ore"}
 ];
-/* how many bars' worth of metal each smithed item is worth in the crucible */
-var ITEM_WORTH = { "platebody":4, "warhammer":2, "battleaxe":2, "chainbody":2, "kiteshield":2,
-  "2h sword":2, "platelegs":2, "plateskirt":2, "scimitar":1, "longsword":1, "full helm":1,
-  "sq shield":1, "claws":1 };
+/* Ordan's Ore seller at the Blast Furnace, Keldagrim. Prices are static for
+   every account type since the January 2023 update, so no live feed is needed.
+   Stock caps at 100 of each; a Dwarven Miner restocks 20-40 of one random ore
+   every 27 seconds. He does not stock adamantite or runite at any price, and
+   no shop anywhere sells finished bars. */
+var ORE_SHOP = {
+  copper:     { price:4,   stock:100 },
+  tin:        { price:4,   stock:100 },
+  iron:       { price:25,  stock:100 },
+  coal:       { price:67,  stock:100 },
+  mithril:    { price:243, stock:100 },
+  adamantite: { price:null },
+  runite:     { price:null }
+};
+
+/* Lowest NPC shop price for every crucible-compatible item, from the wiki's
+   Giants' Foundry/Strategies specialty-store tables. "bars" is what the item
+   is worth in the crucible: the bars needed to smith it, minus one. */
+var ANY = "cheapest specialty store";
+var JW  = "Weapons galore, Jatizso";
+var JA  = "Armour Shop, Jatizso";
+
+/* [item, price, bars worth, shop]
+   Unnamed rows are the wiki's lowest price across every shop that sells the
+   item. The Jatizso rows are that shop's own table: both sell at 110%, four
+   of each in stock, restocking one a minute. */
+var SHOP_ITEMS = {
+  bronze: [["claws",15,1,ANY],["battleaxe",52,2,ANY],["chainbody",60,2,ANY],["warhammer",61,2,ANY],
+           ["kiteshield",68,2,ANY],["scimitar",32,1,ANY],["longsword",40,1,ANY],["full helm",44,1,ANY],
+           ["sq shield",48,1,ANY],["2h sword",80,2,ANY],["platelegs",80,2,ANY],["plateskirt",80,2,ANY],
+           ["platebody",160,4,ANY]],
+  iron:    [["claws",50,1,ANY],["warhammer",173,2,ANY],["battleaxe",182,2,ANY],["chainbody",210,2,ANY],
+           ["kiteshield",238,2,ANY],["scimitar",112,1,ANY],["longsword",140,1,ANY],["full helm",154,1,ANY],
+           ["sq shield",168,1,ANY],["2h sword",280,2,ANY],["platelegs",280,2,ANY],["plateskirt",280,2,ANY],
+           ["platebody",560,4,ANY]],
+  steel:   [["claws",175,1,ANY],["warhammer",640,2,ANY],["battleaxe",650,2,ANY],["chainbody",750,2,ANY],
+           ["kiteshield",807,2,ANY],["scimitar",400,1,ANY],["longsword",500,1,ANY],["full helm",550,1,ANY],
+           ["sq shield",600,1,ANY],["2h sword",1000,2,ANY],["platelegs",1000,2,ANY],["plateskirt",1000,2,ANY],
+           ["platebody",2000,4,ANY]],
+  mithril: [["claws",522,1,JW],["warhammer",1826,2,JW],["battleaxe",1859,2,JW],["longsword",1430,1,JW],
+           ["2h sword",2860,2,JW],["chainbody",2145,2,JA],["full helm",1573,1,JA],["sq shield",1716,1,JA],
+           ["kiteshield",2431,2,JA],["platelegs",2860,2,JA],["plateskirt",2860,2,JA],["platebody",5720,4,JA],
+           ["warhammer",1660,2,ANY],["battleaxe",1690,2,ANY],["chainbody",1950,2,ANY],["scimitar",1040,1,ANY],
+           ["longsword",1300,1,ANY],["full helm",1430,1,ANY],["platebody",5200,4,ANY]],
+  adamant: [["warhammer",4120,2,ANY],["battleaxe",4160,2,ANY],["chainbody",4800,2,ANY],["kiteshield",5440,2,ANY],
+           ["scimitar",2560,1,ANY],["longsword",3200,1,ANY],["full helm",3520,1,ANY],["sq shield",3840,1,ANY],
+           ["2h sword",6400,2,ANY],["platelegs",6400,2,ANY],["plateskirt",6400,2,ANY],["platebody",16640,4,ANY]],
+  rune:    [["platebody",84500,4,ANY],["chainbody",47500,2,ANY],["platelegs",60800,2,ANY],
+           ["plateskirt",60800,2,ANY],["longsword",32000,1,ANY],["full helm",35200,1,ANY],
+           ["scimitar",38400,1,ANY]]
+};
+
+/* where these actually come from, by metal */
+var SHOP_GUIDE = [
+  ["Bronze \u2013 Adamant", "Cam Torum Blacksmith", "warhammers, cheapest per bar of the general blacksmiths"],
+  ["Bronze \u2013 Adamant", "Fortis Blacksmith, Civitas illa Fortis", "broad stock across the low tiers"],
+  ["Steel", "Mount Karuulm Weapon Shop, by Konar", "the usual steel run"],
+  ["Steel", "Varrock Swordshop &middot; Horvik's Armour Shop", "swords and body armour"],
+  ["Mithril", "Weapons galore, Jatizso", "claws, longsword, warhammer, battleaxe, 2h \u00b7 exact prices below"],
+  ["Mithril", "Armour Shop, Jatizso", "chainbody, helm, shields, legs, skirt, platebody \u00b7 exact prices below"],
+  ["Mithril \u2013 Rune", "Aneirin's Armour, Prifddinas", "the armour route into rune"],
+  ["Rune", "platebodies", "cheapest rune per bar anywhere"],
+  ["Any", "Salius' Armour Shop, Salvager Overlook", "most platebodies, quickest to reach"]
+];
+
+var SHOP_NOTES = "Cam Torum Blacksmith is the cheapest warhammers from bronze to adamant. "
+  + "The Blacksmith in Civitas illa Fortis covers bronze to adamant, and Aneirin's Armour in "
+  + "Prifddinas stocks mithril to rune.";
+
+/* every way to get one bar of a metal, cheapest first */
+function sources(metal, useBF, skipClaws, jatizsoOnly, preferItems){
+  var out = [];
+  (SHOP_ITEMS[metal.id] || []).forEach(function(it){
+    if(skipClaws && it[0] === "claws") return;
+    if(jatizsoOnly && it[3].indexOf("Jatizso") < 0) return;
+    var nm = metal.item + " " + it[0];
+    out.push({ kind:"item", label:nm + " \u2014 " + it[3], name:nm, shop:it[3],
+               price:it[1], bars:it[2], per:it[1]/it[2] });
+  });
+  var ore = barShopCost(metal, useBF);
+  if(ore != null && !jatizsoOnly)
+    out.push({ kind:"ore", label:"Smelt it yourself from Ordan's ore", per:ore, bars:1, shop:"Ordan, Blast Furnace" });
+  out.sort(function(a,b){
+    /* you said you would rather buy the item than stand at a furnace, so ore
+       sorts last unless nothing else is available */
+    if(preferItems && a.kind !== b.kind) return a.kind === "ore" ? 1 : -1;
+    return a.per - b.per;
+  });
+  /* this shop does not stock this metal at all: fall back rather than break */
+  if(!out.length && jatizsoOnly) return sources(metal, useBF, skipClaws, false, preferItems);
+  return out;
+}
+
+var SHOP_NAME = "Ordan, Ore seller \u00b7 Blast Furnace, Keldagrim";
+
+function orePrice(id){ var o = ORE_SHOP[id]; return o && o.price != null ? o.price : null; }
+function oreBuyable(id){ return orePrice(id) != null; }
+
+/* what one bar costs in shop-bought ore, or null if part of it cannot be bought */
+function barShopCost(metal, useBF){
+  var total = 0;
+  for(var ore in metal.smelt){
+    var per = metal.smelt[ore];
+    if(ore === "coal" && useBF) per = per/2;
+    var p = orePrice(ore);
+    if(p == null) return null;
+    total += per*p;
+  }
+  return total;
+}
+function metalBuyable(metal){ return true; }   /* every metal has a shop item */
 
 var MOULDS = [
   {n:"Chopper Forte",t:"Forte",l:15,d:1,broad:4,narrow:0,heavy:0,light:4,spiked:0,flat:4},
@@ -2634,33 +2792,33 @@ var MOULDS = [
   {n:"Medusa Ricasso",t:"Forte",l:15,d:1,broad:8,narrow:0,heavy:6,light:0,spiked:0,flat:8},
   {n:"Serpent Ricasso",t:"Forte",l:15,d:1,broad:0,narrow:6,heavy:0,light:8,spiked:0,flat:8},
   {n:"Serrated Forte",t:"Forte",l:15,d:1,broad:0,narrow:8,heavy:8,light:0,spiked:6,flat:0},
-  {n:"Stiletto Forte",t:"Forte",l:50,d:0,broad:0,narrow:8,heavy:0,light:10,spiked:0,flat:8},
-  {n:"Defender Base",t:"Forte",l:51,d:0,broad:8,narrow:0,heavy:10,light:0,spiked:0,flat:8},
-  {n:"Juggernaut Forte",t:"Forte",l:61,d:0,broad:4,narrow:0,heavy:4,light:0,spiked:16,flat:0},
-  {n:"Chopper Forte +1",t:"Forte",l:70,d:0,broad:3,narrow:0,heavy:0,light:4,spiked:0,flat:18},
-  {n:"Spiker!",t:"Forte",l:79,d:0,broad:0,narrow:1,heavy:2,light:0,spiked:22,flat:0},
+  {n:"Stiletto Forte",t:"Forte",l:50,d:0,r:300,broad:0,narrow:8,heavy:0,light:10,spiked:0,flat:8},
+  {n:"Defender Base",t:"Forte",l:51,d:0,r:300,broad:8,narrow:0,heavy:10,light:0,spiked:0,flat:8},
+  {n:"Juggernaut Forte",t:"Forte",l:61,d:0,r:350,broad:4,narrow:0,heavy:4,light:0,spiked:16,flat:0},
+  {n:"Chopper Forte +1",t:"Forte",l:70,d:0,r:400,broad:3,narrow:0,heavy:0,light:4,spiked:0,flat:18},
+  {n:"Spiker!",t:"Forte",l:79,d:0,r:450,broad:0,narrow:1,heavy:2,light:0,spiked:22,flat:0},
   {n:"Saw Blade",t:"Blade",l:15,d:1,broad:4,narrow:0,heavy:0,light:4,spiked:4,flat:0},
   {n:"Defenders Edge",t:"Blade",l:15,d:1,broad:4,narrow:0,heavy:4,light:0,spiked:4,flat:0},
   {n:"Fish Blade",t:"Blade",l:15,d:1,broad:0,narrow:4,heavy:0,light:4,spiked:0,flat:4},
   {n:"Medusa Blade",t:"Blade",l:15,d:1,broad:8,narrow:0,heavy:8,light:0,spiked:0,flat:6},
   {n:"Stiletto Blade",t:"Blade",l:15,d:1,broad:0,narrow:8,heavy:0,light:6,spiked:0,flat:8},
   {n:"Gladius Edge",t:"Blade",l:15,d:1,broad:0,narrow:6,heavy:8,light:0,spiked:0,flat:8},
-  {n:"Flamberge Blade",t:"Blade",l:48,d:0,broad:0,narrow:8,heavy:0,light:8,spiked:10,flat:0},
-  {n:"Serpent Blade",t:"Blade",l:50,d:0,broad:0,narrow:10,heavy:0,light:8,spiked:0,flat:8},
-  {n:"Claymore Blade",t:"Blade",l:59,d:0,broad:16,narrow:0,heavy:4,light:0,spiked:0,flat:4},
-  {n:"Fleur de Blade",t:"Blade",l:71,d:0,broad:4,narrow:0,heavy:18,light:0,spiked:1,flat:0},
-  {n:"Choppa!",t:"Blade",l:80,d:0,broad:1,narrow:0,heavy:0,light:22,spiked:0,flat:2},
+  {n:"Flamberge Blade",t:"Blade",l:48,d:0,r:300,broad:0,narrow:8,heavy:0,light:8,spiked:10,flat:0},
+  {n:"Serpent Blade",t:"Blade",l:50,d:0,r:300,broad:0,narrow:10,heavy:0,light:8,spiked:0,flat:8},
+  {n:"Claymore Blade",t:"Blade",l:59,d:0,r:350,broad:16,narrow:0,heavy:4,light:0,spiked:0,flat:4},
+  {n:"Fleur de Blade",t:"Blade",l:71,d:0,r:400,broad:4,narrow:0,heavy:18,light:0,spiked:1,flat:0},
+  {n:"Choppa!",t:"Blade",l:80,d:0,r:450,broad:1,narrow:0,heavy:0,light:22,spiked:0,flat:2},
   {n:"People Poker Point",t:"Tip",l:15,d:1,broad:0,narrow:4,heavy:4,light:0,spiked:0,flat:4},
   {n:"Chopper Tip",t:"Tip",l:15,d:1,broad:4,narrow:0,heavy:0,light:4,spiked:4,flat:0},
   {n:"Medusa's Head",t:"Tip",l:15,d:1,broad:4,narrow:0,heavy:4,light:0,spiked:4,flat:0},
   {n:"Serpent's Fang",t:"Tip",l:15,d:1,broad:0,narrow:8,heavy:0,light:6,spiked:8,flat:0},
   {n:"Gladius Point",t:"Tip",l:15,d:1,broad:0,narrow:8,heavy:8,light:0,spiked:0,flat:6},
   {n:"Saw Tip",t:"Tip",l:15,d:1,broad:6,narrow:0,heavy:8,light:0,spiked:8,flat:0},
-  {n:"Corrupted Point",t:"Tip",l:49,d:0,broad:0,narrow:8,heavy:0,light:10,spiked:8,flat:0},
-  {n:"Defenders Tip",t:"Tip",l:52,d:0,broad:10,narrow:0,heavy:8,light:0,spiked:8,flat:0},
-  {n:"Serrated Tip",t:"Tip",l:60,d:0,broad:0,narrow:4,heavy:0,light:16,spiked:4,flat:0},
-  {n:"Needle Point",t:"Tip",l:69,d:0,broad:0,narrow:18,heavy:0,light:3,spiked:0,flat:4},
-  {n:"The Point!",t:"Tip",l:81,d:0,broad:2,narrow:0,heavy:0,light:1,spiked:0,flat:22}
+  {n:"Corrupted Point",t:"Tip",l:49,d:0,r:300,broad:0,narrow:8,heavy:0,light:10,spiked:8,flat:0},
+  {n:"Defenders Tip",t:"Tip",l:52,d:0,r:300,broad:10,narrow:0,heavy:8,light:0,spiked:8,flat:0},
+  {n:"Serrated Tip",t:"Tip",l:60,d:0,r:350,broad:0,narrow:4,heavy:0,light:16,spiked:4,flat:0},
+  {n:"Needle Point",t:"Tip",l:69,d:0,r:400,broad:0,narrow:18,heavy:0,light:3,spiked:0,flat:4},
+  {n:"The Point!",t:"Tip",l:81,d:0,r:450,broad:2,narrow:0,heavy:0,light:1,spiked:0,flat:22}
 ];
 /* Kovac's commissions and how often each turns up; the weights sum to 24 */
 var COMBOS = [
@@ -2698,80 +2856,6 @@ function averages(level, unlocked, mscore){
   return { quality:q, xp:x, mould:mould };
 }
 
-/* ---------- prices ---------- */
-var PRICE_FALLBACK = {
-  "Bronze bar":480,"Iron bar":160,"Steel bar":520,"Mithril bar":800,"Adamantite bar":1750,"Runite bar":12000,
-  "Copper ore":60,"Tin ore":60,"Iron ore":110,"Coal":150,"Mithril ore":160,"Adamantite ore":950,"Runite ore":11000,
-  "Kovac's grog":400
-};
-var prices = {}, pricesLive = false;
-function price(name){
-  if(prices[name] != null) return prices[name];
-  if(PRICE_FALLBACK[name] != null) return PRICE_FALLBACK[name];
-  return null;
-}
-
-var PRICE_CACHE_KEY = "ironTools.prices";
-function loadPrices(force){
-  var btn = $("fs-prices");
-  try{
-    var raw = JSON.parse(localStorage.getItem(PRICE_CACHE_KEY) || "null");
-    if(!force && raw && Date.now() - raw.at < 3600000){
-      prices = raw.p; pricesLive = true; markPrices(raw.at); render(); return;
-    }
-  }catch(e){}
-  btn.disabled = true; btn.textContent = "Loading…";
-  Promise.all([
-    fetch("https://prices.runescape.wiki/api/v1/osrs/mapping").then(function(r){ return r.json(); }),
-    fetch("https://prices.runescape.wiki/api/v1/osrs/latest").then(function(r){ return r.json(); })
-  ]).then(function(res){
-    var map = res[0], latest = res[1].data, want = wantedNames(), out = {};
-    map.forEach(function(it){
-      if(!want[it.name]) return;
-      var p = latest[it.id];
-      if(!p) return;
-      var v = p.high || p.low;                       /* what it costs you to buy now */
-      if(v) out[it.name] = v;
-    });
-    prices = out; pricesLive = true;
-    try{ localStorage.setItem(PRICE_CACHE_KEY, JSON.stringify({ at:Date.now(), p:out })); }catch(e){}
-    markPrices(Date.now());
-    render();
-  }).catch(function(){
-    $("req-live").textContent = "prices: could not load, using estimates";
-    $("req-live").className = "pricetag";
-  }).then(function(){ btn.disabled = false; btn.textContent = "Refresh GE prices"; });
-}
-function markPrices(at){
-  var el = $("req-live");
-  el.textContent = "prices: live \u00b7 " + new Date(at).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
-  el.className = "pricetag live";
-}
-function wantedNames(){
-  var w = { "Kovac's grog":1 };
-  METALS.forEach(function(m){
-    w[m.bar] = 1;
-    for(var k in ITEM_WORTH) w[m.item + " " + k] = 1;
-  });
-  ORES.forEach(function(o){ w[o.name] = 1; });
-  return w;
-}
-
-/* cheapest way to buy one bar's worth of a metal: the bar, or an item made of them */
-function cheapestSource(metal, useItems){
-  var best = { name:metal.bar, each:price(metal.bar), per:price(metal.bar), worth:1 };
-  if(best.per == null) best = { name:metal.bar, each:0, per:0, worth:1 };
-  if(useItems){
-    for(var k in ITEM_WORTH){
-      var nm = metal.item + " " + k, p = price(nm);
-      if(p == null) continue;
-      var per = p / ITEM_WORTH[k];
-      if(per < best.per){ best = { name:nm, each:p, per:per, worth:ITEM_WORTH[k] }; }
-    }
-  }
-  return best;
-}
-
 /* ---------- state ---------- */
 var unlocked = {}, bankBars = {}, bankOres = {};
 
@@ -2791,7 +2875,8 @@ var unlocked = {}, bankBars = {}, bankOres = {};
     var b = document.createElement("button");
     b.type = "button"; b.className = "chip"; b.setAttribute("aria-pressed","false");
     b.dataset.mould = m.n;
-    b.innerHTML = '<span class="tick">&#10003;</span><span>' + m.n + '<em>' + m.t + ' \u00b7 level ' + m.l + '</em></span>';
+    b.innerHTML = '<span class="tick">&#10003;</span><span>' + m.n + '<em>' + m.t +
+      ' \u00b7 level ' + m.l + ' \u00b7 ' + m.r + ' rep</em></span>';
     b.addEventListener("click", function(){
       var on = b.getAttribute("aria-pressed") === "true";
       b.setAttribute("aria-pressed", on ? "false" : "true");
@@ -2832,7 +2917,9 @@ function calc(){
   /* how many swords the goal needs, crediting any experience from smelting */
   var goalType = $("sm-goaltype").value, goal = num($("sm-goal").value);
   var useBF = $("fs-bf").getAttribute("aria-pressed") === "true";
-  var useItems = $("fs-items").getAttribute("aria-pressed") === "true";
+  var skipClaws = $("fs-claws").getAttribute("aria-pressed") === "true";
+  var jatOnly = $("fs-jat").getAttribute("aria-pressed") === "true";
+  var preferItems = $("fs-items").getAttribute("aria-pressed") === "true";
 
   METALS.forEach(function(m){ bankBars[m.id] = num(($("bar-"+m.id)||{}).value); });
   ORES.forEach(function(o){ bankOres[o.id] = num(($("ore-"+o.id)||{}).value); });
@@ -2841,38 +2928,50 @@ function calc(){
 
   function plan(swords){
     var ores = {}; ORES.forEach(function(o){ ores[o.id] = bankOres[o.id]; });
-    var rows = [], smeltXp = 0, cost = 0;
+    var rows = [], smeltXp = 0, cost = 0, buy = [], oreBuy = {}, blocked = [];
+
     Object.keys(need).forEach(function(mid){
       var m = METALS.filter(function(x){ return x.id === mid; })[0];
+      var opts = sources(m, useBF, skipClaws, jatOnly, preferItems);
+      if(!opts.length) return;
+      var pickEl = $("src-" + mid);
+      var pick = pickEl && pickEl.value ? opts.filter(function(o){ return o.label === pickEl.value; })[0] : null;
+      if(!pick) pick = opts[0];
+
       var want = need[mid]*swords;
       var fromBank = Math.min(bankBars[mid], want);
-      var left = want - fromBank;
+      var short = Math.max(0, want - fromBank);
+      var rowCost = 0, detail = "";
 
-      /* smelt what the banked ore can cover */
-      var canSmelt = left;
-      for(var ore in m.smelt){
-        var per = m.smelt[ore];
-        if(ore === "coal" && useBF) per = per/2;
-        canSmelt = Math.min(canSmelt, Math.floor((ores[ore]||0)/per));
+      if(pick.kind === "ore"){
+        if(m.lvl > level && short > 0) blocked.push(m.name + " needs " + m.lvl + " Smithing to smelt");
+        var parts = [];
+        for(var ore in m.smelt){
+          var per = m.smelt[ore];
+          if(ore === "coal" && useBF) per = per/2;
+          var needOre = Math.ceil(short*per);
+          var have = Math.min(ores[ore]||0, needOre);
+          ores[ore] = (ores[ore]||0) - have;
+          var gap = needOre - have;
+          if(gap > 0){ oreBuy[ore] = (oreBuy[ore]||0) + gap; rowCost += gap*orePrice(ore); }
+          parts.push(fmt(needOre) + " " + ORES.filter(function(x){ return x.id === ore; })[0].name);
+        }
+        smeltXp += short*m.xp;
+        detail = parts.join(", ");
+      }else{
+        /* buying finished items: they go straight in the crucible, no smelting */
+        var count = Math.ceil(short/pick.bars);
+        rowCost = count*pick.price;
+        if(count > 0) buy.push({ name:pick.name, count:count, each:pick.price, bars:pick.bars, cost:rowCost });
+        detail = short > 0 ? fmt(count) + " \u00d7 " + pick.name + " (" + pick.bars + " bars each)" : "\u2014";
       }
-      if(m.lvl > level) canSmelt = 0;
-      canSmelt = Math.max(0, canSmelt);
-      for(var ore2 in m.smelt){
-        var per2 = m.smelt[ore2];
-        if(ore2 === "coal" && useBF) per2 = per2/2;
-        ores[ore2] = (ores[ore2]||0) - canSmelt*per2;
-      }
-      smeltXp += canSmelt*m.xp;
-      var toBuy = left - canSmelt;
-      var src = cheapestSource(m, useItems);
-      var rowCost = toBuy*src.per;
       cost += rowCost;
-      rows.push({ metal:m, want:want, fromBank:fromBank, smelted:canSmelt, toBuy:toBuy, src:src, cost:rowCost });
+      rows.push({ metal:m, want:want, fromBank:fromBank, short:short, pick:pick, detail:detail, cost:rowCost });
     });
-    return { rows:rows, smeltXp:smeltXp, cost:cost, oresLeft:ores };
+    return { rows:rows, smeltXp:smeltXp, cost:cost, buy:buy, oreBuy:oreBuy, blocked:blocked };
   }
 
-  /* smelting experience counts toward the goal, so settle on the sword count */
+  /* smelting experience counts toward the goal  /* smelting experience counts toward the goal  /* smelting experience counts toward the goal, so settle on the sword count */
   var swords = 0, p = plan(0);
   for(var i = 0; i < 6; i++){
     var target;
@@ -2893,13 +2992,12 @@ function calc(){
   var rep = Math.floor(avg.quality*swords);
   var income = swords*coinsPer;
   var grogs = Math.floor(rep/300);
-  var grogValue = grogs*(price("Kovac's grog") || 0);
 
   return {
     level:level, curXp:curXp, m1:m1, m2:m2, a1:a1, a2:a2, ms:ms, avg:avg,
     xpPer:xpPer, coinsPer:coinsPer, swords:swords, plan:p, foundryXp:foundryXp,
-    totalXp:totalXp, endXp:endXp, rep:rep, income:income, grogs:grogs, grogValue:grogValue,
-    useItems:useItems, useBF:useBF, goalType:goalType
+    totalXp:totalXp, endXp:endXp, rep:rep, income:income, grogs:grogs,
+    useBF:useBF, skipClaws:skipClaws, jatOnly:jatOnly, preferItems:preferItems, goalType:goalType
   };
 }
 
@@ -2933,7 +3031,10 @@ function render(){
   $("al-warn").innerHTML = warn ? '<div class="warn">' + warn + '</div>' : "";
 
   var totalMould = MOULDS.filter(function(m){ return !m.d && unlocked[m.n]; }).length;
-  $("mo-sum").textContent = totalMould + " of 15 ticked \u00b7 " + R.avg.mould.toFixed(1) + " average mould score";
+  var repSpent = MOULDS.filter(function(m){ return !m.d && unlocked[m.n]; })
+    .reduce(function(t,m){ return t + m.r; }, 0);
+  $("mo-sum").textContent = totalMould + " of 15 ticked \u00b7 " + fmt(repSpent) +
+    " reputation \u00b7 " + R.avg.mould.toFixed(1) + " average mould score";
   MOULDS.filter(function(m){ return !m.d; }).forEach(function(m){
     var b = $("mo-list").querySelector('[data-mould="' + CSS.escape(m.n) + '"]');
     if(b) b.toggleAttribute("disabled", m.l > R.level);
@@ -2947,35 +3048,106 @@ function render(){
     stat(fmt(R.rep), "reputation") +
     stat(levelFromXp(R.endXp), "level you land on", "accent");
 
+  /* keep a source picker in sync for each metal in the alloy */
+  var used = [R.m1].concat(R.m2 && R.m2.id !== R.m1.id ? [R.m2] : []);
+  var srcWrap = $("fs-src");
+  srcWrap.innerHTML = used.map(function(m){
+    var opts = sources(m, R.useBF, R.skipClaws, R.jatOnly, R.preferItems);
+    var cur = ($("src-"+m.id) || {}).value;
+    return '<div class="field"><label>' + m.name + '</label><select id="src-' + m.id + '">' +
+      opts.map(function(o){
+        return '<option value="' + o.label + '"' + (o.label === cur ? " selected" : "") + '>' +
+          o.label + " \u2014 " + Math.round(o.per) + " gp/bar" +
+          (o.bars > 1 ? " (" + o.bars + " bars each)" : "") + '</option>';
+      }).join("") + '</select></div>';
+  }).join("");
+  srcWrap.querySelectorAll("select").forEach(function(sel){
+    sel.addEventListener("change", render);
+  });
+
   var rows = "";
   P.rows.forEach(function(r){
-    rows += '<tr><td class="l">' + r.metal.name + '</td><td>' + fmt(r.want) + '</td><td>' + fmt(r.fromBank) +
-      '</td><td>' + fmt(r.smelted) + '</td><td>' + fmt(r.toBuy) + '</td><td class="l">' +
-      (r.toBuy > 0 ? r.src.name + (r.src.worth > 1 ? " (" + r.src.worth + " bars each)" : "") : "\u2014") +
-      '</td><td>' + (r.toBuy > 0 ? gp(r.cost) : "\u2014") + '</td></tr>';
+    rows += '<tr><td class="l">' + r.metal.name + '</td><td>' + fmt(r.want) + '</td><td>' +
+      fmt(r.fromBank) + '</td><td>' + fmt(r.short) + '</td><td class="l">' + r.detail +
+      '</td><td>' + (r.cost > 0 ? gp(r.cost) : "\u2014") + '</td></tr>';
   });
-  $("rn-rows").innerHTML = rows || '<tr><td class="l" colspan="7">Nothing to make yet.</td></tr>';
+  $("rn-rows").innerHTML = rows || '<tr><td class="l" colspan="6">Nothing to make yet.</td></tr>';
 
-  var profit = R.income + R.grogValue - P.cost;
-  var money = line("Bars and items to buy", "-" + gp(P.cost)) +
+  var shop = "";
+  P.buy.forEach(function(it){
+    shop += '<tr><td class="l">' + it.name + '</td><td>' + fmt(it.count) + '</td><td>' + fmt(it.each) +
+      '</td><td>' + gp(it.cost) + '</td><td class="l">' + fmt(it.count*it.bars) + ' bars</td></tr>';
+  });
+  Object.keys(P.oreBuy).forEach(function(ore){
+    var o = ORES.filter(function(x){ return x.id === ore; })[0], qty = P.oreBuy[ore], each = orePrice(ore);
+    shop += '<tr><td class="l">' + o.name + '</td><td>' + fmt(qty) + '</td><td>' + each +
+      '</td><td>' + gp(qty*each) + '</td><td class="l">' + fmt(Math.ceil(qty/ORE_SHOP[ore].stock)) +
+      ' full buyouts</td></tr>';
+  });
+  $("buy-rows").innerHTML = shop ||
+    '<tr><td class="l" colspan="5">Nothing to buy: your bank covers it.</td></tr>';
+
+  var profit = R.income - P.cost;
+  var money = line("Bought from shops", "-" + gp(P.cost)) +
     line("Coins from Kovac", "+" + gp(R.income)) +
-    (R.grogs > 0 ? line(fmt(R.grogs) + " \u00d7 Kovac's grog from reputation", "+" + gp(R.grogValue)) : "") +
     line(profit >= 0 ? "Profit" : "Net cost", (profit >= 0 ? "+" : "") + gp(profit), true) +
-    line("Per experience", (P.cost - R.income - R.grogValue >= 0 ? "" : "+") +
-      gp(R.totalXp > 0 ? (P.cost - R.income - R.grogValue)/R.totalXp : 0) + " gp/xp", false);
+    line("Per experience", R.totalXp > 0
+      ? (profit >= 0 ? gp(profit/R.totalXp) + " gp/xp earned" : gp(-profit/R.totalXp) + " gp/xp spent")
+      : "\u2014") +
+    (R.grogs > 0 ? line("Kovac's grog earned", fmt(R.grogs) + " (drinkable, not sellable)") : "");
   $("rn-money").innerHTML = money;
 
-  var smeltNote = P.smeltXp > 0
-    ? "Smelting your banked ore is worth " + fmt(P.smeltXp) + " experience on its own, and that is already counted toward the goal."
-    : "No banked ore is being smelted for this alloy.";
-  $("rn-foot").innerHTML = smeltNote + (R.useItems
-    ? " Buying items instead of bars is on, so each metal falls back to whichever item is cheapest per bar."
-    : " Buying plain bars.");
+  var notes = [];
+  if(P.smeltXp > 0) notes.push("Smelting your own bars is worth <strong>" + fmt(P.smeltXp) +
+    "</strong> extra experience, counted toward the goal. Shop items skip that, but go straight in the crucible.");
+  if(P.blocked.length) notes.push("<strong>" + P.blocked.join(". ") + ".</strong>");
+  if(R.jatOnly){
+    var off = P.rows.filter(function(r){ return r.pick.shop && r.pick.shop.indexOf("Jatizso") < 0; });
+    if(off.length) notes.push("Jatizso only sells mithril, so " +
+      off.map(function(r){ return r.metal.name.toLowerCase(); }).join(" and ") +
+      " fell back to the cheapest shop elsewhere.");
+  }
+  notes.push(SHOP_NOTES);
+  $("rn-foot").innerHTML = notes.join(" ");
   $("fs-oreNote").textContent = R.useBF
-    ? "Blast Furnace halves the coal on steel and above."
-    : "Without the Blast Furnace, steel takes 2 coal, mithril 4, adamantite 6 and runite 8.";
+    ? "Blast Furnace on: steel takes 1 coal, mithril 2, adamantite 3, runite 4."
+    : "Blast Furnace off: steel takes 2 coal, mithril 4, adamantite 6, runite 8.";
 
-  /* route comparison */
+  /* ore shelf */
+  $("shop-rows").innerHTML = ORES.map(function(o){
+    var e = ORE_SHOP[o.id];
+    if(!e) return "";
+    if(e.price == null)
+      return '<tr class="mine"><td class="l">' + o.name + '</td><td>\u2014</td><td>\u2014</td><td>\u2014</td>' +
+        '<td class="l">Not sold. Mine it, or buy the finished item instead.</td></tr>';
+    return '<tr><td class="l">' + o.name + '</td><td>' + e.price + '</td><td>' + e.stock +
+      '</td><td>~2 min</td><td class="l">static price</td></tr>';
+  }).join("");
+
+  $("guide-rows").innerHTML = SHOP_GUIDE.map(function(g){
+    return '<tr><td class="l">' + g[0] + '</td><td class="l">' + g[1] + '</td><td class="l">' + g[2] + '</td></tr>';
+  }).join("");
+
+  /* item price table for the chosen metal */
+  var ipm = METALS.filter(function(m){ return m.id === $("ip-metal").value; })[0] || R.m1;
+  var list = sources(ipm, R.useBF, false, R.jatOnly, false).filter(function(o){ return o.kind === "item"; });
+  var cheapNoClaws = list.filter(function(o){ return o.name.indexOf("claws") < 0; })[0];
+  $("ip-rows").innerHTML = list.map(function(o){
+    var claws = o.name.indexOf("claws") >= 0;
+    return '<tr' + (o === cheapNoClaws ? ' class="best"' : (claws ? ' class="mine"' : '')) + '>' +
+      '<td class="l">' + o.name + '</td><td class="l">' + o.shop + '</td><td>' + o.bars + '</td><td>' + fmt(o.price) + '</td><td>' +
+      o.per.toFixed(2) + '</td><td class="l">' + (claws ? "stock far too low to rely on" :
+      (o === cheapNoClaws ? "cheapest practical" : "")) + '</td></tr>';
+  }).join("");
+  var oreCost = barShopCost(ipm, R.useBF);
+  $("ip-foot").innerHTML = (oreCost != null
+      ? "Smelting " + ipm.name.toLowerCase() + " from Ordan's ore costs <strong>" + Math.round(oreCost) +
+        " gp per bar</strong>" + (cheapNoClaws ? ", against " + Math.round(cheapNoClaws.per) +
+        " for the cheapest item." : ".")
+      : "No shop sells " + ipm.name.toLowerCase() + " ore, so items are the only way to buy this metal.")
+    + " " + SHOP_NOTES;
+
+  /* route comparison */  /* route comparison */  /* route comparison */
   var barsHeld = 0;
   METALS.forEach(function(m){ barsHeld += bankBars[m.id]; });
   var perBarFoundry = R.xpPer/28;
@@ -2997,8 +3169,10 @@ function render(){
     o.ms = metalScore(o.a.tier, o.b ? o.b.tier : 0, o.a1, o.a2);
     var av = averages(R.level, unlocked, o.ms);
     o.q = av.quality; o.xp = av.xp;
-    var sA = cheapestSource(o.a, R.useItems), sB = o.b ? cheapestSource(o.b, R.useItems) : null;
-    o.cost = o.a1*sA.per + (sB ? o.a2*sB.per : 0);
+    var cA = (sources(o.a, R.useBF, R.skipClaws, R.jatOnly, R.preferItems)[0]||{per:Infinity}).per;
+    var cB = o.b ? (sources(o.b, R.useBF, R.skipClaws, R.jatOnly, R.preferItems)[0]||{per:Infinity}).per : 0;
+    o.shopFed = true;
+    o.cost = o.a1*cA + o.a2*cB;
     o.net = (o.cost - Math.floor(o.xp)*2)/o.xp;
   });
   opts.sort(function(x,y){ return y.xp - x.xp; });
@@ -3006,9 +3180,12 @@ function render(){
   $("tbl-rows").innerHTML = opts.map(function(o){
     var name = o.b ? (o.a.name + " + " + o.b.name + " (14/14)") : (o.a.name + " (28)");
     var cur = o.a.id === R.m1.id && ((!o.b && !R.m2) || (o.b && R.m2 && o.b.id === R.m2.id));
-    return '<tr' + (o === best || cur ? ' class="best"' : '') + '><td class="l">' + name + '</td><td>' + fmt(o.ms) +
-      '</td><td>' + sections(o.ms) + '</td><td>' + fmt(o.q) + '</td><td>' + fmt(o.xp) +
-      '</td><td>' + gp(o.cost) + '</td><td>' + o.net.toFixed(2) + '</td></tr>';
+    var cls = o === best || cur ? "best" : (o.shopFed ? "" : "mine");
+    return '<tr' + (cls ? ' class="' + cls + '"' : '') + '><td class="l">' + name +
+
+      '</td><td>' + fmt(o.ms) + '</td><td>' + sections(o.ms) + '</td><td>' + fmt(o.q) +
+      '</td><td>' + fmt(o.xp) + '</td><td>' + (o.shopFed ? gp(o.cost) : "\u2014") +
+      '</td><td>' + (o.shopFed ? o.net.toFixed(2) : "\u2014") + '</td></tr>';
   }).join("");
 }
 
@@ -3021,12 +3198,18 @@ function render(){
   });
 });
 ["sm-goaltype","al-m1","al-m2"].forEach(function(id){ $(id).addEventListener("change", render); });
-["fs-bf","fs-items"].forEach(function(id){
+["fs-bf","fs-claws","fs-jat","fs-items"].forEach(function(id){
   $(id).addEventListener("click", function(){
     var b = $(id), on = b.getAttribute("aria-pressed") === "true";
     b.setAttribute("aria-pressed", on ? "false" : "true"); render();
   });
 });
+METALS.forEach(function(m){
+  var o = document.createElement("option");
+  o.value = m.id; o.textContent = m.name; $("ip-metal").appendChild(o);
+});
+$("ip-metal").value = "adamant";
+$("ip-metal").addEventListener("change", render);
 $("fs-bars").addEventListener("input", render);
 $("fs-ores").addEventListener("input", render);
 $("mo-all").addEventListener("click", function(){
@@ -3039,16 +3222,6 @@ $("mo-none").addEventListener("click", function(){
   $("mo-list").querySelectorAll(".chip").forEach(function(b){ b.setAttribute("aria-pressed","false"); });
   render();
 });
-$("fs-prices").addEventListener("click", function(){ loadPrices(true); });
-
-/* Pull prices the first time this calculator is opened, then leave it alone.
-   The shell may announce the view before this script has run (deep links), so
-   check the current route as well as listening for later navigation. */
-var pricesTried = false;
-function pricesOnce(){ if(!pricesTried){ pricesTried = true; loadPrices(false); } }
-document.addEventListener("irontools:view", function(e){ if(e.detail === "smithing") pricesOnce(); });
-if(/smithing/.test(location.hash)) pricesOnce();
-
 render();
 })();
 
