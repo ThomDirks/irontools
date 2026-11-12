@@ -1,4 +1,4 @@
-import{f as R}from"./legacy-m-yHzgrc.js";import{f as q,b as A}from"./app-KCR0G2o4.js";const D=`<div class="frame">
+import{f as R}from"./legacy-fSyDgocF.js";import{f as q,b as A}from"./app-CcrVXAlR.js";const D=`<div class="frame">
 
   <!-- YOUR STATS -->
   <div class="panel">

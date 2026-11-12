@@ -1,4 +1,4 @@
-import{f as Xt}from"./legacy-m-yHzgrc.js";import"./app-KCR0G2o4.js";const Ht=`
+import{f as Xt}from"./legacy-fSyDgocF.js";import"./app-CcrVXAlR.js";const Ht=`
 <section class="card">
   <h2>What this run comes to</h2>
   <div class="statrow" id="sum-stats"></div>
