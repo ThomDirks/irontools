@@ -1,4 +1,4 @@
-import{f as ae}from"./legacy-X9ka3IVU.js";import"./app-_DdPrbXb.js";const oe=`
+import{f as ae}from"./legacy-QH7TtpBY.js";import"./app-DfJ5p9oA.js";const oe=`
 <section class="card">
   <h2>What this run comes to</h2>
   <div class="statrow" id="sum"></div>
