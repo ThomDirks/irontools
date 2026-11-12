@@ -199,3 +199,9 @@ body:not(.ready) #home { opacity: 0; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
 [hidden] { display: none !important; }
+
+/* No spinner arrows on number fields: they sat on top of right-aligned
+   values. Typing and the arrow keys still work. */
+input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
