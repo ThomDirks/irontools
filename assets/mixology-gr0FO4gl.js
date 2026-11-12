@@ -1,4 +1,4 @@
-import{f as Ue}from"./legacy-Mw_e8ZxL.js";import"./app-BVzkJX8f.js";const _e=`<div class="hide" aria-hidden="true"><span id="hdr-level"></span><span id="hdr-cap"></span></div>
+import{f as Ue}from"./legacy-BNK5aqbh.js";import"./app-B6qAHTZZ.js";const _e=`<div class="hide" aria-hidden="true"><span id="hdr-level"></span><span id="hdr-cap"></span></div>
 
 <section class="card">
   <h2>Your Herblore</h2>

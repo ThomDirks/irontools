@@ -1,4 +1,4 @@
-import{e as c,f as $,l as v,b as f}from"./app-BVzkJX8f.js";function b({fromXp:t,toXp:e,skill:a,cap:r=99}){const l=v(t,r),o=v(e,r),n=Math.round(f(e,r)*100);return`<div class="landing">
+import{e as c,f as $,l as v,b as f}from"./app-B6qAHTZZ.js";function b({fromXp:t,toXp:e,skill:a,cap:r=99}){const l=v(t,r),o=v(e,r),n=Math.round(f(e,r)*100);return`<div class="landing">
     <div class="landing-lv">
       <span class="landing-from">${l}</span>
       <svg class="landing-arrow" viewBox="0 0 24 12" aria-hidden="true"><path d="M1 6h20M16 1l5 5-5 5"/></svg>
