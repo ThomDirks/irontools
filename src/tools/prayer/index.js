@@ -43,11 +43,16 @@ export const html = `<div class="calc">
   <div class="out" aria-live="polite"></div>
 </div>`;
 
+let api = null;
+/** Called when you open Prayer from one of its map markers. */
+export function preset({ method }) { api?.set("method", method); }
+
 export function mount(root) {
   const out = root.querySelector(".out");
   const form = root.querySelector(".setup");
   const lx = syncLevelXp(form, "pLvl", "pXp");
   const f = bindForm(form, "prayer", paint);
+  api = f;
   lx.setXp(f.values().pXp);
   onStats(s => { if (s.skills.prayer !== undefined) lx.setXp(s.skills.prayer); });
 

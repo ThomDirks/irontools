@@ -24,18 +24,38 @@ function mk(tag, attrs) {
 function drawMarkers() {
   const g = $("markers");
   for (const t of TOOLS) {
-    const m = mk("g", { class: "marker", "data-tool": t.id, role: "link", "aria-label": t.title });
-    m.appendChild(mk("circle", { class: "pulse", cx: t.x, cy: t.y, r: 26 }));
-    m.appendChild(mk("circle", { class: "halo", cx: t.x, cy: t.y, r: 38 }));
-    m.appendChild(mk("circle", { class: "pin", cx: t.x, cy: t.y, r: 13 }));
-    const lbl = mk("text", { class: "lbl", x: t.x, y: t.y - 82, "text-anchor": "middle" });
-    lbl.textContent = t.title;
-    const sk = mk("text", { class: "lbl-skill", x: t.x, y: t.y - 50, "text-anchor": "middle" });
-    sk.textContent = t.place;
-    m.append(lbl, sk);
-    m.addEventListener("click", () => { location.hash = "/" + t.id; });
-    g.appendChild(m);
+    for (const spot of t.spots || [{ place: t.place, x: t.x, y: t.y, labelBelow: t.labelBelow }]) {
+      const m = mk("g", { class: "marker", "data-tool": t.id, role: "link", "aria-label": `${t.title}, ${spot.place}` });
+      m.appendChild(mk("circle", { class: "pulse", cx: spot.x, cy: spot.y, r: 26 }));
+      m.appendChild(mk("circle", { class: "halo", cx: spot.x, cy: spot.y, r: 38 }));
+      m.appendChild(mk("circle", { class: "pin", cx: spot.x, cy: spot.y, r: 13 }));
+      const below = spot.labelBelow;  // when a neighbour's pin sits where the label would go
+      const lbl = mk("text", { class: "lbl", x: spot.x, y: below ? spot.y + 80 : spot.y - 82, "text-anchor": "middle" });
+      lbl.textContent = t.title;
+      const sk = mk("text", { class: "lbl-skill", x: spot.x, y: below ? spot.y + 110 : spot.y - 50, "text-anchor": "middle" });
+      sk.textContent = spot.place;
+      m.append(lbl, sk);
+      m.addEventListener("click", () => {
+        // a tool with several spots opens set up for the one you clicked
+        pendingSpot = spot;
+        if (current === t.id) applySpot(t);
+        else location.hash = "/" + t.id;
+      });
+      g.appendChild(m);
+    }
   }
+}
+
+let pendingSpot = null;
+const modules = {};
+function applySpot(t) {
+  const spot = pendingSpot;
+  pendingSpot = null;
+  if (spot) {
+    camTo({ x: spot.x, y: spot.y });
+    if (spot.preset && modules[t.id]?.preset) modules[t.id].preset(spot.preset);
+  }
+  return spot;
 }
 
 /* ---------------- sidebar ---------------- */
@@ -47,9 +67,9 @@ function drawNav() {
       <span class="nav-lv" data-skill="${t.skill}"></span>
     </a>`).join("");
   $("nav").querySelectorAll(".nav-item").forEach(a => {
-    const m = () => document.querySelector(`.marker[data-tool="${a.dataset.tool}"]`);
-    a.addEventListener("mouseenter", () => m()?.classList.add("hot"));
-    a.addEventListener("mouseleave", () => m()?.classList.remove("hot"));
+    const m = () => document.querySelectorAll(`.marker[data-tool="${a.dataset.tool}"]`);
+    a.addEventListener("mouseenter", () => m().forEach(x => x.classList.add("hot")));
+    a.addEventListener("mouseleave", () => m().forEach(x => x.classList.remove("hot")));
     a.addEventListener("click", () => closeMenu());
   });
   const menu = $("menu");
@@ -89,7 +109,7 @@ window.addEventListener("resize", () => {
   raf = requestAnimationFrame(() => {
     const prev = cam.style.transition;
     cam.style.transition = "none";
-    camTo(TOOLS.find(x => x.id === current) || null);
+    camTo(TOOLS.find(x => x.id === current) || null);  // resize recentres on the tool's main spot
     requestAnimationFrame(() => { cam.style.transition = prev; });
   });
 });
@@ -106,7 +126,7 @@ function go(id) {
     views[t.id].classList.add("on");
     document.title = `${t.title} · Iron Tools`;
     document.dispatchEvent(new CustomEvent("irontools:view", { detail: t.id }));
-    camTo(t);
+    if (!applySpot(t)) camTo(t);
     window.scrollTo(0, 0);
     setTimeout(() => views[t.id].querySelector("h1")?.focus({ preventScroll: true }), 350);
   } else {
@@ -132,6 +152,7 @@ async function buildViews() {
   const mods = await Promise.all(TOOLS.map(t => t.load()));
   TOOLS.forEach((t, i) => {
     const mod = mods[i];
+    modules[t.id] = mod;
     const sec = document.createElement("section");
     sec.className = "view";
     sec.dataset.view = t.id;

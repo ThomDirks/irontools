@@ -16,27 +16,32 @@ const ICONS = {
 };
 
 export const TOOLS = [
-  { id: "mahogany", title: "Mahogany Homes", skill: "construction", skillName: "Construction", place: "Falador", x: 1820, y: 760,
+  { id: "mahogany", title: "Mahogany Homes", skill: "construction", skillName: "Construction", place: "Falador", x: 1972, y: 857, labelBelow: true,
     load: () => import("./mahogany/index.js") },
-  { id: "cooking", title: "Hosidius Kitchen", skill: "cooking", skillName: "Cooking", place: "Cooking", x: 650, y: 575,
+  { id: "cooking", title: "Hosidius Kitchen", skill: "cooking", skillName: "Cooking", place: "Cooking", x: 699, y: 592,
     load: () => import("./cooking/index.js") },
-  { id: "golem", title: "Golem crafting", skill: "crafting", skillName: "Crafting", place: "Wyrmscraig", x: 1515, y: 1612,
+  { id: "golem", title: "Golem crafting", skill: "crafting", skillName: "Crafting", place: "Wyrmscraig", x: 1496, y: 1882,
     load: () => import("./golem/index.js") },
-  { id: "tithe", title: "Tithe Farm", skill: "farming", skillName: "Farming", place: "Hosidius", x: 780, y: 650,
+  { id: "tithe", title: "Tithe Farm", skill: "farming", skillName: "Farming", place: "Hosidius", x: 835, y: 707,
     load: () => import("./tithe/index.js") },
-  { id: "herbs", title: "Herb runs", skill: "farming", icon: "herbs", skillName: "Farming", place: "Catherby", x: 1590, y: 690, isNew: true,
+  { id: "herbs", title: "Herb runs", skill: "farming", icon: "herbs", skillName: "Farming", place: "Catherby", x: 1812, y: 753, isNew: true,
     load: () => import("./herbs/index.js") },
   { id: "vale", title: "Vale Totems", skill: "fletching", skillName: "Fletching", place: "Auburnvale", x: 443, y: 884,
     load: () => import("./vale/index.js") },
   { id: "mixology", title: "Mixology", skill: "herblore", skillName: "Herblore", place: "Aldarin", x: 421, y: 1255,
     load: () => import("./mixology/index.js") },
   { id: "prayer", title: "Prayer", skill: "prayer", skillName: "Prayer", place: "Ectofuntus", x: 2600, y: 720, isNew: true,
+    spots: [
+      { place: "Ectofuntus", x: 2600, y: 720, preset: { method: "ecto" } },
+      { place: "Chaos altar", x: 1974, y: 515, preset: { method: "chaos" } },
+      { place: "Libation bowl", x: 471, y: 1028, preset: { method: "libation" } }
+    ],
     load: () => import("./prayer/index.js") },
-  { id: "smithing", title: "Giants' Foundry", skill: "smithing", skillName: "Smithing", place: "Giants' Plateau", x: 2350, y: 1031,
+  { id: "smithing", title: "Giants' Foundry", skill: "smithing", skillName: "Smithing", place: "Giants' Plateau", x: 2365, y: 1022,
     load: () => import("./smithing/index.js") },
-  { id: "blastfurnace", title: "Blast Furnace", skill: "smithing", icon: "furnace", skillName: "Smithing", place: "Keldagrim", x: 1880, y: 520, isNew: true,
+  { id: "blastfurnace", title: "Blast Furnace", skill: "smithing", icon: "furnace", skillName: "Smithing", place: "Keldagrim", x: 1743, y: 565, isNew: true,
     load: () => import("./blastfurnace/index.js") },
-  { id: "kingdom", title: "Miscellania", skill: "kingdom", icon: "kingdom", skillName: "Kingdom", place: "Managing the kingdom", x: 1700, y: 330, isNew: true,
+  { id: "kingdom", title: "Miscellania", skill: "kingdom", icon: "kingdom", skillName: "Kingdom", place: "Managing the kingdom", x: 1561, y: 348, isNew: true,
     load: () => import("./kingdom/index.js") }
 ];
 
