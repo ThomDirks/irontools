@@ -244,3 +244,15 @@ input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; marg
 .gb-fill { justify-self: start; }
 .gb-fill:hover { background: rgba(233, 196, 106, .22); }
 .gb-fill.done { border-color: rgba(156, 203, 120, .5); background: var(--moss-wash); color: var(--moss); }
+
+.gb-steps { margin: 2px 0 0; padding-left: 18px; display: grid; gap: 5px; font-size: 12.5px; color: var(--bone-2); }
+.gb-steps a { color: var(--gold); }
+.gb-bm {
+  display: inline-block; padding: 1px 8px; border-radius: 6px; text-decoration: none; cursor: grab;
+  border: 1px dashed var(--gold-lo); background: var(--gold-wash); color: var(--gold-hi) !important; font-weight: 600;
+}
+#gb-paste {
+  width: 100%; min-width: 0; resize: vertical; padding: 7px 9px; border-radius: var(--r-md); font: 12px ui-monospace, monospace;
+  background: var(--iron-950); border: 1px solid var(--iron-600); color: var(--bone-2);
+}
+#gb-paste:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-wash); }

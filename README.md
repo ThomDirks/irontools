@@ -59,8 +59,8 @@ tests/                   node --test checks
 
 ## Group bank
 
-The sidebar can load your group's items from the [Group Ironmen Tracker](https://groupiron.men) with the group name and token. Each calculator with a "what's in the bank" section then gets a "Fill from group bank" button (it replaces what's typed). Tick which members count, including the shared bank.
+The sidebar can load your group's items from the [Group Ironmen Tracker](https://groupiron.men). Its live API doesn't let other websites read it, so the items come over by copy and paste: a "Copy group bank" bookmarklet, clicked on groupiron.men where you're logged in, copies the bank, inventory and seed vault of every member (no token), and you paste that into Iron Tools. Each calculator with a "what's in the bank" section then gets a "Fill from group bank" button (it replaces what's typed), and you can tick which members count, including the shared bank.
 
-The name and token stay in the page's memory only: nothing is written to localStorage, cookies or the URL, and reloading forgets them. The request goes from the browser straight to groupiron.men, whose API accepts calls from other sites. Item ids come from the OSRS Wiki (`src/data/items.json`).
+Nothing is stored: the pasted items live in the page's memory and reloading forgets them. Item ids come from the OSRS Wiki (`src/data/items.json`).
 
 Hiscores come through [Wise Old Man](https://wiseoldman.net), which reads the official hiscores and allows browser requests.

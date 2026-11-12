@@ -1,28 +1,43 @@
-// Group Ironmen Tracker (groupiron.men) bank lookup.
+// Group Ironmen Tracker (groupiron.men) items.
 //
-// The group name and token only ever live in this module's variables: they
-// are never written to localStorage, cookies or the URL, and reloading the
-// page forgets them. The request goes straight from the browser to
-// groupiron.men, whose API allows calls from any site.
+// groupiron.men's live API doesn't allow other websites to read it, so the
+// data comes over by hand: a bookmarklet, run on groupiron.men where you're
+// already logged in, copies just the item lists (no token) to the
+// clipboard, and you paste them here. Everything stays in this module's
+// variables: nothing is written to storage, and reloading forgets it.
 
 import ids from "../data/items.json" with { type: "json" };
 
-const API = "https://groupiron.men/api/group/";
 // where an item can sit; equipment, rune pouch and potion storage don't
 // matter for these calculators
 const SOURCES = ["bank", "inventory", "seed_vault"];
 const SHARED = "@SHARED";
+const PREFIX = "IRONTOOLS:";
+
+/** Runs on groupiron.men. Reads that site's own login, copies only items. */
+export const BOOKMARKLET = "javascript:" + encodeURIComponent(`(async()=>{
+const n=localStorage.getItem("groupName"),t=localStorage.getItem("groupToken");
+if(location.hostname!=="groupiron.men"||!n||!t){alert("Open groupiron.men, log in to your group, then click this again.");return}
+let d;try{const r=await fetch("/api/group/"+encodeURIComponent(n)+"/get-group-data?from_time=1970-01-01T00:00:00.000Z",{headers:{Authorization:t}});if(!r.ok)throw r.status;d=await r.json()}catch(e){alert("groupiron.men didn't answer ("+e+"). Try again in a moment.");return}
+const k=["bank","inventory","seed_vault"];
+const s="${PREFIX}"+JSON.stringify({v:1,group:n,at:new Date().toISOString(),members:d.map(m=>{const o={name:m.name};k.forEach(x=>o[x]=m[x]||[]);return o})});
+try{await navigator.clipboard.writeText(s);alert("Copied the items of "+d.length+" members. Paste them into Iron Tools.");return}catch(e){}
+const w=document.createElement("div");w.style.cssText="position:fixed;inset:20% 20%;z-index:99999;background:#1a2227;color:#ece5d3;padding:16px;border:2px solid #e9c46a;border-radius:10px;font:14px sans-serif;display:flex;flex-direction:column;gap:8px";
+w.innerHTML="<b>Copy this and paste it into Iron Tools</b>";const a=document.createElement("textarea");a.value=s;a.style.cssText="flex:1;width:100%";const b=document.createElement("button");b.textContent="Copy and close";
+b.onclick=async()=>{a.select();try{await navigator.clipboard.writeText(s)}catch(e){document.execCommand("copy")}w.remove()};w.append(a,b);document.body.append(w);a.select();
+})()`);
 
 let members = [];          // [{ name, items: Map(id -> qty) }]
 let selected = new Set();  // member names counted
 let loadedAt = null;
+let groupName = "";
 const listeners = new Set();
 
 export function onGroupBank(fn) { listeners.add(fn); fn(state()); return () => listeners.delete(fn); }
 const emit = () => listeners.forEach(fn => fn(state()));
 
 export function state() {
-  return { loaded: members.length > 0, members: members.map(m => ({ name: m.name, label: label(m.name), on: selected.has(m.name), count: m.items.size })), loadedAt };
+  return { loaded: members.length > 0, group: groupName, members: members.map(m => ({ name: m.name, label: label(m.name), on: selected.has(m.name), count: m.items.size })), loadedAt };
 }
 
 export const label = name => (name === SHARED ? "Shared bank" : name);
@@ -33,7 +48,7 @@ export function toggleMember(name, on) {
 }
 
 export function forget() {
-  members = []; selected = new Set(); loadedAt = null;
+  members = []; selected = new Set(); loadedAt = null; groupName = "";
   emit();
 }
 
@@ -47,26 +62,29 @@ function parse(arr) {
   return out;
 }
 
-export async function load(groupName, token) {
-  groupName = (groupName || "").trim(); token = (token || "").trim();
-  if (!groupName || !token) throw new Error("missing");
-  const url = API + encodeURIComponent(groupName) + "/get-group-data?from_time=" + encodeURIComponent(new Date(0).toISOString());
-  let r;
-  try { r = await fetch(url, { headers: { Authorization: token }, cache: "no-store", credentials: "omit", referrerPolicy: "no-referrer" }); }
-  catch { throw new Error("network"); }
-  if (r.status === 401 || r.status === 403) throw new Error("auth");
-  if (r.status === 404) throw new Error("notfound");
-  if (!r.ok) throw new Error("http");
-  const data = await r.json();
-  members = data.map(m => {
+function ingest(list, group) {
+  members = list.map(m => {
     const items = new Map();
-    for (const s of SOURCES) for (const [id, q] of parse(m[s])) items.set(id, (items.get(id) || 0) + q);
-    return { name: m.name, items };
+    for (const src of SOURCES) for (const [id, q] of parse(m[src])) items.set(id, (items.get(id) || 0) + q);
+    return { name: String(m.name), items };
   }).sort((a, b) => (a.name === SHARED) - (b.name === SHARED) || a.name.localeCompare(b.name));
   selected = new Set(members.map(m => m.name));
   loadedAt = new Date();
+  groupName = group || "";
   emit();
   return state();
+}
+
+/** Text copied by the bookmarklet (or the raw get-group-data JSON). */
+export function fromPaste(text) {
+  text = String(text || "").trim();
+  if (!text) throw new Error("empty");
+  if (text.startsWith(PREFIX)) text = text.slice(PREFIX.length);
+  let data;
+  try { data = JSON.parse(text); } catch { throw new Error("format"); }
+  const list = Array.isArray(data) ? data : data?.members;
+  if (!Array.isArray(list) || !list.length || !list.every(m => m && typeof m.name === "string")) throw new Error("format");
+  return ingest(list, data.group);
 }
 
 /** How many of an item (by its name) the ticked members hold together. */

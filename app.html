@@ -46,22 +46,17 @@
 
     <details id="gb" class="gb">
       <summary>Group bank <small>groupiron.men</small></summary>
-      <form id="gb-form" autocomplete="off">
-        <label class="gb-field"><span>Group name</span>
-          <input id="gb-name" type="text" autocomplete="off" spellcheck="false" data-lpignore="true" data-1p-ignore>
-        </label>
-        <label class="gb-field"><span>Token</span>
-          <span class="gb-pw">
-            <input id="gb-token" type="password" autocomplete="off" spellcheck="false" data-lpignore="true" data-1p-ignore>
-            <button id="gb-eye" type="button" aria-pressed="false" aria-label="Show the token">
-              <svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
-            </button>
-          </span>
-        </label>
-        <button id="gb-go" type="submit">Load items</button>
-        <p class="gb-hint">Kept in this tab only. Goes straight to groupiron.men, never stored.</p>
+      <div id="gb-form">
+        <ol class="gb-steps">
+          <li>Drag <a id="gb-bm" class="gb-bm" href="#">Copy group bank</a> to your bookmarks bar.</li>
+          <li>On <a href="https://groupiron.men/group/items" target="_blank" rel="noopener">groupiron.men</a>, logged in, click that bookmark.</li>
+          <li>Paste here:</li>
+        </ol>
+        <textarea id="gb-paste" rows="2" spellcheck="false" placeholder="IRONTOOLS:…" aria-label="Paste the copied group bank"></textarea>
+        <button id="gb-go" type="button">Load items</button>
+        <p class="gb-hint">Only item names and amounts come over, never your token. Nothing is stored; reloading forgets it.</p>
         <p id="gb-note" role="status" aria-live="polite"></p>
-      </form>
+      </div>
       <div id="gb-loaded" hidden>
         <div id="gb-members"></div>
         <p class="gb-meta"><span id="gb-time"></span><button id="gb-forget" type="button">Forget</button></p>

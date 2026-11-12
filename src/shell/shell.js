@@ -209,38 +209,34 @@ function bindStats() {
 
 /* ---------------- group bank ---------------- */
 function bindGroupBank() {
-  const form = $("gb-form"), name = $("gb-name"), token = $("gb-token"), go = $("gb-go"), note = $("gb-note"), eye = $("gb-eye");
-  eye.addEventListener("click", () => {
-    const show = token.type === "password";
-    token.type = show ? "text" : "password";
-    eye.setAttribute("aria-pressed", String(show));
-    eye.setAttribute("aria-label", show ? "Hide the token" : "Show the token");
-  });
-  form.addEventListener("submit", async e => {
+  const form = $("gb-form"), paste = $("gb-paste"), go = $("gb-go"), note = $("gb-note"), bm = $("gb-bm");
+  bm.href = gb.BOOKMARKLET;
+  // clicking it here does nothing useful: it has to run on groupiron.men
+  bm.addEventListener("click", e => {
     e.preventDefault();
-    go.disabled = true; note.className = ""; note.textContent = "Loading…";
+    note.className = ""; note.textContent = "Drag it to your bookmarks bar, then click it on groupiron.men.";
+  });
+  const loadText = text => {
     try {
-      const s = await gb.load(name.value, token.value);
-      note.textContent = "";
-      token.value = ""; token.type = "password"; eye.setAttribute("aria-pressed", "false");
-      form.hidden = true;
-      if (!s.members.length) note.textContent = "No members found.";
+      gb.fromPaste(text);
+      paste.value = ""; note.textContent = ""; form.hidden = true;
     } catch (err) {
       note.className = "bad";
-      note.textContent = {
-        missing: "Fill in both the group name and the token.",
-        auth: "The group name and token don't match.",
-        notfound: "No group with that name.",
-        network: "Couldn't reach groupiron.men."
-      }[err.message] || "groupiron.men answered with an error. Try again in a moment.";
-    } finally { go.disabled = false; }
+      note.textContent = err.message === "empty" ? "Paste what the bookmark copied first."
+        : "That isn't what the bookmark copies. Click it on groupiron.men again and paste the result.";
+    }
+  };
+  go.addEventListener("click", () => loadText(paste.value));
+  paste.addEventListener("paste", e => {
+    const t = e.clipboardData?.getData("text");
+    if (t && t.trim().startsWith("IRONTOOLS:")) { e.preventDefault(); loadText(t); }
   });
-  $("gb-forget").addEventListener("click", () => { gb.forget(); form.hidden = false; name.focus(); });
+  $("gb-forget").addEventListener("click", () => { gb.forget(); form.hidden = false; });
   gb.onGroupBank(s => {
     $("gb-loaded").hidden = !s.loaded;
     if (!s.loaded) return;
     $("gb-members").innerHTML = s.members.map(m => `<label class="gb-mem"><input type="checkbox" data-member="${esc(m.name)}"${m.on ? " checked" : ""}><span>${esc(m.label)}</span><small>${m.count} items</small></label>`).join("");
-    $("gb-time").textContent = "Loaded " + s.loadedAt.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+    $("gb-time").textContent = (s.group ? s.group + ", " : "") + "loaded " + s.loadedAt.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
   });
   $("gb-members").addEventListener("change", e => {
     const c = e.target.closest("[data-member]");
