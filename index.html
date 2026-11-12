@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Instrument+Sans:wght@400;500;600;700&family=Silkscreen&family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/app-CgmwIFzp.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/app-DpRbibeX.css">
+  <script type="module" crossorigin src="./assets/app-BxcXR2hJ.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/app-DT0FOVIM.css">
 </head>
 <body class="booting">
 
@@ -45,6 +45,30 @@
       </div>
       <p id="rsn-note" role="status" aria-live="polite"></p>
     </form>
+
+    <details id="gb" class="gb">
+      <summary>Group bank <small>groupiron.men</small></summary>
+      <form id="gb-form" autocomplete="off">
+        <label class="gb-field"><span>Group name</span>
+          <input id="gb-name" type="text" autocomplete="off" spellcheck="false" data-lpignore="true" data-1p-ignore>
+        </label>
+        <label class="gb-field"><span>Token</span>
+          <span class="gb-pw">
+            <input id="gb-token" type="password" autocomplete="off" spellcheck="false" data-lpignore="true" data-1p-ignore>
+            <button id="gb-eye" type="button" aria-pressed="false" aria-label="Show the token">
+              <svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </span>
+        </label>
+        <button id="gb-go" type="submit">Load items</button>
+        <p class="gb-hint">Kept in this tab only. Goes straight to groupiron.men, never stored.</p>
+        <p id="gb-note" role="status" aria-live="polite"></p>
+      </form>
+      <div id="gb-loaded" hidden>
+        <div id="gb-members"></div>
+        <p class="gb-meta"><span id="gb-time"></span><button id="gb-forget" type="button">Forget</button></p>
+      </div>
+    </details>
 
     <nav id="nav" aria-label="Calculators"></nav>
 

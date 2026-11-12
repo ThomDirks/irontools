@@ -1,1 +1,0 @@
-import{o as l}from"./app-CgmwIFzp.js";function u(n){l(s=>{for(const[o,i]of Object.entries(n)){const t=document.getElementById(o),e=s.skills[i];!t||e===void 0||(t.value=e,t.dispatchEvent(new Event("input",{bubbles:!0})),t.dispatchEvent(new Event("change",{bubbles:!0})))}})}export{u as f};
