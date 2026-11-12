@@ -3,6 +3,7 @@ import { bindForm, syncLevelXp } from "../../lib/form.js";
 import { onStats } from "../../lib/stats.js";
 import { xpForLevel, levelFromXp } from "../../lib/xp.js";
 import { fmt, esc, duration, short } from "../../lib/format.js";
+import { fillButton, bindFill } from "../../lib/groupbank.js";
 import { landing, stat, tiles, section, table, note, row, seg, levelXpFields } from "../../lib/ui.js";
 
 export const subtitle = "Your ore into bars and levels, with coal, coffer and time";
@@ -28,6 +29,7 @@ export const html = `<div class="calc">
     </div>
     <div class="group" data-show="mode:bank">
       <h2>Ore in the bank</h2>
+      ${fillButton()}
       <div class="qtys">${ORE_IDS.map(id => `<label class="qty"><span>${esc(ORES[id].name)}</span><input name="ore-${id}" type="number" min="0" value="0" inputmode="numeric"></label>`).join("")}</div>
     </div>
     <div class="group">
@@ -49,6 +51,11 @@ export function mount(root) {
   const lx = syncLevelXp(form, "sLvl", "sXp");
   const f = bindForm(form, "blastfurnace", paint);
   lx.setXp(f.values().sXp);
+  bindFill(root, count => {
+    let total = 0;
+    for (const id of ORE_IDS) { const n = count(ORES[id].name); total += n; f.set("ore-" + id, n); }
+    return total;
+  });
   onStats(s => { if (s.skills.smithing !== undefined) lx.setXp(s.skills.smithing); });
 
   function paint(v) {

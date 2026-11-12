@@ -1,0 +1,429 @@
+{
+ "_source": "Item ids from each item's OSRS Wiki infobox, read 2026-11-12; spot-checked against the Group Ironmen Tracker item list.",
+ "Adamantite ore": [
+  449
+ ],
+ "Avantoe": [
+  261
+ ],
+ "Avantoe seed": [
+  5298
+ ],
+ "Babydragon bones": [
+  534
+ ],
+ "Bat bones": [
+  530
+ ],
+ "Big bones": [
+  532
+ ],
+ "Bones": [
+  526
+ ],
+ "Burnt bones": [
+  528
+ ],
+ "Cadantine": [
+  265
+ ],
+ "Cadantine seed": [
+  5301
+ ],
+ "Coal": [
+  453
+ ],
+ "Common kebbit fur": [
+  10121
+ ],
+ "Copper ore": [
+  436
+ ],
+ "Dagannoth bones": [
+  6729
+ ],
+ "Dark kebbit fur": [
+  10115
+ ],
+ "Dashing kebbit fur": [
+  10127
+ ],
+ "Desert devil fur": [
+  10123
+ ],
+ "Dragon bones": [
+  536
+ ],
+ "Drake bones": [
+  22783
+ ],
+ "Dwarf weed": [
+  267
+ ],
+ "Dwarf weed seed": [
+  5303
+ ],
+ "Fayrg bones": [
+  4830
+ ],
+ "Feldip weasel fur": [
+  10119
+ ],
+ "Fox fur": [
+  29163
+ ],
+ "Frost dragon bones": [
+  31729
+ ],
+ "Gold ore": [
+  444
+ ],
+ "Graahk fur": [
+  10099
+ ],
+ "Grimy avantoe": [
+  211
+ ],
+ "Grimy cadantine": [
+  215
+ ],
+ "Grimy dwarf weed": [
+  217
+ ],
+ "Grimy guam leaf": [
+  199
+ ],
+ "Grimy harralander": [
+  205
+ ],
+ "Grimy huasca": [
+  30094
+ ],
+ "Grimy irit leaf": [
+  209
+ ],
+ "Grimy kwuarm": [
+  213
+ ],
+ "Grimy lantadyme": [
+  2485
+ ],
+ "Grimy marrentill": [
+  201
+ ],
+ "Grimy ranarr weed": [
+  207
+ ],
+ "Grimy snapdragon": [
+  3051
+ ],
+ "Grimy tarromin": [
+  203
+ ],
+ "Grimy toadflax": [
+  3049
+ ],
+ "Grimy torstol": [
+  219
+ ],
+ "Guam leaf": [
+  249
+ ],
+ "Guam seed": [
+  5291
+ ],
+ "Harralander": [
+  255
+ ],
+ "Harralander seed": [
+  5294
+ ],
+ "Huasca": [
+  30097
+ ],
+ "Huasca seed": [
+  30088
+ ],
+ "Hydra bones": [
+  22786
+ ],
+ "Irit leaf": [
+  259
+ ],
+ "Irit seed": [
+  5297
+ ],
+ "Iron ore": [
+  440
+ ],
+ "Jogre bones": [
+  3125
+ ],
+ "Kwuarm": [
+  263
+ ],
+ "Kwuarm seed": [
+  5299
+ ],
+ "Kyatt fur": [
+  10103
+ ],
+ "Lantadyme": [
+  2481
+ ],
+ "Lantadyme seed": [
+  5302
+ ],
+ "Larupia fur": [
+  10095
+ ],
+ "Lava dragon bones": [
+  11943
+ ],
+ "Lead ore": [
+  31716
+ ],
+ "Logs": [
+  1511
+ ],
+ "Magic logs": [
+  1513
+ ],
+ "Mahogany logs": [
+  6332
+ ],
+ "Mahogany plank": [
+  8782
+ ],
+ "Maple logs": [
+  1517
+ ],
+ "Marrentill": [
+  251
+ ],
+ "Marrentill seed": [
+  5292
+ ],
+ "Mithril ore": [
+  447
+ ],
+ "Monkey bones": [
+  3183
+ ],
+ "Moonlight antelope fur": [
+  29174
+ ],
+ "Nickel ore": [
+  31719
+ ],
+ "Oak logs": [
+  1521
+ ],
+ "Oak plank": [
+  8778
+ ],
+ "Ourg bones": [
+  4834
+ ],
+ "Plank": [
+  960
+ ],
+ "Polar kebbit fur": [
+  10117
+ ],
+ "Ranarr seed": [
+  5295
+ ],
+ "Ranarr weed": [
+  257
+ ],
+ "Raurg bones": [
+  4832
+ ],
+ "Raw anchovies": [
+  321
+ ],
+ "Raw anglerfish": [
+  13439
+ ],
+ "Raw bass": [
+  363
+ ],
+ "Raw blue crab meat": [
+  31692
+ ],
+ "Raw bluefin": [
+  32341
+ ],
+ "Raw cave eel": [
+  5001
+ ],
+ "Raw cod": [
+  341
+ ],
+ "Raw dark crab": [
+  11934
+ ],
+ "Raw giant krill": [
+  32309
+ ],
+ "Raw haddock": [
+  32317
+ ],
+ "Raw halibut": [
+  32333
+ ],
+ "Raw herring": [
+  345
+ ],
+ "Raw jumbo squid": [
+  31561
+ ],
+ "Raw karambwan": [
+  3142
+ ],
+ "Raw lobster": [
+  377
+ ],
+ "Raw mackerel": [
+  353
+ ],
+ "Raw manta ray": [
+  389
+ ],
+ "Raw marlin": [
+  32349
+ ],
+ "Raw monkfish": [
+  7944
+ ],
+ "Raw pike": [
+  349
+ ],
+ "Raw rainbow crab meat": [
+  31700
+ ],
+ "Raw rainbow fish": [
+  10138
+ ],
+ "Raw red crab meat": [
+  31686
+ ],
+ "Raw salmon": [
+  331
+ ],
+ "Raw sardine": [
+  327
+ ],
+ "Raw sea turtle": [
+  395
+ ],
+ "Raw shark": [
+  383
+ ],
+ "Raw shrimps": [
+  317
+ ],
+ "Raw slimy eel": [
+  3379
+ ],
+ "Raw swordfish": [
+  371
+ ],
+ "Raw swordtip squid": [
+  31553
+ ],
+ "Raw trout": [
+  335
+ ],
+ "Raw tuna": [
+  359
+ ],
+ "Raw yellowfin": [
+  32325
+ ],
+ "Redwood logs": [
+  19669
+ ],
+ "Runite ore": [
+  451
+ ],
+ "Shaikahan bones": [
+  3123
+ ],
+ "Silver ore": [
+  442
+ ],
+ "Snapdragon": [
+  3000
+ ],
+ "Snapdragon seed": [
+  5300
+ ],
+ "Spotted kebbit fur": [
+  10125
+ ],
+ "Strykewyrm bones": [
+  31726
+ ],
+ "Sun-kissed bones": [
+  29378
+ ],
+ "Sunlight antelope fur": [
+  29177
+ ],
+ "Superior dragon bones": [
+  22124
+ ],
+ "Tarromin": [
+  253
+ ],
+ "Tarromin seed": [
+  5293
+ ],
+ "Teak logs": [
+  6333
+ ],
+ "Teak plank": [
+  8780
+ ],
+ "Tin ore": [
+  438
+ ],
+ "Toadflax": [
+  2998
+ ],
+ "Toadflax seed": [
+  5296
+ ],
+ "Torstol": [
+  269
+ ],
+ "Torstol seed": [
+  5304
+ ],
+ "Willow logs": [
+  1519
+ ],
+ "Wolf bones": [
+  2859
+ ],
+ "Wyrm bones": [
+  22780
+ ],
+ "Wyrmling bones": [
+  28899
+ ],
+ "Wyrmscraig goat fur": [
+  34017
+ ],
+ "Wyvern bones": [
+  6812
+ ],
+ "Yew logs": [
+  1515
+ ],
+ "Zogre bones": [
+  4812
+ ]
+}

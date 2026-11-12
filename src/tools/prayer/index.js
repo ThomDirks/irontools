@@ -3,6 +3,7 @@ import { bindForm, syncLevelXp } from "../../lib/form.js";
 import { onStats } from "../../lib/stats.js";
 import { xpForLevel, levelFromXp } from "../../lib/xp.js";
 import { fmt, esc, duration } from "../../lib/format.js";
+import { fillButton, bindFill } from "../../lib/groupbank.js";
 import { landing, stat, tiles, section, table, note, row, seg, levelXpFields } from "../../lib/ui.js";
 
 export const subtitle = "Your bones through the Chaos altar, the Ectofuntus or the libation bowl";
@@ -37,6 +38,7 @@ export const html = `<div class="calc">
     </div>
     <div class="group" data-show="mode:bank">
       <h2>Bones in the bank</h2>
+      ${fillButton()}
       <div class="qtys">${BONES.map(b => `<label class="qty" data-bone="${b.id}"><span>${esc(b.name)}<span class="lv">${b.shardsOnly ? b.shards + " shards" : b.xp}</span></span><input name="b-${b.id}" type="number" min="0" value="0" inputmode="numeric"></label>`).join("")}</div>
     </div>
   </form>
@@ -53,6 +55,11 @@ export function mount(root) {
   const lx = syncLevelXp(form, "pLvl", "pXp");
   const f = bindForm(form, "prayer", paint);
   api = f;
+  bindFill(root, count => {
+    let total = 0;
+    for (const b of BONES) { const n = count(b.name); total += n; f.set("b-" + b.id, n); }
+    return total;
+  });
   lx.setXp(f.values().pXp);
   onStats(s => { if (s.skills.prayer !== undefined) lx.setXp(s.skills.prayer); });
 

@@ -3,6 +3,7 @@ import { bindForm, syncLevelXp } from "../../lib/form.js";
 import { onStats } from "../../lib/stats.js";
 import { xpForLevel, levelFromXp } from "../../lib/xp.js";
 import { fmt, duration, short, plural } from "../../lib/format.js";
+import { fillButton, bindFill } from "../../lib/groupbank.js";
 import { landing, stat, tiles, section, timeline, table, note, row, rewardPicker, readRewards, bindRewardOrder, seg, levelXpFields } from "../../lib/ui.js";
 
 export const subtitle = "Contracts to your goal, from planks or logs, with Miscellania timing";
@@ -31,6 +32,7 @@ export const html = `<div class="calc">
     </div>
     <div class="group">
       <h2>In the bank</h2>
+      ${fillButton()}
       <div class="qty bank-head"><span></span><span>Planks</span><span>Logs</span></div>
       ${TYPES.map(bankRow).join("")}
       <label class="field"><span>Turn logs into planks with</span></label>
@@ -57,6 +59,14 @@ export function mount(root) {
   const f = bindForm(form, "mahogany", paint);
   lx.setXp(f.values().cXp);
   bindRewardOrder(form);
+  bindFill(root, count => {
+    let total = 0;
+    for (const k of TYPES) {
+      const p = count(PLANKS[k].name), l = count(PLANKS[k].log);
+      total += p + l; f.set("pl-" + k, p); f.set("lg-" + k, l);
+    }
+    return total;
+  });
   onStats(s => { if (s.skills.construction !== undefined) lx.setXp(s.skills.construction); });
 
   function paint(v) {

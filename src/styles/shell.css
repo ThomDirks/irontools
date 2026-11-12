@@ -66,7 +66,8 @@ body.ready #side { opacity: 1; translate: 0 0; }
 .brand b { font: 600 17px var(--mark); letter-spacing: .04em; }
 .icon-btn { display: none; width: 38px; height: 38px; border-radius: var(--r-md); border: 1px solid var(--iron-600); background: var(--iron-800); cursor: pointer; place-items: center; }
 .icon-btn svg, #rsn-go svg, .side-map svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.side-body { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 0 10px 10px; }
+.side-body { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 0 10px 10px; overflow-y: auto; scrollbar-width: thin; }
+#nav { min-height: 160px; }
 
 #rsn { padding: 10px 6px 14px; border-bottom: 1px solid rgba(255, 255, 255, .07); }
 #rsn label { display: block; font-size: 12px; color: var(--slate); margin: 0 0 6px 2px; }
@@ -205,3 +206,41 @@ body:not(.ready) #home { opacity: 0; }
 input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* group bank */
+.gb { padding: 8px 6px 10px; border-bottom: 1px solid rgba(255, 255, 255, .07); }
+.gb summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--bone-2); list-style: none; display: flex; align-items: baseline; gap: 6px; }
+.gb summary::before { content: "+"; color: var(--gold); width: 12px; }
+.gb[open] summary::before { content: "−"; }
+.gb summary small { font-weight: 400; color: var(--slate-2); font-size: 11.5px; }
+#gb-form { display: grid; gap: 8px; margin-top: 10px; }
+.gb-field { display: grid; gap: 4px; font-size: 12px; color: var(--slate); }
+.gb-field input { height: 34px; padding: 0 10px; border-radius: var(--r-md); background: var(--iron-950); border: 1px solid var(--iron-600); font-size: 13.5px; width: 100%; min-width: 0; }
+.gb-field input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-wash); }
+.gb-pw { display: flex; gap: 6px; }
+#gb-eye { width: 34px; height: 34px; flex: none; display: grid; place-items: center; border-radius: var(--r-md); border: 1px solid var(--iron-600); background: var(--iron-800); color: var(--slate); cursor: pointer; }
+#gb-eye svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+#gb-eye[aria-pressed="true"] { color: var(--gold); border-color: var(--gold-lo); }
+#gb-go { height: 34px; border-radius: var(--r-md); border: 1px solid var(--gold-lo); background: var(--gold-wash); color: var(--gold-hi); font-weight: 600; font-size: 13px; cursor: pointer; }
+#gb-go:hover { background: rgba(233, 196, 106, .22); }
+#gb-go[disabled] { opacity: .6; }
+.gb-hint { font-size: 11.5px; color: var(--slate-2); }
+#gb-note { font-size: 12px; color: var(--slate); }
+#gb-note:empty { display: none; }
+#gb-note.bad { color: var(--ember); }
+#gb-loaded { margin-top: 10px; display: grid; gap: 6px; }
+#gb-members { display: grid; gap: 4px; }
+.gb-mem { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; font-size: 13.5px; cursor: pointer; }
+.gb-mem input { accent-color: var(--gold); margin: 0; }
+.gb-mem small { color: var(--slate-2); font-size: 11.5px; }
+.gb-meta { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--slate-2); }
+#gb-forget { background: none; border: 0; padding: 0; color: var(--gold); cursor: pointer; font-size: 11.5px; }
+
+/* the fill button inside calculators */
+.gb-fill {
+  display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--gold-lo); background: var(--gold-wash); color: var(--gold-hi); font: 600 12.5px var(--ui);
+}
+.gb-fill { justify-self: start; }
+.gb-fill:hover { background: rgba(233, 196, 106, .22); }
+.gb-fill.done { border-color: rgba(156, 203, 120, .5); background: var(--moss-wash); color: var(--moss); }

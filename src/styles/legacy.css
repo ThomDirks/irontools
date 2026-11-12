@@ -100,3 +100,6 @@
 .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .skillline { border-color: rgba(255,255,255,.06) !important; }
 .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .skillline .nm, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .skillline .lv { color: var(--bone-2); }
 .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .rcard .note { background: transparent !important; border-left: 0 !important; padding: 0; color: var(--slate-2) !important; }
+.view-body .legacy .gb-fill { margin: 0 8px 0 0; }
+.view-body #view-vale .gb-fill { margin-top: 6px; justify-self: start; }
+.view-body #view-golem .clearrow { gap: 8px; }

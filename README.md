@@ -57,4 +57,10 @@ tests/                   node --test checks
 - Miscellania follows the wiki's calculator module (resource points from the coffer payment and approval, approval decay), except "teak and mahogany", which uses the 121 each the wiki observes rather than the module's 131.
 - Herb yields follow the wiki's herb farming calculator, which rounds each term down. One difference: planting xp is counted for dead patches too, as the wiki's seed table says you get it when clearing them.
 
+## Group bank
+
+The sidebar can load your group's items from the [Group Ironmen Tracker](https://groupiron.men) with the group name and token. Each calculator with a "what's in the bank" section then gets a "Fill from group bank" button (it replaces what's typed). Tick which members count, including the shared bank.
+
+The name and token stay in the page's memory only: nothing is written to localStorage, cookies or the URL, and reloading forgets them. The request goes from the browser straight to groupiron.men, whose API accepts calls from other sites. Item ids come from the OSRS Wiki (`src/data/items.json`).
+
 Hiscores come through [Wise Old Man](https://wiseoldman.net), which reads the official hiscores and allows browser requests.

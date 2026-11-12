@@ -3,6 +3,7 @@ import { bindForm, syncLevelXp } from "../../lib/form.js";
 import { onStats } from "../../lib/stats.js";
 import { xpForLevel, levelFromXp } from "../../lib/xp.js";
 import { fmt, plural, esc, days as fmtDays } from "../../lib/format.js";
+import { fillButton, bindFill } from "../../lib/groupbank.js";
 import { landing, stat, tiles, section, table, note, timeline, seg, levelXpFields } from "../../lib/ui.js";
 
 export const subtitle = "Herbs and xp from your patches, run by run";
@@ -34,6 +35,7 @@ export const html = `<div class="calc">
     </div>
     <div class="group" data-show="mode:seeds">
       <h2>Seeds in the bank</h2>
+      ${fillButton()}
       <div class="qtys">${HERBS.map(h => `<label class="qty" data-herb="${h.id}"><span>${esc(h.name)}<span class="lv">${h.level}</span></span><input name="seed-${h.id}" type="number" min="0" value="0" inputmode="numeric"></label>`).join("")}</div>
     </div>
     <div class="group">
@@ -87,6 +89,11 @@ export function mount(root) {
   lx.setXp(f.values().hXp);
   onStats(s => { if (s.skills.farming !== undefined) lx.setXp(s.skills.farming); });
   let lastHerbs = null;
+  bindFill(root, count => {
+    let total = 0;
+    for (const h of HERBS) { const n = count(h.seed); total += n; f.set("seed-" + h.id, n); }
+    return total;
+  });
 
   out.addEventListener("click", e => {
     if (!e.target.closest("[data-send]") || !lastHerbs) return;

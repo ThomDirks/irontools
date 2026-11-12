@@ -3,6 +3,7 @@ import { TOOLS, icon } from "../tools/registry.js";
 import { lookup, onStats, savedName } from "../lib/stats.js";
 import { levelFromXp } from "../lib/xp.js";
 import { esc } from "../lib/format.js";
+import * as gb from "../lib/groupbank.js";
 
 const SVGNS = "http://www.w3.org/2000/svg";
 const MAP_W = 3000, MAP_H = 2125;
@@ -206,6 +207,47 @@ function bindStats() {
   if (saved) { name.value = saved; setTimeout(() => run(saved, false), reduce || location.hash ? 200 : 2300); }
 }
 
+/* ---------------- group bank ---------------- */
+function bindGroupBank() {
+  const form = $("gb-form"), name = $("gb-name"), token = $("gb-token"), go = $("gb-go"), note = $("gb-note"), eye = $("gb-eye");
+  eye.addEventListener("click", () => {
+    const show = token.type === "password";
+    token.type = show ? "text" : "password";
+    eye.setAttribute("aria-pressed", String(show));
+    eye.setAttribute("aria-label", show ? "Hide the token" : "Show the token");
+  });
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    go.disabled = true; note.className = ""; note.textContent = "Loading…";
+    try {
+      const s = await gb.load(name.value, token.value);
+      note.textContent = "";
+      token.value = ""; token.type = "password"; eye.setAttribute("aria-pressed", "false");
+      form.hidden = true;
+      if (!s.members.length) note.textContent = "No members found.";
+    } catch (err) {
+      note.className = "bad";
+      note.textContent = {
+        missing: "Fill in both the group name and the token.",
+        auth: "The group name and token don't match.",
+        notfound: "No group with that name.",
+        network: "Couldn't reach groupiron.men."
+      }[err.message] || "groupiron.men answered with an error. Try again in a moment.";
+    } finally { go.disabled = false; }
+  });
+  $("gb-forget").addEventListener("click", () => { gb.forget(); form.hidden = false; name.focus(); });
+  gb.onGroupBank(s => {
+    $("gb-loaded").hidden = !s.loaded;
+    if (!s.loaded) return;
+    $("gb-members").innerHTML = s.members.map(m => `<label class="gb-mem"><input type="checkbox" data-member="${esc(m.name)}"${m.on ? " checked" : ""}><span>${esc(m.label)}</span><small>${m.count} items</small></label>`).join("");
+    $("gb-time").textContent = "Loaded " + s.loadedAt.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+  });
+  $("gb-members").addEventListener("change", e => {
+    const c = e.target.closest("[data-member]");
+    if (c) gb.toggleMember(c.dataset.member, c.checked);
+  });
+}
+
 /* ---------------- #calibrate ---------------- */
 function calibrate() {
   if (!location.hash.includes("calibrate")) return;
@@ -294,6 +336,7 @@ export async function start() {
   drawNav();
   await buildViews();
   bindStats();
+  bindGroupBank();
   calibrate();
   intro();
   route();

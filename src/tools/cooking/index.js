@@ -3,6 +3,7 @@ import { bindForm, syncLevelXp } from "../../lib/form.js";
 import { onStats } from "../../lib/stats.js";
 import { xpForLevel, levelFromXp } from "../../lib/xp.js";
 import { fmt, plural, esc } from "../../lib/format.js";
+import { fillButton, bindFill } from "../../lib/groupbank.js";
 import { landing, stat, tiles, section, table, note, seg, levelXpFields } from "../../lib/ui.js";
 
 export const subtitle = "Raw fish into levels, with burns taken off at every level";
@@ -39,6 +40,7 @@ export const html = `<div class="calc">
       <div class="linkbtns"><button type="button" class="linkbtn" data-pick="all">All</button><button type="button" class="linkbtn" data-pick="none">None</button></div>
     </div>
     <div class="group" data-show="mode:bank">
+      ${fillButton()}
       <div class="qty bank-head"><span></span><span>Raw in bank</span></div>
       <div class="qtys">${FISH.map(f => `<label class="qty" data-fish="${f.id}"><span>${esc(f.name)}<span class="lv">${f.level}</span></span><input name="raw-${f.id}" type="number" min="0" value="0" inputmode="numeric"></label>`).join("")}</div>
     </div>
@@ -54,6 +56,11 @@ export function mount(root) {
   const lx = syncLevelXp(form, "kLvl", "kXp");
   const f = bindForm(form, "cooking", paint);
   lx.setXp(f.values().kXp);
+  bindFill(root, count => {
+    let total = 0;
+    for (const x of FISH) { const n = count(x.raw); total += n; f.set("raw-" + x.id, n); }
+    return total;
+  });
   onStats(s => { if (s.skills.cooking !== undefined) lx.setXp(s.skills.cooking); });
   form.querySelectorAll("[data-pick]").forEach(b => b.addEventListener("click", () => {
     form.querySelectorAll('.fishpick input').forEach(i => { i.checked = b.dataset.pick === "all"; });
