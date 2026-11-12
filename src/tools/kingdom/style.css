@@ -116,3 +116,20 @@
   .rs-idlepips i { width: 6px; }
   .rs-collect .rs-slots { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
 }
+
+/* Readability: the pixel face is for headings and labels only. Numbers and
+   item names use the UI face, still in the in-game colours and shadow. */
+.rs-panel b, .rs-count, .rs-day, .rs-slot span, .rs-foot, .rs-select, .rs-name small {
+  font-family: var(--ui);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+.rs-stat b, .rs-foot b, .rs-idle b { font-weight: 600; font-size: 15px; }
+.rs-count { font: 700 16px var(--ui); }
+.rs-day { font-size: 14px; font-weight: 500; }
+.rs-day small { font-size: 13px; }
+.rs-slot { padding: 8px 9px; gap: 3px; }
+.rs-slot b { font: 700 18px/1.15 var(--ui); letter-spacing: -.01em; }
+.rs-slot span { font-size: 12.5px; line-height: 1.3; white-space: normal; overflow: visible; color: #e4dcc6; }
+.rs-collect .rs-slots { grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); }
+.rs-foot { font-size: 14px; }

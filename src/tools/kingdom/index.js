@@ -173,7 +173,7 @@ export function mount(root) {
     const items = [...merged.values()].sort((a, b) => (b.main - a.main) || (b.qty - a.qty));
     main.querySelector(".rs-sub").textContent = `after ${days === 1 ? "1 day" : days + " days"}`;
     main.querySelector(".rs-slots").innerHTML = items.length
-      ? items.map(i => `<div class="rs-slot${i.main ? " main" : ""}" title="${esc(i.name)}"><b>${i.qty >= 10 || i.main ? fmt(i.qty) : i.qty >= 1 ? i.qty.toFixed(1) : i.qty.toFixed(2)}</b><span>${esc(i.name)}</span></div>`).join("")
+      ? items.map(i => `<div class="rs-slot${i.main ? " main" : ""}" title="${esc(i.name)}"><b>${qtyText(i)}</b><span>${esc(i.name)}</span></div>`).join("")
       : `<p class="rs-empty">Put some workers to work.</p>`;
     const foot = [`Coffer spent: <b>${fmt(sim.paid)}</b>`, `Left: <b>${short(sim.coffer)}</b>`, `Approval at the end: <b>${Math.round(favourToPct(sim.endFavour))}%</b>`];
     if (sim.capped) foot.push(`<span class="rs-red">Storage is full at ${fmt(MAX_POINTS)} resource points. Collect sooner.</span>`);
@@ -190,6 +190,14 @@ export function mount(root) {
       : d ? `<b>${fmt(d)} ${d === 1 ? "day" : "days"}</b> for ${fmt(v.goalQty)} ${esc(opt.name.toLowerCase())} with ${alloc[cat.id].workers} workers.`
       : "More than 400 days with these settings.";
   }
+}
+
+// whole numbers for the main haul; expected extras get one decimal, and
+// anything under one reads as a chance rather than "0.90"
+function qtyText(i) {
+  if (i.main || i.qty >= 10) return fmt(i.qty);
+  if (i.qty >= 1) return i.qty.toFixed(1).replace(/\.0$/, "");
+  return "~" + Math.max(1, Math.round(i.qty * 100)) + "%";
 }
 
 function chart(el, log, cofferMax) {
