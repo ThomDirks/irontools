@@ -42,7 +42,7 @@ function drawMarkers() {
 function drawNav() {
   $("nav").innerHTML = TOOLS.map(t => `
     <a class="nav-item" href="#/${t.id}" data-tool="${t.id}">
-      <span class="nav-ico">${icon(t.skill)}</span>
+      <span class="nav-ico">${icon(t.icon || t.skill)}</span>
       <span class="nav-name"><span>${esc(t.title)}${t.isNew ? '<i class="badge">new</i>' : ""}</span>${t.skillName !== t.title ? `<small>${esc(t.skillName)}</small>` : ""}</span>
       <span class="nav-lv" data-skill="${t.skill}"></span>
     </a>`).join("");
@@ -138,7 +138,7 @@ async function buildViews() {
     const reqs = (mod.reqs || []).map(r => `<span class="req-chip">${r}</span>`).join("");
     sec.innerHTML = `<div class="view-frame">
       <header class="view-head">
-        <span class="nav-ico">${icon(t.skill)}</span>
+        <span class="nav-ico">${icon(t.icon || t.skill)}</span>
         <div><h1 tabindex="-1">${esc(t.title)}</h1><p>${esc(mod.subtitle || t.skillName)}</p></div>
         <div class="reqs">${reqs}</div>
       </header>

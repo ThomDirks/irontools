@@ -1,0 +1,32 @@
+{
+  "_source": "OSRS Wiki: Blast Furnace (bar table with bars an hour, recipes, Ordan's shop, coffer and foreman fee). Read 2026-11-12. Bars an hour are the wiki's ranges; hybrid methods are left out.",
+  "bars": [
+    { "id": "bronze", "name": "Bronze bar", "level": 1, "xp": 6.2, "ores": { "copper": 1, "tin": 1 }, "coal": 0, "perHour": [2900, 3400] },
+    { "id": "iron", "name": "Iron bar", "level": 15, "xp": 12.5, "ores": { "iron": 1 }, "coal": 0, "perHour": [5800, 6850] },
+    { "id": "silver", "name": "Silver bar", "level": 20, "xp": 13.7, "ores": { "silver": 1 }, "coal": 0, "perHour": [5800, 6850] },
+    { "id": "lead", "name": "Lead bar", "level": 25, "xp": 15.5, "ores": { "lead": 2 }, "coal": 0, "perHour": [2900, 3400] },
+    { "id": "steel", "name": "Steel bar", "level": 30, "xp": 17.5, "ores": { "iron": 1 }, "coal": 1, "perHour": [2900, 3400], "perHourBag": [4650, 5450] },
+    { "id": "gold", "name": "Gold bar", "level": 40, "xp": 22.5, "xpGauntlets": 56.2, "ores": { "gold": 1 }, "coal": 0, "perHour": [5800, 6850], "perHourGauntlets": [5600, 6600] },
+    { "id": "mithril", "name": "Mithril bar", "level": 50, "xp": 30, "ores": { "mithril": 1 }, "coal": 2, "perHour": [1900, 2250], "perHourBag": [3150, 3700] },
+    { "id": "adamant", "name": "Adamantite bar", "level": 70, "xp": 37.5, "ores": { "adamantite": 1 }, "coal": 3, "perHour": [1450, 1700], "perHourBag": [2400, 2800] },
+    { "id": "cupronickel", "name": "Cupronickel bar", "level": 74, "xp": 42, "ores": { "copper": 2, "nickel": 1 }, "coal": 0, "perHour": [1450, 1700] },
+    { "id": "rune", "name": "Runite bar", "level": 85, "xp": 50, "ores": { "runite": 1 }, "coal": 4, "perHour": [1150, 1350], "perHourBag": [1900, 2250] }
+  ],
+  "ores": {
+    "copper": { "name": "Copper ore", "ordan": 4 },
+    "tin": { "name": "Tin ore", "ordan": 4 },
+    "iron": { "name": "Iron ore", "ordan": 25 },
+    "silver": { "name": "Silver ore", "ordan": 112 },
+    "gold": { "name": "Gold ore", "ordan": 225 },
+    "mithril": { "name": "Mithril ore", "ordan": 243 },
+    "coal": { "name": "Coal", "ordan": 67 },
+    "lead": { "name": "Lead ore" },
+    "nickel": { "name": "Nickel ore" },
+    "adamantite": { "name": "Adamantite ore" },
+    "runite": { "name": "Runite ore" }
+  },
+  "_ordan": "Ordan, Blast Furnace: 100 of each in stock, restocks every 2 minutes. No adamantite, runite, lead or nickel.",
+  "cofferPerHour": 72000,
+  "foremanPerHour": 15000,
+  "foremanFreeLevel": 60
+}

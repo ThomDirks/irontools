@@ -3,7 +3,7 @@ import { bindForm, syncLevelXp } from "../../lib/form.js";
 import { onStats } from "../../lib/stats.js";
 import { xpForLevel, levelFromXp } from "../../lib/xp.js";
 import { fmt, duration, plural } from "../../lib/format.js";
-import { landing, stat, tiles, section, timeline, table, note, rewardPicker, readRewards, seg, levelXpFields } from "../../lib/ui.js";
+import { landing, stat, tiles, section, timeline, table, note, rewardPicker, readRewards, bindRewardOrder, seg, levelXpFields } from "../../lib/ui.js";
 
 export const subtitle = "Sacks to your goal, with seeds and rewards switching in as they unlock";
 export const reqs = ["<b>34</b> Farming", "<b>100</b> fruit a sack"];
@@ -32,6 +32,7 @@ export const html = `<div class="calc">
         <label class="field"><span>Points now</span><input name="points" type="number" min="0" max="16000" value="0" inputmode="numeric"></label>
         <label class="field" style="grid-column:span 2"><span>Minutes a sack</span><input name="pace" type="number" min="5" max="60" step="0.5" value="19" inputmode="decimal"></label>
       </div>
+      <p class="rw-note">Drag to set the order. Wanted rewards are bought top to bottom.</p>
       ${rewardPicker(REWARDS, { hat: "want", top: "want", legs: "want", boots: "want", can: "want" })}
     </div>
   </form>
@@ -44,6 +45,7 @@ export function mount(root) {
   const lx = syncLevelXp(form, "fLvl", "fXp");
   const f = bindForm(form, "tithe", paint);
   lx.setXp(f.values().fXp);
+  bindRewardOrder(form);
   onStats(s => { if (s.skills.farming !== undefined) lx.setXp(s.skills.farming); });
 
   function paint(v) {
@@ -90,12 +92,12 @@ export function mount(root) {
     const have = new Set(owned);
     for (const e of r.events) {
       if (e.kind === "seed") {
-        items.push({ when: "Sack " + fmt(e.run + 1), what: "Switch to " + e.what, sub: "Level " + e.level, tone: "moss" });
+        items.push({ when: duration(e.hours) || "0h", what: "Switch to " + e.what, sub: `Sack ${fmt(e.run + 1)}, level ${e.level}`, tone: "moss" });
         continue;
       }
       have.add(e.reward.id);
       const boost = e.reward.xpBoost ? `, +${(e.reward.xpBoost * 100).toFixed(1)}% xp from here` : "";
-      items.push({ when: "Sack " + fmt(e.run), what: e.what, sub: `Level ${e.level}${boost}`, tone: "gold" });
+      items.push({ when: duration(e.hours), what: e.what, sub: `Sack ${fmt(e.run)}, level ${e.level}${boost}`, tone: "gold" });
       if (e.reward.outfit && outfit.every(id => have.has(id)))
         items.push({ when: "", what: "Full outfit", sub: "+2.5% xp in total", tone: "gold" });
     }

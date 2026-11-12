@@ -64,7 +64,7 @@ export function simulate(o) {
     }
     if (!pick) break;
     if (!tier || pick.id !== tier.id) {
-      if (tier) events.push({ contract: contracts, level, kind: "tier", what: pick.name + " contracts", sub: PLANKS[pick.plank].name.toLowerCase() + "s" });
+      if (tier) events.push({ contract: contracts, hours, level, kind: "tier", what: pick.name + " contracts", sub: PLANKS[pick.plank].name.toLowerCase() + "s" });
       tier = pick;
     }
     const sack = owned.has("sack");
@@ -83,7 +83,7 @@ export function simulate(o) {
       const r = REWARDS.find(x => x.id === queue[0]);
       if (points < r.cost) break;
       points -= r.cost; owned.add(r.id); queue.shift();
-      events.push({ contract: contracts, level: levelFromXp(xp), kind: "reward", what: r.name, reward: r });
+      events.push({ contract: contracts, hours, level: levelFromXp(xp), kind: "reward", what: r.name, reward: r });
     }
   }
 

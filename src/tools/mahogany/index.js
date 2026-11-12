@@ -3,7 +3,7 @@ import { bindForm, syncLevelXp } from "../../lib/form.js";
 import { onStats } from "../../lib/stats.js";
 import { xpForLevel, levelFromXp } from "../../lib/xp.js";
 import { fmt, duration, short, plural } from "../../lib/format.js";
-import { landing, stat, tiles, section, timeline, table, note, row, rewardPicker, readRewards, seg, levelXpFields } from "../../lib/ui.js";
+import { landing, stat, tiles, section, timeline, table, note, row, rewardPicker, readRewards, bindRewardOrder, seg, levelXpFields } from "../../lib/ui.js";
 
 export const subtitle = "Contracts to your goal, from planks or logs, with Miscellania timing";
 export const reqs = ["Player-owned house", "<b>5</b> points an Expert contract"];
@@ -43,6 +43,7 @@ export const html = `<div class="calc">
     <div class="group">
       <h2>Rewards</h2>
       <label class="field"><span>Points now</span><input name="points" type="number" min="0" value="0" inputmode="numeric"></label>
+      <p class="rw-note">Drag to set the order. Wanted rewards are bought top to bottom.</p>
       ${rewardPicker(REWARDS, { sack: "want", hat: "want", top: "want", legs: "want", boots: "want" })}
     </div>
   </form>
@@ -55,6 +56,7 @@ export function mount(root) {
   const lx = syncLevelXp(form, "cLvl", "cXp");
   const f = bindForm(form, "mahogany", paint);
   lx.setXp(f.values().cXp);
+  bindRewardOrder(form);
   onStats(s => { if (s.skills.construction !== undefined) lx.setXp(s.skills.construction); });
 
   function paint(v) {
@@ -130,10 +132,10 @@ export function mount(root) {
     const have = new Set(owned);
     const outfit = REWARDS.filter(x => x.outfit).map(x => x.id);
     for (const e of r.events) {
-      if (e.kind === "tier") { items.push({ when: "No. " + fmt(e.contract + 1), what: "Move up to " + e.what, sub: "Level " + e.level + ", " + e.sub, tone: "moss" }); continue; }
+      if (e.kind === "tier") { items.push({ when: duration(e.hours) || "0h", what: "Move up to " + e.what, sub: `Contract ${fmt(e.contract + 1)}, level ${e.level}, ${e.sub}`, tone: "moss" }); continue; }
       have.add(e.reward.id);
       const sub = e.reward.xpBoost ? `+${(e.reward.xpBoost * 100).toFixed(1)}% xp from here` : e.reward.id === "sack" ? "Faster contracts from here" : "";
-      items.push({ when: "No. " + fmt(e.contract), what: e.what, sub: `Level ${e.level}${sub ? ", " + sub.charAt(0).toLowerCase() + sub.slice(1) : ""}`, tone: "gold" });
+      items.push({ when: duration(e.hours), what: e.what, sub: `Contract ${fmt(e.contract)}, level ${e.level}${sub ? ", " + sub.charAt(0).toLowerCase() + sub.slice(1) : ""}`, tone: "gold" });
       if (e.reward.outfit && outfit.every(id => have.has(id))) items.push({ when: "", what: "Full outfit", sub: "+2.5% xp in total", tone: "gold" });
     }
     html += section("Along the way", timeline(items));

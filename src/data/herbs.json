@@ -1,0 +1,44 @@
+{
+  "_source": "OSRS Wiki: Herb patch (bonuses, seeds table), Farming#Variable crop yield, Module:Herb Farming calculator (CTS values, disease model). Read 2026-11-12.",
+  "_yield": "Expected herbs = lives / (1 - chance to save). Lives: 3, +1/+2/+3 for compost/super/ultra. Chance to save uses each herb's low/high CTS, item bonus (secateurs 10%, Farming cape 5%), diary bonus (flat), attas (5%).",
+  "_disease": "Chance to die per growth stage = (floor(floor(27 / compostReduction) * anima) + 1) / 128 over 3 stages. Compost reduction: none 1, compost 2, super 5, ultra 10. Iasor multiplies by 0.2.",
+  "herbs": [
+    { "id": "guam", "name": "Guam leaf", "seed": "Guam seed", "level": 9, "plantXp": 11, "harvestXp": 12.5, "ctsLow": 25, "ctsHigh": 80 },
+    { "id": "marrentill", "name": "Marrentill", "seed": "Marrentill seed", "level": 14, "plantXp": 13.5, "harvestXp": 15, "ctsLow": 28, "ctsHigh": 80 },
+    { "id": "tarromin", "name": "Tarromin", "seed": "Tarromin seed", "level": 19, "plantXp": 16, "harvestXp": 18, "ctsLow": 31, "ctsHigh": 80 },
+    { "id": "harralander", "name": "Harralander", "seed": "Harralander seed", "level": 26, "plantXp": 21.5, "harvestXp": 24, "ctsLow": 36, "ctsHigh": 80 },
+    { "id": "ranarr", "name": "Ranarr weed", "seed": "Ranarr seed", "level": 32, "plantXp": 27, "harvestXp": 30.5, "ctsLow": 39, "ctsHigh": 80 },
+    { "id": "toadflax", "name": "Toadflax", "seed": "Toadflax seed", "level": 38, "plantXp": 34, "harvestXp": 38.5, "ctsLow": 43, "ctsHigh": 80 },
+    { "id": "irit", "name": "Irit leaf", "seed": "Irit seed", "level": 44, "plantXp": 43, "harvestXp": 48.5, "ctsLow": 46, "ctsHigh": 80 },
+    { "id": "avantoe", "name": "Avantoe", "seed": "Avantoe seed", "level": 50, "plantXp": 54.5, "harvestXp": 61.5, "ctsLow": 50, "ctsHigh": 80 },
+    { "id": "kwuarm", "name": "Kwuarm", "seed": "Kwuarm seed", "level": 56, "plantXp": 69, "harvestXp": 78, "ctsLow": 54, "ctsHigh": 80 },
+    { "id": "snapdragon", "name": "Snapdragon", "seed": "Snapdragon seed", "level": 62, "plantXp": 87.5, "harvestXp": 98.5, "ctsLow": 57, "ctsHigh": 80 },
+    { "id": "huasca", "name": "Huasca", "seed": "Huasca seed", "level": 65, "plantXp": 86.5, "harvestXp": 110, "ctsLow": 58, "ctsHigh": 80 },
+    { "id": "cadantine", "name": "Cadantine", "seed": "Cadantine seed", "level": 67, "plantXp": 106.5, "harvestXp": 120, "ctsLow": 60, "ctsHigh": 80 },
+    { "id": "lantadyme", "name": "Lantadyme", "seed": "Lantadyme seed", "level": 73, "plantXp": 134.5, "harvestXp": 151.5, "ctsLow": 64, "ctsHigh": 80 },
+    { "id": "dwarfweed", "name": "Dwarf weed", "seed": "Dwarf weed seed", "level": 79, "plantXp": 170.5, "harvestXp": 192, "ctsLow": 67, "ctsHigh": 80 },
+    { "id": "torstol", "name": "Torstol", "seed": "Torstol seed", "level": 85, "plantXp": 199.5, "harvestXp": 224.5, "ctsLow": 71, "ctsHigh": 80 }
+  ],
+  "patches": [
+    { "id": "falador", "name": "Falador", "note": "Medium Falador diary: +10% xp here" },
+    { "id": "phasmatys", "name": "Port Phasmatys" },
+    { "id": "catherby", "name": "Catherby", "note": "Kandarin diary: more herbs here" },
+    { "id": "ardougne", "name": "Ardougne" },
+    { "id": "hosidius", "name": "Hosidius", "note": "Easy Kourend diary: disease-free. Hard: more herbs" },
+    { "id": "guild", "name": "Farming Guild", "level": 65, "note": "Hard Kourend diary: more herbs" },
+    { "id": "troll", "name": "Troll Stronghold", "protected": true, "note": "My Arm's Big Adventure" },
+    { "id": "weiss", "name": "Weiss", "protected": true, "note": "Making Friends with My Arm" },
+    { "id": "harmony", "name": "Harmony Island", "protected": true, "note": "Elite Morytania diary" },
+    { "id": "fortis", "name": "Civitas illa Fortis", "note": "Disease-free at Champion rank in the Colosseum" }
+  ],
+  "compost": {
+    "none":  { "name": "None", "lives": 0, "reduction": 1 },
+    "compost": { "name": "Compost", "lives": 1, "reduction": 2 },
+    "super": { "name": "Supercompost", "lives": 2, "reduction": 5 },
+    "ultra": { "name": "Ultracompost", "lives": 3, "reduction": 10 }
+  },
+  "kandarinBonus": { "none": 0, "medium": 10, "hard": 17, "elite": 25 },
+  "kourendHardBonus": 10,
+  "faladorXpBonus": 0.10,
+  "growthMinutes": 80
+}

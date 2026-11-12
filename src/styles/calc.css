@@ -3,7 +3,7 @@
 
 .calc { display: grid; grid-template-columns: minmax(300px, 380px) 1fr; align-items: start; }
 .setup {
-  position: sticky; top: 12px; padding: 18px 20px 22px; display: grid; gap: 18px;
+  position: sticky; top: 12px; max-height: calc(100dvh - 24px); overflow-y: auto; scrollbar-width: thin; padding: 18px 20px 22px; display: grid; gap: 18px;
   border-right: 1px solid rgba(255, 255, 255, .06);
 }
 .out { padding: 18px 22px 26px; display: grid; gap: 22px; min-width: 0; }
@@ -171,3 +171,24 @@ details.how ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 5px; }
 .qty.bank-head { padding: 0; }
 .qty.bank-head span { font-size: 12px; color: var(--slate); text-align: right; padding-right: 4px; }
 .group > .field + .seg { margin-top: -4px; }
+
+/* reward order */
+.rw { grid-template-columns: auto 1fr auto auto auto; }
+.rw-grip { display: grid; gap: 2px; padding: 4px 2px; cursor: grab; touch-action: none; }
+.rw-grip i { display: block; width: 10px; height: 2px; border-radius: 2px; background: var(--slate-2); }
+.rw-grip:active { cursor: grabbing; }
+.rw.dragging { opacity: .5; outline: 1px dashed var(--gold-lo); }
+.rw.moved { animation: moved .4s var(--ease); }
+@keyframes moved { from { background: var(--gold-wash); } to { background: var(--iron-850); } }
+.rw-move { display: flex; flex-direction: column; }
+.rw-move button { background: none; border: 0; padding: 0 3px; font-size: 9px; line-height: 1.25; color: var(--slate-2); cursor: pointer; }
+.rw-move button:hover { color: var(--gold); }
+.rw:first-of-type .rw-move button[data-move="-1"], .rw:last-child .rw-move button[data-move="1"] { visibility: hidden; }
+.rw-note { font-size: 12px; color: var(--slate-2); }
+
+.actions { display: flex; gap: 10px; margin-top: 4px; }
+.btn-gold {
+  height: 38px; padding: 0 16px; border-radius: var(--r-md); cursor: pointer; font-weight: 600; font-size: 14px;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold)); color: #241b07; border: 1px solid var(--gold-lo);
+}
+.btn-gold:hover { filter: brightness(1.06); }

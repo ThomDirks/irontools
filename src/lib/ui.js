@@ -59,22 +59,92 @@ export function table(head, rows, opts = {}) {
 
 /**
  * Reward picker: each reward is skipped, wanted or already owned. Wanted
- * rewards are bought top to bottom as soon as the points are there.
+ * rewards are bought top to bottom as soon as the points are there, and the
+ * list can be dragged (or moved with the arrow buttons) into any order.
  */
 export function rewardPicker(rewards, defaults = {}) {
-  return `<div class="rewards">${rewards.map(r => {
-    const d = defaults[r.id] || "skip";
-    const opt = v => `<label><input type="radio" name="rw-${r.id}" value="${v}"${d === v ? " checked" : ""}><span>${v === "skip" ? "Skip" : v === "want" ? "Want" : "Have"}</span></label>`;
-    const sub = r.xpBoost ? `+${(r.xpBoost * 100).toFixed(1)}% xp` : (r.effect || "");
-    return `<div class="rw"><span class="rw-name">${esc(r.name)}<small>${esc(sub)}</small></span>
-      <span class="rw-cost">${fmt(r.cost)}</span>
-      <span class="rw-state" role="radiogroup" aria-label="${esc(r.name)}">${opt("skip")}${opt("want")}${opt("have")}</span></div>`;
-  }).join("")}</div>`;
+  return `<div class="rewards" data-rewards>
+    <input type="hidden" name="rw-order" value="${rewards.map(r => r.id).join(",")}">
+    ${rewards.map(r => {
+      const d = defaults[r.id] || "skip";
+      const opt = v => `<label><input type="radio" name="rw-${r.id}" value="${v}"${d === v ? " checked" : ""}><span>${v === "skip" ? "Skip" : v === "want" ? "Want" : "Have"}</span></label>`;
+      const sub = r.xpBoost ? `+${(r.xpBoost * 100).toFixed(1)}% xp` : (r.effect || "");
+      return `<div class="rw" data-id="${r.id}">
+        <span class="rw-grip" draggable="true" title="Drag to reorder" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="rw-name">${esc(r.name)}<small>${esc(sub)}</small></span>
+        <span class="rw-cost">${fmt(r.cost)}</span>
+        <span class="rw-state" role="radiogroup" aria-label="${esc(r.name)}">${opt("skip")}${opt("want")}${opt("have")}</span>
+        <span class="rw-move"><button type="button" data-move="-1" aria-label="Move ${esc(r.name)} up">▲</button><button type="button" data-move="1" aria-label="Move ${esc(r.name)} down">▼</button></span>
+      </div>`;
+    }).join("")}
+  </div>`;
+}
+
+/** Wire drag-and-drop and the arrow buttons; keeps the hidden order input in sync. */
+export function bindRewardOrder(root) {
+  const list = root.querySelector("[data-rewards]");
+  if (!list) return;
+  const order = list.querySelector('[name="rw-order"]');
+  const rows = () => [...list.querySelectorAll(".rw")];
+  const commit = () => {
+    order.value = rows().map(r => r.dataset.id).join(",");
+    order.dispatchEvent(new Event("input", { bubbles: true }));
+  };
+  // restore a saved order
+  const saved = order.value.split(",").filter(Boolean);
+  for (const id of saved) {
+    const row = list.querySelector(`.rw[data-id="${id}"]`);
+    if (row) list.appendChild(row);
+  }
+  commit();
+
+  list.addEventListener("click", e => {
+    const b = e.target.closest("[data-move]");
+    if (!b) return;
+    const row = b.closest(".rw"), dir = +b.dataset.move;
+    const sib = dir < 0 ? row.previousElementSibling : row.nextElementSibling;
+    if (!sib || !sib.classList.contains("rw")) return;
+    if (dir < 0) list.insertBefore(row, sib); else list.insertBefore(sib, row);
+    row.classList.add("moved"); setTimeout(() => row.classList.remove("moved"), 400);
+    b.focus();
+    commit();
+  });
+
+  let dragging = null;
+  list.addEventListener("dragstart", e => {
+    const row = e.target.closest(".rw");
+    if (!row) return;
+    dragging = row;
+    row.classList.add("dragging");
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/plain", row.dataset.id);
+    e.dataTransfer.setDragImage(row, 20, 20);
+  });
+  list.addEventListener("dragover", e => {
+    if (!dragging) return;
+    e.preventDefault();
+    const over = e.target.closest(".rw");
+    if (!over || over === dragging) return;
+    const r = over.getBoundingClientRect();
+    list.insertBefore(dragging, e.clientY < r.top + r.height / 2 ? over : over.nextSibling);
+  });
+  list.addEventListener("drop", e => e.preventDefault());
+  list.addEventListener("dragend", () => {
+    if (!dragging) return;
+    dragging.classList.remove("dragging");
+    dragging = null;
+    commit();
+  });
 }
 
 export function readRewards(rewards, v) {
+  const order = String(v["rw-order"] || "").split(",").filter(Boolean);
+  const sorted = [...rewards].sort((a, b) => {
+    const ia = order.indexOf(a.id), ib = order.indexOf(b.id);
+    return (ia < 0 ? 999 : ia) - (ib < 0 ? 999 : ib);
+  });
   const owned = [], wishlist = [];
-  for (const r of rewards) {
+  for (const r of sorted) {
     const s = v["rw-" + r.id];
     if (s === "have") owned.push(r.id);
     else if (s === "want") wishlist.push(r.id);

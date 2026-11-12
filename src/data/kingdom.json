@@ -1,0 +1,1111 @@
+{
+ "_source": "OSRS Wiki: Managing Miscellania and Module:Miscellania calculator (resource points, coffer, favour decay, per-resource costs, secondary rates). Read 2026-11-12.",
+ "_hardwoodBoth": "The wiki's calculator module gives 131 teak and 131 mahogany a day at maximum on the 'both' setting, but the Managing Miscellania drop table says 121 each. This uses 121, the observed figure.",
+ "_secondaries": "Bird nests, gems, loot and seeds are expected values from the wiki's rate tables. The wiki notes bonus resources now round up partially (150 logs = 1 nest + 50% chance of another), so these use fractional amounts.",
+ "maxPoints": 262143,
+ "pauseAfterDays": 30,
+ "rt": {
+  "workers": 15,
+  "wage": 75000,
+  "cofferMax": 7500000,
+  "decay": 131
+ },
+ "noRt": {
+  "workers": 10,
+  "wage": 50000,
+  "cofferMax": 5000000,
+  "decay": 160
+ },
+ "maxPerCategory": 10,
+ "categories": [
+  {
+   "id": "wood",
+   "name": "Wood",
+   "options": [
+    {
+     "id": "maple",
+     "name": "Maple logs",
+     "cost": 160,
+     "main": [
+      [
+       "Maple logs",
+       1
+      ]
+     ],
+     "extra": [
+      {
+       "table": "Nests",
+       "per": 100
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "herbs",
+   "name": "Herbs",
+   "options": [
+    {
+     "id": "herbs",
+     "name": "Herbs",
+     "cost": 11,
+     "mainTable": "Herbs",
+     "extra": [
+      {
+       "table": "Herb seeds",
+       "per": 100
+      }
+     ]
+    },
+    {
+     "id": "flax",
+     "name": "Flax",
+     "cost": 224,
+     "main": [
+      [
+       "Flax",
+       1
+      ]
+     ],
+     "extra": [
+      {
+       "table": "Flax seeds",
+       "per": 600
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mining",
+   "name": "Mining",
+   "options": [
+    {
+     "id": "coal",
+     "name": "Coal",
+     "cost": 98,
+     "main": [
+      [
+       "Coal",
+       1
+      ]
+     ],
+     "extra": [
+      {
+       "table": "Mining gems",
+       "per": 200
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fishing",
+   "name": "Fishing",
+   "options": [
+    {
+     "id": "raw",
+     "name": "Raw fish",
+     "cost": 158,
+     "main": [
+      [
+       "Raw tuna",
+       0.5
+      ],
+      [
+       "Raw swordfish",
+       0.15
+      ]
+     ],
+     "extra": [
+      {
+       "table": "Fishing loot",
+       "per": 200
+      }
+     ]
+    },
+    {
+     "id": "cooked",
+     "name": "Cooked fish",
+     "cost": 158,
+     "main": [
+      [
+       "Tuna",
+       0.5
+      ],
+      [
+       "Swordfish",
+       0.15
+      ]
+     ],
+     "extra": [
+      {
+       "table": "Fishing loot",
+       "per": 200
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hardwood",
+   "name": "Hardwood",
+   "rt": true,
+   "options": [
+    {
+     "id": "teak",
+     "name": "Teak",
+     "cost": 54,
+     "main": [
+      [
+       "Teak logs",
+       1
+      ]
+     ],
+     "extra": [
+      {
+       "table": "Nests",
+       "per": 350
+      }
+     ]
+    },
+    {
+     "id": "mahogany",
+     "name": "Mahogany",
+     "cost": 40,
+     "main": [
+      [
+       "Mahogany logs",
+       1
+      ]
+     ],
+     "extra": [
+      {
+       "table": "Nests",
+       "per": 350
+      }
+     ]
+    },
+    {
+     "id": "both",
+     "name": "Teak and mahogany",
+     "cost": 43.4,
+     "main": [
+      [
+       "Teak logs",
+       0.5
+      ],
+      [
+       "Mahogany logs",
+       0.5
+      ]
+     ],
+     "extra": [
+      {
+       "table": "Nests",
+       "per": 350
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "farm",
+   "name": "Farm",
+   "rt": true,
+   "options": [
+    {
+     "id": "seeds",
+     "name": "Seeds",
+     "cost": 86,
+     "mainTable": "Seeds",
+     "extra": [
+      {
+       "table": "Tree seeds",
+       "per": 200
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "rates": {
+  "Nests": [
+   {
+    "i": "Bird nest (seeds)",
+    "r": [
+     65,
+     100
+    ]
+   },
+   {
+    "i": "Bird nest (ring)",
+    "r": [
+     32,
+     100
+    ]
+   },
+   {
+    "i": "Bird nest (green egg)",
+    "r": [
+     1,
+     100
+    ]
+   },
+   {
+    "i": "Bird nest (blue egg)",
+    "r": [
+     1,
+     100
+    ]
+   },
+   {
+    "i": "Bird nest (red egg)",
+    "r": [
+     1,
+     100
+    ]
+   }
+  ],
+  "Mining gems": [
+   {
+    "i": "Uncut sapphire",
+    "r": [
+     32,
+     58
+    ]
+   },
+   {
+    "i": "Uncut emerald",
+    "r": [
+     16,
+     58
+    ]
+   },
+   {
+    "i": "Uncut ruby",
+    "r": [
+     8,
+     58
+    ]
+   },
+   {
+    "i": "Uncut diamond",
+    "r": [
+     2,
+     58
+    ]
+   }
+  ],
+  "Fishing loot": [
+   {
+    "i": "Uncut sapphire",
+    "r": [
+     32,
+     104
+    ]
+   },
+   {
+    "i": "Uncut emerald",
+    "r": [
+     16,
+     104
+    ]
+   },
+   {
+    "i": "Uncut ruby",
+    "r": [
+     8,
+     104
+    ]
+   },
+   {
+    "i": "Uncut diamond",
+    "r": [
+     2,
+     104
+    ]
+   },
+   {
+    "i": "Casket",
+    "r": [
+     32,
+     104
+    ]
+   },
+   {
+    "i": "Fremennik boots",
+    "r": [
+     4,
+     104
+    ]
+   },
+   {
+    "i": "Fremennik gloves",
+    "r": [
+     4,
+     104
+    ]
+   },
+   {
+    "i": "Loop half of key",
+    "r": [
+     1,
+     104
+    ]
+   },
+   {
+    "i": "Tooth half of key",
+    "r": [
+     1,
+     104
+    ]
+   },
+   {
+    "i": "Clue scroll (easy)",
+    "r": [
+     4,
+     104
+    ]
+   }
+  ],
+  "Herbs": [
+   {
+    "i": "Grimy tarromin",
+    "r": [
+     10,
+     46
+    ]
+   },
+   {
+    "i": "Grimy harralander",
+    "r": [
+     9,
+     46
+    ]
+   },
+   {
+    "i": "Grimy irit leaf",
+    "r": [
+     6,
+     46
+    ]
+   },
+   {
+    "i": "Grimy avantoe",
+    "r": [
+     6,
+     46
+    ]
+   },
+   {
+    "i": "Grimy ranarr weed",
+    "r": [
+     3,
+     46
+    ]
+   },
+   {
+    "i": "Grimy kwuarm",
+    "r": [
+     3,
+     46
+    ]
+   },
+   {
+    "i": "Grimy cadantine",
+    "r": [
+     3,
+     46
+    ]
+   },
+   {
+    "i": "Grimy dwarf weed",
+    "r": [
+     3,
+     46
+    ]
+   },
+   {
+    "i": "Grimy lantadyme",
+    "r": [
+     3,
+     46
+    ]
+   }
+  ],
+  "Herb seeds": [
+   {
+    "i": "Guam seed",
+    "r": [
+     320,
+     1000
+    ]
+   },
+   {
+    "i": "Marrentill seed",
+    "r": [
+     218,
+     1000
+    ]
+   },
+   {
+    "i": "Tarromin seed",
+    "r": [
+     149,
+     1000
+    ]
+   },
+   {
+    "i": "Harralander seed",
+    "r": [
+     101,
+     1000
+    ]
+   },
+   {
+    "i": "Ranarr seed",
+    "r": [
+     69,
+     1000
+    ],
+    "max": 2
+   },
+   {
+    "i": "Toadflax seed",
+    "r": [
+     47,
+     1000
+    ]
+   },
+   {
+    "i": "Irit seed",
+    "r": [
+     32,
+     1000
+    ]
+   },
+   {
+    "i": "Avantoe seed",
+    "r": [
+     22,
+     1000
+    ]
+   },
+   {
+    "i": "Kwuarm seed",
+    "r": [
+     15,
+     1000
+    ]
+   },
+   {
+    "i": "Snapdragon seed",
+    "r": [
+     10,
+     1000
+    ]
+   },
+   {
+    "i": "Cadantine seed",
+    "r": [
+     7,
+     1000
+    ]
+   },
+   {
+    "i": "Lantadyme seed",
+    "r": [
+     5,
+     1000
+    ]
+   },
+   {
+    "i": "Dwarf weed seed",
+    "r": [
+     3,
+     1000
+    ]
+   },
+   {
+    "i": "Torstol seed",
+    "r": [
+     2,
+     1000
+    ]
+   }
+  ],
+  "Flax seeds": [
+   {
+    "i": "Guam seed",
+    "r": [
+     320,
+     1000
+    ]
+   },
+   {
+    "i": "Marrentill seed",
+    "r": [
+     218,
+     1000
+    ]
+   },
+   {
+    "i": "Tarromin seed",
+    "r": [
+     149,
+     1000
+    ]
+   },
+   {
+    "i": "Harralander seed",
+    "r": [
+     101,
+     1000
+    ]
+   },
+   {
+    "i": "Ranarr seed",
+    "r": [
+     69,
+     1000
+    ]
+   },
+   {
+    "i": "Toadflax seed",
+    "r": [
+     47,
+     1000
+    ]
+   },
+   {
+    "i": "Irit seed",
+    "r": [
+     32,
+     1000
+    ]
+   },
+   {
+    "i": "Avantoe seed",
+    "r": [
+     22,
+     1000
+    ]
+   },
+   {
+    "i": "Kwuarm seed",
+    "r": [
+     15,
+     1000
+    ]
+   },
+   {
+    "i": "Snapdragon seed",
+    "r": [
+     10,
+     1000
+    ]
+   },
+   {
+    "i": "Cadantine seed",
+    "r": [
+     7,
+     1000
+    ]
+   },
+   {
+    "i": "Lantadyme seed",
+    "r": [
+     5,
+     1000
+    ]
+   },
+   {
+    "i": "Dwarf weed seed",
+    "r": [
+     3,
+     1000
+    ]
+   },
+   {
+    "i": "Torstol seed",
+    "r": [
+     2,
+     1000
+    ]
+   }
+  ],
+  "Tree seeds": [
+   {
+    "i": "Acorn",
+    "r": [
+     214,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Apple tree seed",
+    "r": [
+     170,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Willow seed",
+    "r": [
+     135,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Banana tree seed",
+    "r": [
+     108,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Orange tree seed",
+    "r": [
+     85,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Curry tree seed",
+    "r": [
+     68,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Maple seed",
+    "r": [
+     54,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Pineapple seed",
+    "r": [
+     42,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Papaya tree seed",
+    "r": [
+     34,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Yew seed",
+    "r": [
+     27,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Palm tree seed",
+    "r": [
+     22,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Calquat tree seed",
+    "r": [
+     17,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Spirit seed",
+    "r": [
+     11,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Dragonfruit tree seed",
+    "r": [
+     6,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Magic seed",
+    "r": [
+     5,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Teak seed",
+    "r": [
+     4,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Mahogany seed",
+    "r": [
+     4,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Celastrus seed",
+    "r": [
+     3,
+     1011
+    ],
+    "max": 4
+   },
+   {
+    "i": "Redwood tree seed",
+    "r": [
+     2,
+     1011
+    ],
+    "max": 4
+   }
+  ],
+  "Seeds": [
+   {
+    "i": "Potato seed",
+    "r": [
+     1567735,
+     8858315
+    ]
+   },
+   {
+    "i": "Onion seed",
+    "r": [
+     1180708,
+     8858315
+    ]
+   },
+   {
+    "i": "Cabbage seed",
+    "r": [
+     619972,
+     8858315
+    ]
+   },
+   {
+    "i": "Tomato seed",
+    "r": [
+     561932,
+     8858315
+    ]
+   },
+   {
+    "i": "Barley seed",
+    "r": [
+     497148,
+     8858315
+    ]
+   },
+   {
+    "i": "Hammerstone seed",
+    "r": [
+     494318,
+     8858315
+    ]
+   },
+   {
+    "i": "Marigold seed",
+    "r": [
+     409668,
+     8858315
+    ]
+   },
+   {
+    "i": "Asgarnian seed",
+    "r": [
+     369067,
+     8858315
+    ]
+   },
+   {
+    "i": "Jute seed",
+    "r": [
+     368455,
+     8858315
+    ]
+   },
+   {
+    "i": "Redberry seed",
+    "r": [
+     343409,
+     8858315
+    ]
+   },
+   {
+    "i": "Nasturtium seed",
+    "r": [
+     270351,
+     8858315
+    ]
+   },
+   {
+    "i": "Yanillian seed",
+    "r": [
+     245383,
+     8858315
+    ]
+   },
+   {
+    "i": "Cadavaberry seed",
+    "r": [
+     242164,
+     8858315
+    ]
+   },
+   {
+    "i": "Sweetcorn seed",
+    "r": [
+     197249,
+     8858315
+    ]
+   },
+   {
+    "i": "Rosemary seed",
+    "r": [
+     173977,
+     8858315
+    ]
+   },
+   {
+    "i": "Dwellberry seed",
+    "r": [
+     172110,
+     8858315
+    ]
+   },
+   {
+    "i": "Guam seed",
+    "r": [
+     135320,
+     8858315
+    ]
+   },
+   {
+    "i": "Woad seed",
+    "r": [
+     129804,
+     8858315
+    ]
+   },
+   {
+    "i": "Krandorian seed",
+    "r": [
+     122649,
+     8858315
+    ]
+   },
+   {
+    "i": "Limpwurt seed",
+    "r": [
+     103567,
+     8858315
+    ]
+   },
+   {
+    "i": "Strawberry seed",
+    "r": [
+     97042,
+     8858315
+    ]
+   },
+   {
+    "i": "Marrentill seed",
+    "r": [
+     93062,
+     8858315
+    ]
+   },
+   {
+    "i": "Jangerberry seed",
+    "r": [
+     69567,
+     8858315
+    ]
+   },
+   {
+    "i": "Wildblood seed",
+    "r": [
+     62976,
+     8858315
+    ]
+   },
+   {
+    "i": "Tarromin seed",
+    "r": [
+     62551,
+     8858315
+    ]
+   },
+   {
+    "i": "Watermelon seed",
+    "r": [
+     47071,
+     8858315
+    ]
+   },
+   {
+    "i": "Harralander seed",
+    "r": [
+     43198,
+     8858315
+    ]
+   },
+   {
+    "i": "Snape grass seed",
+    "r": [
+     34094,
+     8858315
+    ]
+   },
+   {
+    "i": "Whiteberry seed",
+    "r": [
+     24586,
+     8858315
+    ]
+   },
+   {
+    "i": "Toadflax seed",
+    "r": [
+     19990,
+     8858315
+    ]
+   },
+   {
+    "i": "Mushroom spore",
+    "r": [
+     19266,
+     8858315
+    ]
+   },
+   {
+    "i": "Irit seed",
+    "r": [
+     14019,
+     8858315
+    ]
+   },
+   {
+    "i": "Belladonna seed",
+    "r": [
+     11594,
+     8858315
+    ]
+   },
+   {
+    "i": "Avantoe seed",
+    "r": [
+     9229,
+     8858315
+    ]
+   },
+   {
+    "i": "Poison ivy seed",
+    "r": [
+     9199,
+     8858315
+    ]
+   },
+   {
+    "i": "Cactus seed",
+    "r": [
+     7850,
+     8858315
+    ]
+   },
+   {
+    "i": "Kwuarm seed",
+    "r": [
+     6599,
+     8858315
+    ]
+   },
+   {
+    "i": "Ranarr seed",
+    "r": [
+     5305,
+     8858315
+    ],
+    "max": 2
+   },
+   {
+    "i": "Snapdragon seed",
+    "r": [
+     3901,
+     8858315
+    ]
+   },
+   {
+    "i": "Potato cactus seed",
+    "r": [
+     3790,
+     8858315
+    ]
+   },
+   {
+    "i": "Cadantine seed",
+    "r": [
+     2817,
+     8858315
+    ]
+   },
+   {
+    "i": "Lantadyme seed",
+    "r": [
+     2097,
+     8858315
+    ]
+   },
+   {
+    "i": "Seaweed spore",
+    "r": [
+     1508,
+     8858315
+    ]
+   },
+   {
+    "i": "Dwarf weed seed",
+    "r": [
+     1208,
+     8858315
+    ]
+   },
+   {
+    "i": "Torstol seed",
+    "r": [
+     810,
+     8858315
+    ]
+   }
+  ]
+ }
+}

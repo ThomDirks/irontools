@@ -61,7 +61,7 @@ export function simulate(o) {
     const pick = o.seed === "auto" ? bestSeed(level) : SEEDS.find(s => s.id === o.seed);
     if (!pick || level < pick.level) { blocked = pick || SEEDS[0]; break; }
     if (!seed || pick.id !== seed.id) {
-      if (seed) events.push({ run: runs, level, kind: "seed", what: pick.name, sub: "level " + pick.level });
+      if (seed) events.push({ run: runs, hours: runs * minutes / 60, level, kind: "seed", what: pick.name, sub: "level " + pick.level });
       seed = pick;
     }
     const boost = outfitBoost(owned);
@@ -77,7 +77,7 @@ export function simulate(o) {
       const r = REWARDS.find(x => x.id === queue[0]);
       if (points < r.cost) break;
       points -= r.cost; owned.add(r.id); queue.shift();
-      events.push({ run: runs, level: levelFromXp(xp), kind: "reward", what: r.name, reward: r });
+      events.push({ run: runs, hours: runs * minutes / 60, level: levelFromXp(xp), kind: "reward", what: r.name, reward: r });
     }
   }
 

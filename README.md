@@ -5,12 +5,18 @@ Skilling planners for Old School RuneScape ironmen, built on the OSRS Wiki's num
 | Calculator | Skill | What it does |
 |---|---|---|
 | Mahogany Homes | Construction | Contracts to a level, or what your planks and logs get you. Plank costs (sawmill or Plank Make), Miscellania days for teak and mahogany, rewards bought along the way. |
-| Cooking | Cooking | Cook your bank, or raw fish needed for a level. Burn rates per level for fire, range, Lumbridge and Hosidius, with or without gauntlets. |
+| Hosidius Kitchen | Cooking | Cook your bank, or raw fish needed for a level. Burn rates per level for fire, range, Lumbridge and Hosidius, with or without gauntlets. |
 | Golem crafting | Crafting | Furs and sunstone into golems. |
-| Tithe Farm | Farming | Sacks to a level, switching seeds at 54 and 74, rewards bought as points come in. |
+| Tithe Farm | Farming | Sacks to a level, switching seeds at 54 and 74, rewards bought in your order with the hour each arrives. |
+| Herb runs | Farming | Herbs and xp per patch with compost, secateurs, diaries and disease. Plant your seeds, reach a level, or plan a number of runs. Sends herbs to Mixology. |
 | Vale Totems | Fletching | Logs into rounds, offerings and research points. |
 | Mixology | Herblore | Seeds and bank herbs into paste, potions and resin. |
+| Prayer | Prayer | Bones through the Chaos altar, the Ectofuntus or the libation bowl, with zealot's robes. |
 | Giants' Foundry | Smithing | Alloys, moulds and shop-bought metal. |
+| Blast Furnace | Smithing | Your ore into bars and levels, or bars to a level, with coal, coffer, foreman and Ordan's prices. |
+| Miscellania | Kingdom | The in-game worker screen: set workers, approval and coffer, see what you collect after any number of days. |
+
+Reward lists (Tithe Farm, Mahogany Homes) can be dragged into any order; wanted rewards are bought top to bottom.
 
 ## Running it
 
@@ -48,6 +54,7 @@ tests/                   node --test checks
 
 - Cooking success uses the wiki's own formula from Module:Skilling success chart. The wiki's burn-level table rounds differently in two places (monkfish and karambwan at Hosidius +10%, one level apart). The calculator follows the formula.
 - Mahogany Homes contracts an hour come from the wiki's xp-an-hour range per tier. Treat the hours as a guide.
-- Miscellania figures are the maximum daily yield: Royal Trouble done, 10 workers, 100% approval, 750k or more in the coffer.
+- Miscellania follows the wiki's calculator module (resource points from the coffer payment and approval, approval decay), except "teak and mahogany", which uses the 121 each the wiki observes rather than the module's 131.
+- Herb yields follow the wiki's herb farming calculator, which rounds each term down. One difference: planting xp is counted for dead patches too, as the wiki's seed table says you get it when clearing them.
 
 Hiscores come through [Wise Old Man](https://wiseoldman.net), which reads the official hiscores and allows browser requests.
