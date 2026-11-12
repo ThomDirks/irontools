@@ -14,7 +14,7 @@ const ICONS = {
 export const TOOLS = [
   { id: "mahogany", title: "Mahogany Homes", skill: "construction", skillName: "Construction", place: "Falador", x: 1820, y: 760, isNew: true,
     load: () => import("./mahogany/index.js") },
-  { id: "cooking", title: "Cooking", skill: "cooking", skillName: "Cooking", place: "Hosidius kitchen", x: 660, y: 760, isNew: true,
+  { id: "cooking", title: "Hosidius Kitchen", skill: "cooking", skillName: "Cooking", place: "Cooking", x: 650, y: 575, isNew: true,
     load: () => import("./cooking/index.js") },
   { id: "golem", title: "Golem crafting", skill: "crafting", skillName: "Crafting", place: "Wyrmscraig", x: 1515, y: 1612,
     load: () => import("./golem/index.js") },
