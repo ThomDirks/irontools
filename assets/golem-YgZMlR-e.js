@@ -1,4 +1,4 @@
-import{f as N}from"./legacy-QH7TtpBY.js";import"./app-DfJ5p9oA.js";const R=`<div class="frame">
+import{f as N}from"./legacy-CvrGhUVW.js";import"./app-Dyv7qYUi.js";const R=`<div class="frame">
 
   <!-- YOUR STATS -->
   <div class="panel">
