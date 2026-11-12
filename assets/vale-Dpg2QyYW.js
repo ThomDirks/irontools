@@ -1,4 +1,4 @@
-import{f as ae}from"./legacy-C4eg7E4F.js";import{f as oe,b as se}from"./app-BxcXR2hJ.js";const re=`
+import{f as ae}from"./legacy-m-yHzgrc.js";import{f as oe,b as se}from"./app-KCR0G2o4.js";const re=`
 <section class="card">
   <h2>What this run comes to</h2>
   <div class="statrow" id="sum"></div>
