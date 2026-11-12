@@ -1,0 +1,127 @@
+<div class="frame">
+
+  <!-- YOUR STATS -->
+  <div class="panel">
+    <div class="ph">Your current levels <span class="sub">type a level or exact XP, they stay in sync</span></div>
+    <div class="pbody">
+      <div class="stats">
+        <div class="stat">
+          <h3><span class="dot craft"></span>Crafting</h3>
+          <div class="field"><label>Level</label><input id="craftLvl" type="number" min="1" max="99" value="60"></div>
+          <div class="field"><label>XP</label><input id="craftXp" type="number" min="0" value="273742"></div>
+          <div class="lvlnote" id="craftNote"></div>
+        </div>
+        <div class="stat">
+          <h3><span class="dot hunt"></span>Hunter</h3>
+          <div class="field"><label>Level</label><input id="huntLvl" type="number" min="1" max="99" value="60"></div>
+          <div class="field"><label>XP</label><input id="huntXp" type="number" min="0" value="273742"></div>
+          <div class="lvlnote" id="huntNote"></div>
+        </div>
+        <div class="stat">
+          <h3><span class="dot mine"></span>Mining</h3>
+          <div class="field"><label>Level</label><input id="mineLvl" type="number" min="1" max="99" value="50"></div>
+          <div class="field"><label>XP</label><input id="mineXp" type="number" min="0" value="101333"></div>
+          <div class="lvlnote" id="mineNote"></div>
+        </div>
+      </div>
+      <div class="assump">
+        <label title="Sunstone gives 23 XP normally, 28 XP with momentum active"><input type="checkbox" id="momentum" checked> Mining with momentum (28 XP / sunstone)</label>
+        <span id="mineRate"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true"  data-tab="t1">Furs &rarr; XP</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="t2">Target level &rarr; Furs</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="t3">Fur reference</button>
+  </div>
+
+  <!-- MODE 1 -->
+  <div class="panel tabpanel on" id="t1">
+    <div class="ph">Enter the furs you have <span class="sub">1 fur = 1 golem</span></div>
+    <div class="pbody">
+      <table class="furtable">
+        <thead>
+          <tr>
+            <th>Fur</th>
+            <th class="num">Crafting XP<br>each</th>
+            <th class="num">Hunter XP<br>each</th>
+            <th class="num" style="width:90px">You have</th>
+          </tr>
+        </thead>
+        <tbody id="furRows"></tbody>
+      </table>
+      <div class="clearrow"><button class="btn" id="clearBtn">Clear all</button></div>
+
+      <div class="results" style="margin-top:14px">
+        <div class="rh">Totals from these furs</div>
+        <div class="rgrid" id="m1cards"></div>
+        <div id="m1skills"></div>
+      </div>
+      <div id="m1warn"></div>
+    </div>
+  </div>
+
+  <!-- MODE 2 -->
+  <div class="panel tabpanel" id="t2">
+    <div class="ph">Reach a target Crafting level <span class="sub">how many furs / golems you need</span></div>
+    <div class="pbody">
+      <div class="m2ctl">
+        <div class="cell">
+          <label for="m2fur">Fur used for golems</label>
+          <select id="m2fur"></select>
+        </div>
+        <div class="cell">
+          <label for="m2target">Target Crafting level (1&ndash;99)</label>
+          <input id="m2target" type="number" min="2" max="99" value="99">
+        </div>
+      </div>
+
+      <div class="results">
+        <div class="rh">What it takes</div>
+        <div class="rgrid" id="m2cards"></div>
+        <div id="m2skills"></div>
+      </div>
+      <div id="m2msg"></div>
+    </div>
+  </div>
+
+  <!-- MODE 3 -->
+  <div class="panel tabpanel" id="t3">
+    <div class="ph">All usable furs <span class="sub">tap a heading to sort</span></div>
+    <div class="pbody">
+      <table class="reftable" id="refTable">
+        <thead>
+          <tr>
+            <th data-sort="craftXP">Fur <span class="ar">&#9662;</span></th>
+            <th data-sort="craftXP" class="num">Craft XP<br>/ golem <span class="ar"></span></th>
+            <th data-sort="huntSort" class="num">Hunter XP<br>/ catch <span class="ar"></span></th>
+            <th data-sort="huntLvl" class="num">Hunter<br>lvl <span class="ar"></span></th>
+            <th data-sort="method">Catch<br>method <span class="ar"></span></th>
+            <th data-sort="xpHr" class="num">Craft XP/hr<br>(~58/hr) <span class="ar"></span></th>
+          </tr>
+        </thead>
+        <tbody id="refRows"></tbody>
+      </table>
+      <p style="font-size:11.5px;color:var(--ink-soft);margin:10px 0 0">
+        <span class="legend"></span> Green edge = you can catch this at your current Hunter level.
+      </p>
+    </div>
+  </div>
+
+  <details class="foot how">
+    <summary>How it's worked out</summary>
+    <ul>
+      <li>Each golem uses <b>1 fur</b> and gives the "Crafting XP" shown. That number is the fur XP plus the flat 1,560 golem XP.</li>
+      <li>Each golem needs <b>5 sunstones</b> (4 to shape it, 1 chiselled into a core). Mining XP = 5 &times; per-sunstone XP (23 normal, 28 with momentum). Chiselling each core also gives a small +10 Crafting XP that is not counted above.</li>
+      <li><b>Hunter XP</b> assumes you catch every fur yourself. Buying furs from the Grand Exchange gives no Hunter XP. Wyrmscraig goat XP scales with your Hunter level (20 to lure with a cattleprod, plus 100 to 179 loot), so it is recalculated from your Hunter level.</li>
+      <li><b>Mining XP</b> assumes you mine the sunstones yourself.</li>
+    </ul>
+    <h4>Sources</h4>
+    <ul>
+      <li>All fur, sunstone and Hunter values are from the OSRS Wiki (Golem crafting, Sunstone rocks, and each creature's Hunter page), current as of the Wyrmscraig release.</li>
+    </ul>
+  </details>
+</div>

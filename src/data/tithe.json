@@ -1,0 +1,31 @@
+{
+  "_source": "OSRS Wiki: Tithe Farm (Rewards, Reward shop), Tithe Farm/Strategies, seed pages. Read 2026-11-12.",
+  "seeds": [
+    { "id": "golovanova", "name": "Golovanova", "level": 34, "harvestXp": 6, "depositXp": 60, "bonusXp": 1500 },
+    { "id": "bologano", "name": "Bologano", "level": 54, "harvestXp": 14, "depositXp": 140, "bonusXp": 3500 },
+    { "id": "logavano", "name": "Logavano", "level": 74, "harvestXp": 23, "depositXp": 230, "bonusXp": 5750 }
+  ],
+  "sack": {
+    "size": 100,
+    "doubleFrom": 75,
+    "_xp": "Harvest xp per fruit; deposit xp per fruit, doubled for the 75th to 100th; bonus of 250x harvest xp on the 75th. A full sack: 9,660 / 22,540 / 37,030 xp.",
+    "pointsPerThreeFruit": 1,
+    "bonusPointsAt100": 2,
+    "pointsCap": 16000
+  },
+  "pace": {
+    "minutesPer100": 19,
+    "_note": "Wiki: 100 fruit with the 25x4 method takes roughly 19 minutes (about 110 points an hour)."
+  },
+  "outfitSetBonus": 0.005,
+  "rewards": [
+    { "id": "hat", "name": "Farmer's strawhat", "cost": 75, "xpBoost": 0.004, "outfit": true },
+    { "id": "top", "name": "Farmer's jacket", "cost": 150, "xpBoost": 0.008, "outfit": true },
+    { "id": "legs", "name": "Farmer's boro trousers", "cost": 125, "xpBoost": 0.006, "outfit": true },
+    { "id": "boots", "name": "Farmer's boots", "cost": 50, "xpBoost": 0.002, "outfit": true },
+    { "id": "can", "name": "Gricoller's can", "cost": 200, "effect": "No refilling watering cans" },
+    { "id": "seedbox", "name": "Seed box", "cost": 250, "effect": "Stores six seed types" },
+    { "id": "herbsack", "name": "Herb sack", "cost": 250, "effect": "Needs 58 Herblore" },
+    { "id": "autoweed", "name": "Auto-weed", "cost": 50, "effect": "Patches stay weed-free" }
+  ]
+}

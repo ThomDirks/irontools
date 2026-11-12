@@ -1,0 +1,211 @@
+{
+ "_source": "Moved from the original Iron Tools page; see the comments in the tool's source for where each table comes from.",
+ "TIERS": [
+  {
+   "id": "oak",
+   "name": "Oak",
+   "lvl": 20,
+   "carve": 12.5,
+   "dec": 51.2,
+   "total": 254.8,
+   "off": 20,
+   "durab": 2
+  },
+  {
+   "id": "willow",
+   "name": "Willow",
+   "lvl": 35,
+   "carve": 31.7,
+   "dec": 126.9,
+   "total": 634.4,
+   "off": 30,
+   "durab": 3
+  },
+  {
+   "id": "maple",
+   "name": "Maple",
+   "lvl": 50,
+   "carve": 50.8,
+   "dec": 201,
+   "total": 1007.2,
+   "off": 40,
+   "durab": 4
+  },
+  {
+   "id": "yew",
+   "name": "Yew",
+   "lvl": 65,
+   "carve": 82.6,
+   "dec": 326.2,
+   "total": 1635.2,
+   "off": 65,
+   "durab": 5
+  },
+  {
+   "id": "magic",
+   "name": "Magic",
+   "lvl": 80,
+   "carve": 156.1,
+   "dec": 619.8,
+   "total": 3103.6,
+   "off": 90,
+   "durab": 6
+  },
+  {
+   "id": "redwood",
+   "name": "Redwood",
+   "lvl": 90,
+   "carve": 221.3,
+   "dec": 725.5,
+   "total": 3787.2,
+   "off": 105,
+   "durab": 7
+  }
+ ],
+ "DECS": {
+  "oak": [
+   [
+    "Shortbow (u)",
+    1,
+    20,
+    16.5
+   ],
+   [
+    "Stock",
+    1,
+    24,
+    16
+   ],
+   [
+    "Longbow (u)",
+    1,
+    25,
+    25
+   ],
+   [
+    "Shield",
+    2,
+    27,
+    50
+   ]
+  ],
+  "willow": [
+   [
+    "Shortbow (u)",
+    1,
+    35,
+    33.3
+   ],
+   [
+    "Stock",
+    1,
+    39,
+    22
+   ],
+   [
+    "Longbow (u)",
+    1,
+    40,
+    41.5
+   ],
+   [
+    "Shield",
+    2,
+    42,
+    83
+   ]
+  ],
+  "maple": [
+   [
+    "Shortbow (u)",
+    1,
+    50,
+    50
+   ],
+   [
+    "Stock",
+    1,
+    54,
+    32
+   ],
+   [
+    "Longbow (u)",
+    1,
+    55,
+    58.3
+   ],
+   [
+    "Shield",
+    2,
+    57,
+    116.5
+   ]
+  ],
+  "yew": [
+   [
+    "Shortbow (u)",
+    1,
+    65,
+    67.5
+   ],
+   [
+    "Stock",
+    1,
+    69,
+    50
+   ],
+   [
+    "Longbow (u)",
+    1,
+    70,
+    75
+   ],
+   [
+    "Shield",
+    2,
+    72,
+    150
+   ]
+  ],
+  "magic": [
+   [
+    "Shortbow (u)",
+    1,
+    80,
+    83.3
+   ],
+   [
+    "Stock",
+    1,
+    80,
+    70
+   ],
+   [
+    "Longbow (u)",
+    1,
+    85,
+    91.5
+   ],
+   [
+    "Shield",
+    2,
+    87,
+    183
+   ]
+  ],
+  "redwood": [
+   [
+    "Hiking staff",
+    1,
+    90,
+    0
+   ],
+   [
+    "Shield",
+    2,
+    92,
+    216
+   ]
+  ]
+ }
+}

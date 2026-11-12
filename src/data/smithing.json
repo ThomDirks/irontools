@@ -1,0 +1,1162 @@
+{
+ "_source": "Moved from the original Iron Tools page; see the comments in the tool's source for where each table comes from.",
+ "METALS": [
+  {
+   "id": "bronze",
+   "name": "Bronze",
+   "tier": 1,
+   "bar": "Bronze bar",
+   "item": "Bronze",
+   "lvl": 1,
+   "smelt": {
+    "copper": 1,
+    "tin": 1
+   },
+   "xp": 6.2
+  },
+  {
+   "id": "iron",
+   "name": "Iron",
+   "tier": 2,
+   "bar": "Iron bar",
+   "item": "Iron",
+   "lvl": 15,
+   "smelt": {
+    "iron": 1
+   },
+   "xp": 12.5
+  },
+  {
+   "id": "steel",
+   "name": "Steel",
+   "tier": 3,
+   "bar": "Steel bar",
+   "item": "Steel",
+   "lvl": 30,
+   "smelt": {
+    "iron": 1,
+    "coal": 2
+   },
+   "xp": 17.5
+  },
+  {
+   "id": "mithril",
+   "name": "Mithril",
+   "tier": 4,
+   "bar": "Mithril bar",
+   "item": "Mithril",
+   "lvl": 50,
+   "smelt": {
+    "mithril": 1,
+    "coal": 4
+   },
+   "xp": 30
+  },
+  {
+   "id": "adamant",
+   "name": "Adamantite",
+   "tier": 5,
+   "bar": "Adamantite bar",
+   "item": "Adamant",
+   "lvl": 70,
+   "smelt": {
+    "adamantite": 1,
+    "coal": 6
+   },
+   "xp": 37.5
+  },
+  {
+   "id": "rune",
+   "name": "Runite",
+   "tier": 6,
+   "bar": "Runite bar",
+   "item": "Rune",
+   "lvl": 85,
+   "smelt": {
+    "runite": 1,
+    "coal": 8
+   },
+   "xp": 50
+  }
+ ],
+ "ORES": [
+  {
+   "id": "copper",
+   "name": "Copper ore"
+  },
+  {
+   "id": "tin",
+   "name": "Tin ore"
+  },
+  {
+   "id": "iron",
+   "name": "Iron ore"
+  },
+  {
+   "id": "coal",
+   "name": "Coal"
+  },
+  {
+   "id": "mithril",
+   "name": "Mithril ore"
+  },
+  {
+   "id": "adamantite",
+   "name": "Adamantite ore"
+  },
+  {
+   "id": "runite",
+   "name": "Runite ore"
+  }
+ ],
+ "ORE_SHOP": {
+  "copper": {
+   "price": 4,
+   "stock": 100
+  },
+  "tin": {
+   "price": 4,
+   "stock": 100
+  },
+  "iron": {
+   "price": 25,
+   "stock": 100
+  },
+  "coal": {
+   "price": 67,
+   "stock": 100
+  },
+  "mithril": {
+   "price": 243,
+   "stock": 100
+  },
+  "adamantite": {
+   "price": null
+  },
+  "runite": {
+   "price": null
+  }
+ },
+ "SHOP_ITEMS": {
+  "bronze": [
+   [
+    "claws",
+    15,
+    1,
+    "best shop price"
+   ],
+   [
+    "battleaxe",
+    52,
+    2,
+    "best shop price"
+   ],
+   [
+    "chainbody",
+    60,
+    2,
+    "best shop price"
+   ],
+   [
+    "warhammer",
+    61,
+    2,
+    "best shop price"
+   ],
+   [
+    "kiteshield",
+    68,
+    2,
+    "best shop price"
+   ],
+   [
+    "scimitar",
+    32,
+    1,
+    "best shop price"
+   ],
+   [
+    "longsword",
+    40,
+    1,
+    "best shop price"
+   ],
+   [
+    "full helm",
+    44,
+    1,
+    "best shop price"
+   ],
+   [
+    "sq shield",
+    48,
+    1,
+    "best shop price"
+   ],
+   [
+    "2h sword",
+    80,
+    2,
+    "best shop price"
+   ],
+   [
+    "platelegs",
+    80,
+    2,
+    "best shop price"
+   ],
+   [
+    "plateskirt",
+    80,
+    2,
+    "best shop price"
+   ],
+   [
+    "platebody",
+    160,
+    4,
+    "best shop price"
+   ]
+  ],
+  "iron": [
+   [
+    "claws",
+    50,
+    1,
+    "best shop price"
+   ],
+   [
+    "warhammer",
+    173,
+    2,
+    "best shop price"
+   ],
+   [
+    "battleaxe",
+    182,
+    2,
+    "best shop price"
+   ],
+   [
+    "chainbody",
+    210,
+    2,
+    "best shop price"
+   ],
+   [
+    "kiteshield",
+    238,
+    2,
+    "best shop price"
+   ],
+   [
+    "scimitar",
+    112,
+    1,
+    "best shop price"
+   ],
+   [
+    "longsword",
+    140,
+    1,
+    "best shop price"
+   ],
+   [
+    "full helm",
+    154,
+    1,
+    "best shop price"
+   ],
+   [
+    "sq shield",
+    168,
+    1,
+    "best shop price"
+   ],
+   [
+    "2h sword",
+    280,
+    2,
+    "best shop price"
+   ],
+   [
+    "platelegs",
+    280,
+    2,
+    "best shop price"
+   ],
+   [
+    "plateskirt",
+    280,
+    2,
+    "best shop price"
+   ],
+   [
+    "platebody",
+    560,
+    4,
+    "best shop price"
+   ]
+  ],
+  "steel": [
+   [
+    "claws",
+    175,
+    1,
+    "best shop price"
+   ],
+   [
+    "warhammer",
+    640,
+    2,
+    "best shop price"
+   ],
+   [
+    "battleaxe",
+    650,
+    2,
+    "best shop price"
+   ],
+   [
+    "chainbody",
+    750,
+    2,
+    "best shop price"
+   ],
+   [
+    "kiteshield",
+    807,
+    2,
+    "best shop price"
+   ],
+   [
+    "scimitar",
+    400,
+    1,
+    "best shop price"
+   ],
+   [
+    "longsword",
+    500,
+    1,
+    "best shop price"
+   ],
+   [
+    "full helm",
+    550,
+    1,
+    "best shop price"
+   ],
+   [
+    "sq shield",
+    600,
+    1,
+    "best shop price"
+   ],
+   [
+    "2h sword",
+    1000,
+    2,
+    "best shop price"
+   ],
+   [
+    "platelegs",
+    1000,
+    2,
+    "best shop price"
+   ],
+   [
+    "plateskirt",
+    1000,
+    2,
+    "best shop price"
+   ],
+   [
+    "platebody",
+    2000,
+    4,
+    "best shop price"
+   ]
+  ],
+  "mithril": [
+   [
+    "claws",
+    522,
+    1,
+    "Weapons galore, Jatizso"
+   ],
+   [
+    "warhammer",
+    1826,
+    2,
+    "Weapons galore, Jatizso"
+   ],
+   [
+    "battleaxe",
+    1859,
+    2,
+    "Weapons galore, Jatizso"
+   ],
+   [
+    "longsword",
+    1430,
+    1,
+    "Weapons galore, Jatizso"
+   ],
+   [
+    "2h sword",
+    2860,
+    2,
+    "Weapons galore, Jatizso"
+   ],
+   [
+    "chainbody",
+    2145,
+    2,
+    "Armour Shop, Jatizso"
+   ],
+   [
+    "full helm",
+    1573,
+    1,
+    "Armour Shop, Jatizso"
+   ],
+   [
+    "sq shield",
+    1716,
+    1,
+    "Armour Shop, Jatizso"
+   ],
+   [
+    "kiteshield",
+    2431,
+    2,
+    "Armour Shop, Jatizso"
+   ],
+   [
+    "platelegs",
+    2860,
+    2,
+    "Armour Shop, Jatizso"
+   ],
+   [
+    "plateskirt",
+    2860,
+    2,
+    "Armour Shop, Jatizso"
+   ],
+   [
+    "platebody",
+    5720,
+    4,
+    "Armour Shop, Jatizso"
+   ],
+   [
+    "warhammer",
+    1660,
+    2,
+    "best shop price"
+   ],
+   [
+    "battleaxe",
+    1690,
+    2,
+    "best shop price"
+   ],
+   [
+    "chainbody",
+    1950,
+    2,
+    "best shop price"
+   ],
+   [
+    "scimitar",
+    1040,
+    1,
+    "best shop price"
+   ],
+   [
+    "longsword",
+    1300,
+    1,
+    "best shop price"
+   ],
+   [
+    "full helm",
+    1430,
+    1,
+    "best shop price"
+   ],
+   [
+    "platebody",
+    5200,
+    4,
+    "best shop price"
+   ]
+  ],
+  "adamant": [
+   [
+    "warhammer",
+    4120,
+    2,
+    "best shop price"
+   ],
+   [
+    "battleaxe",
+    4160,
+    2,
+    "best shop price"
+   ],
+   [
+    "chainbody",
+    4800,
+    2,
+    "best shop price"
+   ],
+   [
+    "kiteshield",
+    5440,
+    2,
+    "best shop price"
+   ],
+   [
+    "scimitar",
+    2560,
+    1,
+    "best shop price"
+   ],
+   [
+    "longsword",
+    3200,
+    1,
+    "best shop price"
+   ],
+   [
+    "full helm",
+    3520,
+    1,
+    "best shop price"
+   ],
+   [
+    "sq shield",
+    3840,
+    1,
+    "best shop price"
+   ],
+   [
+    "2h sword",
+    6400,
+    2,
+    "best shop price"
+   ],
+   [
+    "platelegs",
+    6400,
+    2,
+    "best shop price"
+   ],
+   [
+    "plateskirt",
+    6400,
+    2,
+    "best shop price"
+   ],
+   [
+    "platebody",
+    16640,
+    4,
+    "best shop price"
+   ]
+  ],
+  "rune": [
+   [
+    "platebody",
+    84500,
+    4,
+    "best shop price"
+   ],
+   [
+    "chainbody",
+    47500,
+    2,
+    "best shop price"
+   ],
+   [
+    "platelegs",
+    60800,
+    2,
+    "best shop price"
+   ],
+   [
+    "plateskirt",
+    60800,
+    2,
+    "best shop price"
+   ],
+   [
+    "longsword",
+    32000,
+    1,
+    "best shop price"
+   ],
+   [
+    "full helm",
+    35200,
+    1,
+    "best shop price"
+   ],
+   [
+    "scimitar",
+    38400,
+    1,
+    "best shop price"
+   ]
+  ]
+ },
+ "SHOP_GUIDE": [
+  [
+   "Bronze – Adamant",
+   "Cam Torum Blacksmith",
+   "warhammers, cheapest per bar of the general blacksmiths"
+  ],
+  [
+   "Bronze – Adamant",
+   "Fortis Blacksmith, Civitas illa Fortis",
+   "broad stock across the low tiers"
+  ],
+  [
+   "Steel",
+   "Mount Karuulm Weapon Shop, by Konar",
+   "the usual steel run"
+  ],
+  [
+   "Steel",
+   "Varrock Swordshop &middot; Horvik's Armour Shop",
+   "swords and body armour"
+  ],
+  [
+   "Mithril",
+   "Weapons galore, Jatizso",
+   "claws, longsword, warhammer, battleaxe, 2h · exact prices below"
+  ],
+  [
+   "Mithril",
+   "Armour Shop, Jatizso",
+   "chainbody, helm, shields, legs, skirt, platebody · exact prices below"
+  ],
+  [
+   "Mithril – Rune",
+   "Aneirin's Armour, Prifddinas",
+   "the armour route into rune"
+  ],
+  [
+   "Rune",
+   "platebodies",
+   "cheapest rune per bar anywhere"
+  ],
+  [
+   "Any",
+   "Salius' Armour Shop, Salvager Overlook",
+   "most platebodies, quickest to reach"
+  ]
+ ],
+ "MOULDS": [
+  {
+   "n": "Chopper Forte",
+   "t": "Forte",
+   "l": 15,
+   "d": 1,
+   "broad": 4,
+   "narrow": 0,
+   "heavy": 0,
+   "light": 4,
+   "spiked": 0,
+   "flat": 4
+  },
+  {
+   "n": "Gladius Ricasso",
+   "t": "Forte",
+   "l": 15,
+   "d": 1,
+   "broad": 4,
+   "narrow": 0,
+   "heavy": 4,
+   "light": 0,
+   "spiked": 0,
+   "flat": 4
+  },
+  {
+   "n": "Disarming Forte",
+   "t": "Forte",
+   "l": 15,
+   "d": 1,
+   "broad": 0,
+   "narrow": 4,
+   "heavy": 0,
+   "light": 4,
+   "spiked": 4,
+   "flat": 0
+  },
+  {
+   "n": "Medusa Ricasso",
+   "t": "Forte",
+   "l": 15,
+   "d": 1,
+   "broad": 8,
+   "narrow": 0,
+   "heavy": 6,
+   "light": 0,
+   "spiked": 0,
+   "flat": 8
+  },
+  {
+   "n": "Serpent Ricasso",
+   "t": "Forte",
+   "l": 15,
+   "d": 1,
+   "broad": 0,
+   "narrow": 6,
+   "heavy": 0,
+   "light": 8,
+   "spiked": 0,
+   "flat": 8
+  },
+  {
+   "n": "Serrated Forte",
+   "t": "Forte",
+   "l": 15,
+   "d": 1,
+   "broad": 0,
+   "narrow": 8,
+   "heavy": 8,
+   "light": 0,
+   "spiked": 6,
+   "flat": 0
+  },
+  {
+   "n": "Stiletto Forte",
+   "t": "Forte",
+   "l": 50,
+   "d": 0,
+   "r": 300,
+   "broad": 0,
+   "narrow": 8,
+   "heavy": 0,
+   "light": 10,
+   "spiked": 0,
+   "flat": 8
+  },
+  {
+   "n": "Defender Base",
+   "t": "Forte",
+   "l": 51,
+   "d": 0,
+   "r": 300,
+   "broad": 8,
+   "narrow": 0,
+   "heavy": 10,
+   "light": 0,
+   "spiked": 0,
+   "flat": 8
+  },
+  {
+   "n": "Juggernaut Forte",
+   "t": "Forte",
+   "l": 61,
+   "d": 0,
+   "r": 350,
+   "broad": 4,
+   "narrow": 0,
+   "heavy": 4,
+   "light": 0,
+   "spiked": 16,
+   "flat": 0
+  },
+  {
+   "n": "Chopper Forte +1",
+   "t": "Forte",
+   "l": 70,
+   "d": 0,
+   "r": 400,
+   "broad": 3,
+   "narrow": 0,
+   "heavy": 0,
+   "light": 4,
+   "spiked": 0,
+   "flat": 18
+  },
+  {
+   "n": "Spiker!",
+   "t": "Forte",
+   "l": 79,
+   "d": 0,
+   "r": 450,
+   "broad": 0,
+   "narrow": 1,
+   "heavy": 2,
+   "light": 0,
+   "spiked": 22,
+   "flat": 0
+  },
+  {
+   "n": "Saw Blade",
+   "t": "Blade",
+   "l": 15,
+   "d": 1,
+   "broad": 4,
+   "narrow": 0,
+   "heavy": 0,
+   "light": 4,
+   "spiked": 4,
+   "flat": 0
+  },
+  {
+   "n": "Defenders Edge",
+   "t": "Blade",
+   "l": 15,
+   "d": 1,
+   "broad": 4,
+   "narrow": 0,
+   "heavy": 4,
+   "light": 0,
+   "spiked": 4,
+   "flat": 0
+  },
+  {
+   "n": "Fish Blade",
+   "t": "Blade",
+   "l": 15,
+   "d": 1,
+   "broad": 0,
+   "narrow": 4,
+   "heavy": 0,
+   "light": 4,
+   "spiked": 0,
+   "flat": 4
+  },
+  {
+   "n": "Medusa Blade",
+   "t": "Blade",
+   "l": 15,
+   "d": 1,
+   "broad": 8,
+   "narrow": 0,
+   "heavy": 8,
+   "light": 0,
+   "spiked": 0,
+   "flat": 6
+  },
+  {
+   "n": "Stiletto Blade",
+   "t": "Blade",
+   "l": 15,
+   "d": 1,
+   "broad": 0,
+   "narrow": 8,
+   "heavy": 0,
+   "light": 6,
+   "spiked": 0,
+   "flat": 8
+  },
+  {
+   "n": "Gladius Edge",
+   "t": "Blade",
+   "l": 15,
+   "d": 1,
+   "broad": 0,
+   "narrow": 6,
+   "heavy": 8,
+   "light": 0,
+   "spiked": 0,
+   "flat": 8
+  },
+  {
+   "n": "Flamberge Blade",
+   "t": "Blade",
+   "l": 48,
+   "d": 0,
+   "r": 300,
+   "broad": 0,
+   "narrow": 8,
+   "heavy": 0,
+   "light": 8,
+   "spiked": 10,
+   "flat": 0
+  },
+  {
+   "n": "Serpent Blade",
+   "t": "Blade",
+   "l": 50,
+   "d": 0,
+   "r": 300,
+   "broad": 0,
+   "narrow": 10,
+   "heavy": 0,
+   "light": 8,
+   "spiked": 0,
+   "flat": 8
+  },
+  {
+   "n": "Claymore Blade",
+   "t": "Blade",
+   "l": 59,
+   "d": 0,
+   "r": 350,
+   "broad": 16,
+   "narrow": 0,
+   "heavy": 4,
+   "light": 0,
+   "spiked": 0,
+   "flat": 4
+  },
+  {
+   "n": "Fleur de Blade",
+   "t": "Blade",
+   "l": 71,
+   "d": 0,
+   "r": 400,
+   "broad": 4,
+   "narrow": 0,
+   "heavy": 18,
+   "light": 0,
+   "spiked": 1,
+   "flat": 0
+  },
+  {
+   "n": "Choppa!",
+   "t": "Blade",
+   "l": 80,
+   "d": 0,
+   "r": 450,
+   "broad": 1,
+   "narrow": 0,
+   "heavy": 0,
+   "light": 22,
+   "spiked": 0,
+   "flat": 2
+  },
+  {
+   "n": "People Poker Point",
+   "t": "Tip",
+   "l": 15,
+   "d": 1,
+   "broad": 0,
+   "narrow": 4,
+   "heavy": 4,
+   "light": 0,
+   "spiked": 0,
+   "flat": 4
+  },
+  {
+   "n": "Chopper Tip",
+   "t": "Tip",
+   "l": 15,
+   "d": 1,
+   "broad": 4,
+   "narrow": 0,
+   "heavy": 0,
+   "light": 4,
+   "spiked": 4,
+   "flat": 0
+  },
+  {
+   "n": "Medusa's Head",
+   "t": "Tip",
+   "l": 15,
+   "d": 1,
+   "broad": 4,
+   "narrow": 0,
+   "heavy": 4,
+   "light": 0,
+   "spiked": 4,
+   "flat": 0
+  },
+  {
+   "n": "Serpent's Fang",
+   "t": "Tip",
+   "l": 15,
+   "d": 1,
+   "broad": 0,
+   "narrow": 8,
+   "heavy": 0,
+   "light": 6,
+   "spiked": 8,
+   "flat": 0
+  },
+  {
+   "n": "Gladius Point",
+   "t": "Tip",
+   "l": 15,
+   "d": 1,
+   "broad": 0,
+   "narrow": 8,
+   "heavy": 8,
+   "light": 0,
+   "spiked": 0,
+   "flat": 6
+  },
+  {
+   "n": "Saw Tip",
+   "t": "Tip",
+   "l": 15,
+   "d": 1,
+   "broad": 6,
+   "narrow": 0,
+   "heavy": 8,
+   "light": 0,
+   "spiked": 8,
+   "flat": 0
+  },
+  {
+   "n": "Corrupted Point",
+   "t": "Tip",
+   "l": 49,
+   "d": 0,
+   "r": 300,
+   "broad": 0,
+   "narrow": 8,
+   "heavy": 0,
+   "light": 10,
+   "spiked": 8,
+   "flat": 0
+  },
+  {
+   "n": "Defenders Tip",
+   "t": "Tip",
+   "l": 52,
+   "d": 0,
+   "r": 300,
+   "broad": 10,
+   "narrow": 0,
+   "heavy": 8,
+   "light": 0,
+   "spiked": 8,
+   "flat": 0
+  },
+  {
+   "n": "Serrated Tip",
+   "t": "Tip",
+   "l": 60,
+   "d": 0,
+   "r": 350,
+   "broad": 0,
+   "narrow": 4,
+   "heavy": 0,
+   "light": 16,
+   "spiked": 4,
+   "flat": 0
+  },
+  {
+   "n": "Needle Point",
+   "t": "Tip",
+   "l": 69,
+   "d": 0,
+   "r": 400,
+   "broad": 0,
+   "narrow": 18,
+   "heavy": 0,
+   "light": 3,
+   "spiked": 0,
+   "flat": 4
+  },
+  {
+   "n": "The Point!",
+   "t": "Tip",
+   "l": 81,
+   "d": 0,
+   "r": 450,
+   "broad": 2,
+   "narrow": 0,
+   "heavy": 0,
+   "light": 1,
+   "spiked": 0,
+   "flat": 22
+  }
+ ],
+ "COMBOS": [
+  [
+   [
+    "broad",
+    "heavy"
+   ],
+   3
+  ],
+  [
+   [
+    "broad",
+    "light"
+   ],
+   3
+  ],
+  [
+   [
+    "broad",
+    "spiked"
+   ],
+   1
+  ],
+  [
+   [
+    "broad",
+    "flat"
+   ],
+   1
+  ],
+  [
+   [
+    "narrow",
+    "heavy"
+   ],
+   3
+  ],
+  [
+   [
+    "narrow",
+    "light"
+   ],
+   3
+  ],
+  [
+   [
+    "narrow",
+    "spiked"
+   ],
+   1
+  ],
+  [
+   [
+    "narrow",
+    "flat"
+   ],
+   1
+  ],
+  [
+   [
+    "heavy",
+    "spiked"
+   ],
+   2
+  ],
+  [
+   [
+    "heavy",
+    "flat"
+   ],
+   2
+  ],
+  [
+   [
+    "light",
+    "spiked"
+   ],
+   2
+  ],
+  [
+   [
+    "light",
+    "flat"
+   ],
+   2
+  ]
+ ]
+}

@@ -1,0 +1,148 @@
+
+<section class="card">
+  <h2>What this run comes to</h2>
+  <div class="statrow" id="sum-stats"></div>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="field"><label>Swords an hour</label><input id="sp-rate" type="number" min="1" max="60" value="12">
+      <span class="hint" id="sp-hint"></span></div>
+    <div class="field"><label>Hours a day</label><input id="sp-day" type="number" min="1" max="24" value="3">
+      <span class="hint" id="sp-dayhint"></span></div>
+    <div class="field"><label>&nbsp;</label><span class="hint" id="sp-note"></span></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Your Smithing</h2>
+  <div class="grid g4">
+    <div class="field"><label>Level</label><input id="sm-lvl" type="number" min="1" max="99" value="70"></div>
+    <div class="field"><label>XP</label><input id="sm-xp" type="number" min="0" value="737627"></div>
+    <div class="field"><label>Goal</label>
+      <select id="sm-goaltype"><option value="level">Level</option><option value="xp">XP</option><option value="rep">Reputation</option></select></div>
+    <div class="field"><label>Target</label><input id="sm-goal" type="number" min="0" value="99"></div>
+  </div>
+  <p class="hint" id="sm-note" style="margin-top:9px"></p>
+</section>
+
+<section class="card">
+  <h2>Alloy <span class="sub">28 bars go in the crucible every sword</span></h2>
+  <div class="grid g3">
+    <div class="field"><label>First metal</label><select id="al-m1"></select></div>
+    <div class="field"><label>Bars of the first metal</label><input id="al-a1" type="number" min="0" max="28" value="14"></div>
+    <div class="field"><label>Second metal</label><select id="al-m2"></select></div>
+  </div>
+  <div class="statrow" style="margin-top:16px" id="al-stats"></div>
+  <p class="foot" id="al-foot"></p>
+  <div id="al-warn"></div>
+</section>
+
+<section class="card">
+  <h2>Moulds <span class="sub">a better match raises quality, which is what pays</span></h2>
+  <div class="row" style="margin-bottom:12px">
+    <button class="btn ghost" id="mo-all" type="button">Tick every mould</button>
+    <button class="btn ghost" id="mo-none" type="button">Clear</button>
+    <span class="spacer"></span>
+    <span class="hint" id="mo-sum"></span>
+  </div>
+  <div class="chips" id="mo-list"></div>
+  <details class="how"><summary>More detail</summary><p>Only moulds at or below your Smithing level count. Kovac picks the commission, so what matters is
+  how well your best unlocked piece matches each of the twelve requests. Buying every mould costs 5,400 reputation in total.</p></details>
+</section>
+
+<section class="card">
+  <h2>Where the metal comes from</h2>
+  <div class="row" style="margin-bottom:14px">
+    <button class="chip" id="fs-bf" aria-pressed="true" type="button">
+      <span class="tick">&#10003;</span><span>Blast Furnace<em>half the coal per bar</em></span></button>
+    <button class="chip" id="fs-items" aria-pressed="true" type="button">
+      <span class="tick">&#10003;</span><span>Buy items, not ore<em>straight into the crucible</em></span></button>
+    <button class="chip" id="fs-claws" aria-pressed="true" type="button">
+      <span class="tick">&#10003;</span><span>Skip claws<em>cheapest per bar, but stock is far too thin</em></span></button>
+    <span class="spacer"></span>
+    <span class="hint">No shop sells bars, so metal comes from items or your own smelting.</span>
+  </div>
+
+  <p class="flabel" style="margin:4px 0 8px">Where each metal comes from</p>
+  <div class="grid g2" id="fs-src"></div>
+
+  <p class="flabel" style="margin:4px 0 8px">Bars already in your bank</p>
+  <div class="grid g3" id="fs-bars"></div>
+
+  <p class="flabel" style="margin:18px 0 8px">Ores already in your bank</p>
+  <div class="grid g4" id="fs-ores"></div>
+  <p class="hint" id="fs-oreNote" style="margin-top:9px"></p>
+</section>
+
+<section class="card">
+  <h2>Where to buy it</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="l">Metal</th><th class="l">Shop</th><th class="l">What it is good for</th></tr></thead>
+    <tbody id="guide-rows"></tbody>
+  </table></div>
+  <details class="how"><summary>More detail</summary><p>Prices for the two Jatizso shops are their own tables: four of each in stock, one restocking
+  a minute, sold at 110% of base and climbing 3% for every one you buy. Everything else uses the wiki's lowest
+  price across all shops that stock it, so treat those as the best case and expect to pay a little more if the
+  nearest shop is not the cheapest one.</p></details>
+</section>
+
+<section class="card">
+  <h2>Shop prices per bar <span class="sub">what a bar of each metal really costs</span></h2>
+  <div class="row" style="margin-bottom:12px">
+    <label class="flabel" for="ip-metal">Metal</label>
+    <select id="ip-metal" style="width:auto"></select>
+  </div>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="l">Item</th><th class="l">Shop</th><th>Bars each</th><th>Price</th><th>Per bar</th><th class="l">Notes</th></tr></thead>
+    <tbody id="ip-rows"></tbody>
+  </table></div>
+  <p class="foot" id="ip-foot"></p>
+</section>
+
+<section class="card">
+  <h2>Ore, if you would rather smelt it <span class="sub">Ordan, Ore seller &middot; Blast Furnace, Keldagrim</span></h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="l">Ore</th><th>Price each</th><th>Stock</th><th>Restock</th><th class="l">Notes</th></tr></thead>
+    <tbody id="shop-rows"></tbody>
+  </table></div>
+  <details class="how"><summary>More detail</summary><p>Ordan's prices are fixed for every account type and never move. Stock caps at
+  100 of each ore; a Dwarven Miner tops up 20 to 40 of one random ore every 27 seconds, so a big order means hopping
+  worlds or waiting between buyouts. Ordan stops at mithril, so adamantite and runite bars have to come from ore you mined
+  yourself. Buying the finished adamant or rune item and melting it down avoids that entirely.</p></details>
+</section>
+
+<section class="card">
+  <h2>Every step of it</h2>
+  <div class="statrow" id="rn-stats"></div>
+  <div class="tablewrap" style="margin-top:16px"><table id="rn-table">
+    <thead><tr><th class="l">Metal</th><th>Bars needed</th><th>Bars in bank</th><th>To source</th><th class="l">Where they come from</th><th>Cost</th></tr></thead>
+    <tbody id="rn-rows"></tbody>
+  </table></div>
+  <p class="flabel" style="margin:18px 0 8px">Shopping list</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="l">Buy</th><th>Amount</th><th>Each</th><th>Cost</th><th class="l">Yields</th></tr></thead>
+    <tbody id="buy-rows"></tbody>
+  </table></div>
+  <div id="rn-money" style="margin-top:16px"></div>
+  <p class="foot" id="rn-foot"></p>
+</section>
+
+<section class="card">
+  <h2>Is the foundry actually the best use of these bars?</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="l">Route</th><th>XP per bar</th><th>XP from your bars</th><th>Notes</th></tr></thead>
+    <tbody id="cmp-rows"></tbody>
+  </table></div>
+  <details class="how"><summary>More detail</summary><p>Anvil smithing is a flat 12.5 experience per bar whatever you hammer out, so the foundry wins on
+  experience for every alloy above the very bottom. Items are only worth making when you want the item itself,
+  or when selling it back beats what Kovac pays.</p></details>
+</section>
+
+<section class="card">
+  <h2>Alloy table <span class="sub">every pairing at your level and moulds</span></h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="l">Alloy</th><th>Metal score</th><th>Sections</th><th>Quality</th><th>XP / sword</th><th>Shop cost / sword</th><th>GP / XP</th></tr></thead>
+    <tbody id="tbl-rows"></tbody>
+  </table></div>
+  <details class="how"><summary>More detail</summary><p>Cost uses the cheapest shop route for each metal, whether that is ore you smelt or a finished item
+  you melt down. Gp per experience counts the coins Kovac pays back, so a negative figure means the alloy pays you
+  while you train. Sorted by experience per sword.</p></details>
+</section>

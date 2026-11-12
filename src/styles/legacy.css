@@ -1,0 +1,102 @@
+/* Re-skin for the four calculators carried over from the single-page site.
+   Their own stylesheets keep the layout; this maps them onto the shared
+   tokens so every calculator reads as one product. The :is(#id) part lifts
+   specificity above their own #view-* rules. */
+
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) {
+  --ink: transparent; --panel: var(--iron-850); --panel2: var(--iron-800); --line: var(--iron-600);
+  --text: var(--bone); --dim: var(--slate); --brass: var(--gold); --xp: var(--gold-hi);
+  --good: var(--moss); --bad: var(--ember); --leaf: var(--moss);
+  --mox: #7fc784; --aga: #6fa8e8; --lye: #e8776e;
+  --serif: var(--ui); --sans: var(--ui); --mono: var(--ui); --display: var(--ui); --pixel: var(--ui); --body: var(--ui);
+  /* golem's parchment theme */
+  --parch: var(--iron-850); --parch-dark: var(--iron-800); --parch-light: var(--iron-950);
+  --wood: var(--bone); --wood2: var(--iron-800); --wood-line: rgba(255,255,255,.08);
+  --gold: #e9c46a; --gold-deep: #e9c46a; --ink-soft: var(--slate); --rs-red: var(--ember); --rs-green: var(--moss);
+  --shadow: transparent;
+  background: transparent; color: var(--bone); font: 15px/1.5 var(--ui);
+  padding: 18px 22px 28px; max-width: 1080px;
+}
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) * { font-family: var(--ui); }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) h1, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) h2, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) h3, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) h4 { font-family: var(--ui); letter-spacing: -.005em; text-shadow: none; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .card > h2, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .card h2, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .cardhead h2 { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: var(--bone); }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .card > h2 .sub, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .card h2 .sub { font-size: 13px; color: var(--slate-2); font-weight: 400; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) h3 { font-size: 13px; font-weight: 600; color: var(--slate); letter-spacing: 0; text-transform: none; }
+
+/* sentence-case labels instead of tracked capitals */
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .flabel, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .field label, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .sl, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .eyebrow, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .lvlcap, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .rcard .k, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .rh, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .ph, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) th, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .m2ctl .cell label, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .stat h3 {
+  font: 500 12px/1.35 var(--ui) !important; letter-spacing: 0 !important; text-transform: none !important; color: var(--slate) !important;
+}
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .hint, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .fhint, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .lvlnote, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .furmeta, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .rcard .note, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .tiny { font-size: 12px; color: var(--slate-2); font-family: var(--ui); }
+
+/* surfaces */
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .card, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .panel, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .results, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .result {
+  background: var(--iron-850) !important; border: 1px solid rgba(255,255,255,.06) !important; border-radius: 14px !important;
+  box-shadow: none !important; max-width: none;
+}
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .panel { margin: 0 0 16px; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .panel > .ph, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .results .rh { background: transparent !important; border-bottom: 1px solid rgba(255,255,255,.06) !important; padding: 12px 16px 8px; display: flex; gap: 8px; align-items: baseline; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .panel > .ph { font-size: 14px !important; font-weight: 600 !important; color: var(--bone) !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .frame { max-width: none; background: transparent; border: 0; box-shadow: none; border-radius: 0; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .stat, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .rcard, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .sec, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .tube, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .bar, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .chip {
+  background: var(--iron-900) !important; border: 1px solid rgba(255,255,255,.07) !important; border-radius: 10px !important; box-shadow: none !important;
+}
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .stat .sv, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .rcard .v, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .vlabel strong { font-family: var(--ui) !important; font-weight: 600; color: var(--bone); letter-spacing: -.01em; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .stat.big .sv { font-size: 26px; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .stat.accent .sv, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .line.strong, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .held { color: var(--gold) !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .stat.leaf .sv, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .stat.good .sv { color: var(--moss) !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .stat.bad .sv { color: var(--ember) !important; }
+
+/* inputs */
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) input:not([type="checkbox"]), .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) select, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .qty {
+  height: 38px; padding: 0 10px; border-radius: 10px !important; font: 14px var(--ui) !important;
+  background: var(--iron-950) !important; border: 1px solid var(--iron-600) !important; color: var(--bone) !important;
+  font-variant-numeric: tabular-nums;
+}
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) td input, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) td select, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .qty { height: 32px; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) input:focus, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) select:focus { outline: none !important; border-color: var(--gold) !important; box-shadow: 0 0 0 3px var(--gold-wash) !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) input[type="checkbox"] { accent-color: var(--gold); }
+
+/* chips become toggles */
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .chip { padding: 9px 12px; font-size: 13.5px; color: var(--bone-2); }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .chip em { font-family: var(--ui) !important; font-size: 12px; color: var(--slate-2); letter-spacing: 0; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .chip .tick { border-radius: 5px; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .chip[aria-pressed="true"] { border-color: var(--gold-lo) !important; background: var(--gold-wash) !important; color: var(--bone); }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .chip[aria-pressed="true"] .tick { background: var(--gold); border-color: var(--gold); color: var(--iron-950); }
+
+/* buttons */
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .btn, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) button.ghost {
+  background: var(--iron-800) !important; color: var(--bone) !important; border: 1px solid var(--iron-600) !important;
+  border-radius: 10px !important; padding: 8px 14px; font: 500 13px var(--ui) !important; box-shadow: none;
+}
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .btn:hover, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) button.ghost:hover { border-color: var(--gold-lo) !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .tab { background: transparent !important; border: 0 !important; border-bottom: 2px solid transparent !important; border-radius: 0 !important; color: var(--slate) !important; font: 500 14px var(--ui) !important; padding: 10px 6px !important; top: 0 !important; flex: none !important; min-width: 0 !important; margin-right: 18px !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .tab[aria-selected="true"] { color: var(--bone) !important; border-bottom-color: var(--gold) !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .tabs { margin: 0 0 14px !important; border-bottom: 1px solid rgba(255,255,255,.06); }
+
+/* tables and lines */
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) table { font-size: 13.5px; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) th { background: transparent !important; border: 0 !important; border-bottom: 1px solid var(--iron-600) !important; padding: 6px 9px; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) td { border: 0 !important; border-bottom: 1px solid rgba(255,255,255,.05) !important; font-family: var(--ui); }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) tbody tr:nth-child(n) { background: transparent !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) tbody tr.best td, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) tr.live td { background: var(--gold-wash) !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .furname { color: var(--bone); }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .line { border-bottom: 1px solid rgba(255,255,255,.05) !important; font-size: 14px; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .line b, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .mono { font-family: var(--ui); }
+
+/* notes */
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .foot { font-size: 12.5px; color: var(--slate); }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .warn { background: var(--ember-wash) !important; border: 0 !important; border-left: 3px solid var(--ember) !important; color: #f6cbbd !important; border-radius: 10px; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .note, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .done { background: var(--moss-wash) !important; border: 0 !important; border-left: 3px solid var(--moss) !important; color: #d8ecc9 !important; border-radius: 10px; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) details.how { margin-top: 12px; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) details.how p { margin: 8px 0 0; line-height: 1.6; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) details.foot h4 { font-size: 13px; color: var(--bone-2); margin: 12px 0 0; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .reqs, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .pricetag { display: none; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .prog { background: rgba(0,0,0,.35) !important; border: 0 !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .prog > span { background: linear-gradient(90deg, var(--gold-lo), var(--gold)) !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .xpdrop { background: var(--iron-950); border-color: var(--iron-600); color: var(--gold-hi); text-shadow: none; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .barfill { background: linear-gradient(90deg, var(--gold-lo), var(--gold)) !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .line > :last-child { margin-left: auto; text-align: right; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .skillline { border-color: rgba(255,255,255,.06) !important; }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .skillline .nm, .view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .skillline .lv { color: var(--bone-2); }
+.view-body .legacy:is(#view-mixology,#view-golem,#view-smithing,#view-vale) .rcard .note { background: transparent !important; border-left: 0 !important; padding: 0; color: var(--slate-2) !important; }

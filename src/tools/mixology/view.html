@@ -1,0 +1,151 @@
+<div class="hide" aria-hidden="true"><span id="hdr-level"></span><span id="hdr-cap"></span></div>
+
+<section class="card">
+  <h2>Your Herblore</h2>
+  <div class="grid3">
+    <label class="field"><span class="flabel">Current Herblore xp</span>
+      <input id="xp" inputmode="numeric" value="273742"><span class="fhint" id="xp-hint"></span></label>
+    <label class="field"><span class="flabel">Herbs per seed</span>
+      <input id="yield" inputmode="numeric" value="10"><span class="fhint">Flat multiplier on every seed</span></label>
+    <label class="field"><span class="flabel">Goal level</span>
+      <input id="goal" inputmode="numeric" value="99"><span class="fhint" id="goal-hint"></span></label>
+  </div>
+  <p class="warn hide" id="warn-60">Mixology needs 60 Herblore. Below that, refining herbs is off the table.</p>
+</section>
+
+<section class="card">
+  <h2>Gear and play style</h2>
+  <div class="chips">
+    <button class="chip" id="t-goggles" aria-pressed="true"><span class="tick">&#10003;</span><span>Prescription goggles<em>10% secondary save</em></span></button>
+    <button class="chip" id="t-scp" aria-pressed="true"><span class="tick">&#10003;</span><span>Reserve for super combats<em>torstol drives it</em></span></button>
+    <button class="chip" id="t-triple" aria-pressed="true"><span class="tick">&#10003;</span><span>Hand in 3 orders at once<em>+40% resin</em></span></button>
+    <button class="chip" id="t-cleanup" aria-pressed="true"><span class="tick">&#10003;</span><span>Burn leftover paste<em>MMM / AAA / LLL</em></span></button>
+  </div>
+  <div class="grid3 spaced">
+    <label class="field"><span class="flabel">Amulet</span>
+      <select id="amulet">
+        <option value="none">None</option>
+        <option value="chem">Amulet of chemistry (5%)</option>
+        <option value="alch">Alchemist's amulet (15%)</option>
+      </select><span class="fhint" id="amulet-hint"></span></label>
+    <label class="field"><span class="flabel">Order strategy</span>
+      <select id="strategy">
+        <option value="orders">Fill whatever is ordered</option>
+        <option value="mixalot">Mixalot only (81+)</option>
+      </select><span class="fhint">Mixalot is the best xp per paste</span></label>
+    <label class="field"><span class="flabel">Speed-up xp per potion</span>
+      <input id="speedxp" inputmode="numeric" value="14"><span class="fhint">14 agitator, 16 double click, 0 afk</span></label>
+  </div>
+  <p style="margin-top:14px"><button class="ghost" id="adv-toggle">Show extras</button></p>
+  <div class="grid3 spaced hide" id="adv">
+    <label class="field"><span class="flabel">Digweed used</span>
+      <input id="digweed" inputmode="numeric" placeholder="0"><span class="fhint">~1 per 7 min at 81+, doubles that potion</span></label>
+    <label class="field"><span class="flabel">Super combat cap</span>
+      <input id="scptarget" inputmode="numeric" placeholder="max"><span class="fhint">Blank = make as many as possible</span></label>
+  </div>
+</section>
+
+<section class="card">
+  <div class="cardhead">
+    <h2>Herbs</h2>
+    <div class="btnrow">
+      <button class="ghost" id="b-paste">All to paste</button>
+      <button class="ghost" id="b-rec">Recommended</button>
+      <button class="ghost" id="b-clear">Clear counts</button>
+    </div>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr>
+        <th class="l">Herb</th><th>Seeds</th><th>In bank</th><th>Total</th>
+        <th>Held back</th><th class="l">What it becomes</th><th class="r">Output</th>
+      </tr></thead>
+      <tbody id="herb-rows"></tbody>
+    </table>
+  </div>
+  <p class="foot" id="herb-foot"></p>
+</section>
+
+<section class="card" id="bank-card">
+  <h2>Already in your bank</h2>
+  <p class="foot" style="margin:0 0 12px">Doses you already own. Supers are spent on the super combat chain before a single herb is touched, so this pulls your herb bill down.</p>
+  <div class="grid3">
+    <label class="field"><span class="flabel">Super attack doses</span>
+      <input id="bk-att" inputmode="numeric" placeholder="0"><span class="fhint" id="bk-att-h">&mdash;</span></label>
+    <label class="field"><span class="flabel">Super strength doses</span>
+      <input id="bk-str" inputmode="numeric" placeholder="0"><span class="fhint" id="bk-str-h">&mdash;</span></label>
+    <label class="field"><span class="flabel">Super defence doses</span>
+      <input id="bk-def" inputmode="numeric" placeholder="0"><span class="fhint" id="bk-def-h">&mdash;</span></label>
+  </div>
+  <div class="grid3" style="margin-top:12px">
+    <label class="field"><span class="flabel">Crystal shards</span>
+      <input id="bk-shard" inputmode="numeric" placeholder="0"><span class="fhint">10 dust each</span></label>
+    <label class="field"><span class="flabel">Crystal dust</span>
+      <input id="bk-dust" inputmode="numeric" placeholder="0"><span class="fhint">1 per dose of divine</span></label>
+    <label class="field"><span class="flabel">Amylase crystals</span>
+      <input id="bk-amyl" inputmode="numeric" placeholder="0"><span class="fhint">1 per dose of stamina</span></label>
+  </div>
+  <div class="grid3" style="margin-top:12px">
+    <label class="field"><span class="flabel">Energy potion doses</span>
+      <input id="bk-energy" inputmode="numeric" placeholder="0"><span class="fhint">run supplies</span></label>
+    <label class="field"><span class="flabel">Super energy doses</span>
+      <input id="bk-senergy" inputmode="numeric" placeholder="0"><span class="fhint">turns into stamina</span></label>
+    <label class="field"><span class="flabel">Stamina doses</span>
+      <input id="bk-stam" inputmode="numeric" placeholder="0"><span class="fhint">run supplies</span></label>
+  </div>
+  <div id="bank-body"></div>
+</section>
+
+<section class="card hide" id="scp-card">
+  <h2>Super combat chain</h2>
+  <div id="scp-body"></div>
+</section>
+
+<section class="card">
+  <h2>Paste</h2>
+  <div class="grid3">
+    <label class="field"><span class="flabel">Mox paste already banked</span>
+      <input id="paste-mox" inputmode="numeric" placeholder="0" style="border-bottom-color:var(--mox)"><span class="fhint">green</span></label>
+    <label class="field"><span class="flabel">Aga paste already banked</span>
+      <input id="paste-aga" inputmode="numeric" placeholder="0" style="border-bottom-color:var(--aga)"><span class="fhint">blue</span></label>
+    <label class="field"><span class="flabel">Lye paste already banked</span>
+      <input id="paste-lye" inputmode="numeric" placeholder="0" style="border-bottom-color:var(--lye)"><span class="fhint">red</span></label>
+  </div>
+  <div class="vials" id="vials"></div>
+  <p class="foot" id="paste-foot"></p>
+</section>
+
+<section class="card result">
+  <h2>What you get</h2>
+  <div class="statrow">
+    <div class="stat big accent"><span class="sv" id="s-xp">+0</span><span class="sl">Herblore xp</span></div>
+    <div class="stat big"><span class="sv" id="s-level">60</span><span class="sl">level you land on</span></div>
+    <div class="stat"><span class="sv" id="s-total">0</span><span class="sl">total xp after</span></div>
+    <div class="stat"><span class="sv" id="s-next">0</span><span class="sl" id="s-nextlabel">xp to next</span></div>
+  </div>
+  <div class="bar"><div class="barfill" id="bar-fill"></div><span class="barlabel" id="bar-label"></span></div>
+  <p class="foot" id="goal-foot"></p>
+
+  <div class="split">
+    <div><h3>Mixology</h3><div id="mix-lines"></div></div>
+    <div><h3>Potions made</h3><div id="potion-lines"></div></div>
+  </div>
+
+  <div id="sec-block" class="hide">
+    <h3 class="secheader">Secondaries to gather</h3>
+    <div class="secs" id="secs"></div>
+    <p class="foot" id="sec-foot"></p>
+  </div>
+
+  <div id="mile-block" class="hide">
+    <h3 class="secheader">Unlocked along the way</h3>
+    <div class="secs" id="miles"></div>
+  </div>
+</section>
+
+<details class="how"><summary>How it\'s worked out</summary><p>
+  Order xp is modelled on the wiki's order weights for every base you have unlocked, and the sim re-checks your level
+  as xp comes in, so unlocking Mixalot mid-grind is accounted for. Multi-step potions (stamina, extended antifire,
+  divine, sanfew) are not modelled. Goggles also save the toadflax in antidote+ (unf) and the irit in antidote++ (unf),
+  which is not counted here.
+</p></details>

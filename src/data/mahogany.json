@@ -1,0 +1,40 @@
+{
+  "_source": "OSRS Wiki: Mahogany Homes (Experience costs, Experience rates, Rewards), Mahogany Homes Reward Shop, Sawmill, Plank Make, Managing Miscellania. Read 2026-11-12.",
+  "tiers": [
+    { "id": "beginner", "name": "Beginner", "level": 1, "plank": "plank", "planks": 10.06, "bars": 0.40, "xp": 879.3, "points": 2,
+      "xpHr": [30000, 35000], "xpHrSack": [35000, 40000] },
+    { "id": "novice", "name": "Novice", "level": 20, "plank": "oak", "planks": 10.09, "bars": 0.40, "xp": 1894.1, "points": 3,
+      "xpHr": [65000, 75000], "xpHrSack": [75000, 85000] },
+    { "id": "adept", "name": "Adept", "level": 50, "plank": "teak", "planks": 11.63, "bars": 0.49, "xp": 3260.2, "points": 4,
+      "xpHr": [130000, 150000], "xpHrSack": [155000, 200000] },
+    { "id": "expert", "name": "Expert", "level": 70, "plank": "mahogany", "planks": 12.85, "bars": 0.52, "xp": 4378.8, "points": 5,
+      "xpHr": [165000, 190000], "xpHrSack": [190000, 270000] }
+  ],
+  "_tiers": "Planks, steel bars and xp are the wiki's per-contract averages over every house layout (xp includes the completion bonus). Hourly xp ranges are the wiki's estimates.",
+  "planks": {
+    "plank":    { "name": "Plank",          "log": "Logs",          "sawmill": 100,  "plankMake": 70 },
+    "oak":      { "name": "Oak plank",      "log": "Oak logs",      "sawmill": 250,  "plankMake": 175 },
+    "teak":     { "name": "Teak plank",     "log": "Teak logs",     "sawmill": 500,  "plankMake": 350 },
+    "mahogany": { "name": "Mahogany plank", "log": "Mahogany logs", "sawmill": 1500, "plankMake": 1050 }
+  },
+  "plankMake": { "magic": 86, "xp": 90, "runes": { "Earth rune": 15, "Astral rune": 2, "Nature rune": 1 }, "perHour": 1850 },
+  "miscellania": {
+    "_note": "Maximum daily yield with Royal Trouble, 10 workers on hardwood, 100% approval and at least 750k in the coffers (75k a day taken).",
+    "dailyWage": 75000,
+    "options": {
+      "teak":     { "teak": 301, "mahogany": 0 },
+      "mahogany": { "teak": 0,   "mahogany": 223 },
+      "both":     { "teak": 121, "mahogany": 121 }
+    }
+  },
+  "outfitSetBonus": 0.005,
+  "rewards": [
+    { "id": "sack", "name": "Plank sack", "cost": 350, "effect": "Faster contracts" },
+    { "id": "hat", "name": "Carpenter's helmet", "cost": 400, "xpBoost": 0.004, "outfit": true },
+    { "id": "top", "name": "Carpenter's shirt", "cost": 800, "xpBoost": 0.008, "outfit": true },
+    { "id": "legs", "name": "Carpenter's trousers", "cost": 600, "xpBoost": 0.006, "outfit": true },
+    { "id": "boots", "name": "Carpenter's boots", "cost": 200, "xpBoost": 0.002, "outfit": true },
+    { "id": "saw", "name": "Amy's saw", "cost": 500, "effect": "Equippable saw" },
+    { "id": "blueprints", "name": "Hosidius blueprints", "cost": 2000, "effect": "Cosmetic" }
+  ]
+}

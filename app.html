@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Iron Tools · Old School RuneScape calculators</title>
+<meta name="description" content="Skilling planners for Old School RuneScape ironmen, built on the OSRS Wiki's numbers.">
+<meta name="theme-color" content="#1a2227">
+<link rel="icon" href="./favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Instrument+Sans:wght@400;500;600;700&family=Silkscreen&display=swap" rel="stylesheet">
+</head>
+<body class="booting">
+
+<div id="world" aria-hidden="true">
+  <div id="cam">
+    <div id="map"></div>
+    <svg id="pins" viewBox="0 0 3000 2125" preserveAspectRatio="xMidYMid slice"><g id="markers"></g></svg>
+  </div>
+</div>
+<div id="scrim"></div>
+
+<aside id="side">
+  <div class="side-top">
+    <a class="brand" href="#/" aria-label="Iron Tools, back to the map">
+      <span class="helm" aria-hidden="true"></span>
+      <b>Iron Tools</b>
+    </a>
+    <button id="menu" class="icon-btn" type="button" aria-label="Open the calculator list" aria-expanded="false">
+      <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+
+  <div class="side-body">
+    <form id="rsn" autocomplete="off">
+      <label for="rsn-name">Your stats</label>
+      <div class="rsn-row">
+        <input id="rsn-name" type="text" maxlength="12" spellcheck="false" placeholder="RuneScape name">
+        <button id="rsn-go" type="submit" aria-label="Load stats from the hiscores">
+          <svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5"/></svg>
+        </button>
+      </div>
+      <p id="rsn-note" role="status" aria-live="polite"></p>
+    </form>
+
+    <nav id="nav" aria-label="Calculators"></nav>
+
+    <a class="side-map" href="#/">
+      <svg viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg>
+      World map
+    </a>
+  </div>
+</aside>
+
+<main id="stage">
+  <section id="home">
+    <h1>Plan the grind.</h1>
+    <p>Pick a calculator on the map or in the list. Your levels fill in from the hiscores.</p>
+  </section>
+  <div id="views"></div>
+</main>
+
+<div id="intro">
+  <div class="tele" id="tele">
+    <div class="orb"></div>
+    <div class="burst"></div>
+    <div class="shock"></div>
+  </div>
+  <div class="cast"></div>
+  <div class="intro-brand">
+    <div class="helm" aria-hidden="true"></div>
+    <p>IRON TOOLS</p>
+  </div>
+  <p class="skip">Click anywhere to skip</p>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

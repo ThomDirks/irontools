@@ -1,0 +1,121 @@
+/* mixology - original stylesheet, every selector scoped to #view-mixology */
+#view-mixology{
+  --ink:#0E1317; --panel:#151D23; --panel2:#1B242B; --line:#28333C;
+  --text:#E3EAEF; --dim:#8CA0AE; --mox:#5FB865; --aga:#4D8CD8; --lye:#D2564F; --brass:#C9A24B;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+#view-mixology,#view-mixology *{box-sizing:border-box;}
+#view-mixology,#view-mixology{margin:0; background:var(--ink);}
+#view-mixology{color:var(--text); font-family:var(--sans); padding:26px 20px 46px;
+  font-size:14px; line-height:1.45; -webkit-text-size-adjust:100%;}
+#view-mixology h1{font-family:var(--serif); font-size:32px; font-weight:600; letter-spacing:-.4px; margin:2px 0 6px;}
+#view-mixology h2{font-family:var(--serif); font-size:19px; font-weight:600; margin:0 0 14px; letter-spacing:-.2px;}
+#view-mixology h3{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--dim); margin:0 0 10px;}
+#view-mixology p{margin:0;}
+#view-mixology .eyebrow{font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--brass);}
+#view-mixology .sub{color:var(--dim); max-width:46ch;}
+#view-mixology .top{display:flex; justify-content:space-between; align-items:flex-start; gap:20px;
+  max-width:1000px; margin:0 auto 22px; padding-bottom:20px; border-bottom:1px solid var(--line);}
+#view-mixology .lvlbox{text-align:right; border-right:2px solid var(--brass); padding-right:14px; flex:none;}
+#view-mixology .lvlnum{display:block; font-family:var(--serif); font-size:52px; line-height:.9; color:var(--brass);}
+#view-mixology .lvlcap{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--dim);}
+#view-mixology .card{max-width:1000px; margin:0 auto 16px; background:var(--panel);
+  border:1px solid var(--line); border-radius:4px; padding:18px 18px 20px;}
+#view-mixology .card.result{border-color:#3A4A56; background:linear-gradient(180deg,#182029,#151D23);}
+#view-mixology .cardhead{display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;}
+#view-mixology .cardhead h2{margin-bottom:14px;}
+#view-mixology .btnrow{display:flex; gap:8px; flex-wrap:wrap;}
+#view-mixology .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+#view-mixology .grid3.spaced{margin-top:14px;}
+#view-mixology .field{display:flex; flex-direction:column; gap:5px;}
+#view-mixology .flabel{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--dim);}
+#view-mixology .fhint{font-size:11px; color:var(--dim); font-family:var(--mono); min-height:15px;}
+#view-mixology input,#view-mixology select{
+  background:var(--panel2); color:var(--text); border:1px solid var(--line);
+  border-bottom:2px solid var(--line); border-radius:3px; padding:7px 8px;
+  font-family:var(--mono); font-size:13px; width:100%;
+}
+#view-mixology select{font-family:var(--sans);}
+#view-mixology input:focus,#view-mixology select:focus{outline:2px solid var(--brass); outline-offset:1px; border-color:var(--brass);}
+#view-mixology .chips{display:flex; flex-wrap:wrap; gap:8px;}
+#view-mixology .chip{display:flex; align-items:center; gap:8px; background:var(--panel2); color:var(--dim);
+  border:1px solid var(--line); border-radius:3px; padding:7px 11px; cursor:pointer;
+  font-family:var(--sans); font-size:12.5px; text-align:left;}
+#view-mixology .chip em{display:block; font-style:normal; font-size:10.5px; opacity:.7;}
+#view-mixology .chip .tick{width:15px; height:15px; border:1px solid var(--line); border-radius:2px;
+  display:grid; place-items:center; font-size:10px; flex:none; color:transparent;}
+#view-mixology .chip[aria-pressed="true"]{color:var(--text); border-color:var(--brass);}
+#view-mixology .chip[aria-pressed="true"] .tick{background:var(--brass); border-color:var(--brass); color:#12181D;}
+#view-mixology .chip:hover{border-color:#42525E;}
+#view-mixology button.ghost{background:transparent; color:var(--dim); border:1px solid var(--line);
+  border-radius:3px; padding:6px 10px; font-size:12px; cursor:pointer; font-family:var(--sans);}
+#view-mixology button.ghost:hover{color:var(--text); border-color:var(--brass);}
+#view-mixology button:focus-visible,#view-mixology input:focus-visible,#view-mixology select:focus-visible{outline:2px solid var(--brass); outline-offset:2px;}
+#view-mixology .tablewrap{overflow-x:auto; margin:0 -4px;}
+#view-mixology table{width:100%; border-collapse:collapse; min-width:730px;}
+#view-mixology th{font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--dim);
+  font-weight:600; text-align:center; padding:0 8px 8px; border-bottom:1px solid var(--line);}
+#view-mixology th.l{text-align:left;}
+#view-mixology th.r{text-align:right;}
+#view-mixology td{padding:5px 8px; border-bottom:1px solid #1E272E; text-align:center; vertical-align:middle;}
+#view-mixology td.l{text-align:left;}
+#view-mixology td.r{text-align:right;}
+#view-mixology tr.live td{background:#19222A;}
+#view-mixology tr.live .herbname{color:var(--text);}
+#view-mixology .herbname{color:var(--dim); white-space:nowrap; font-size:13px;}
+#view-mixology .dot{display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:7px;}
+#view-mixology .pasteqty{font-family:var(--mono); font-size:10.5px; color:var(--dim); opacity:.6; margin-left:8px;}
+#view-mixology td input{width:66px; text-align:center; padding:5px 4px;}
+#view-mixology td select{min-width:188px; font-size:12.5px; padding:5px 6px;}
+#view-mixology .mono{font-family:var(--mono); font-size:12.5px;}
+#view-mixology .held{color:var(--brass);}
+#view-mixology .out{color:var(--dim); font-size:12px;}
+#view-mixology .lock{display:inline-block; margin-left:6px; font-size:10px; color:var(--lye); letter-spacing:.06em;}
+#view-mixology .statrow{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px;}
+#view-mixology .stat{background:var(--panel2); border:1px solid var(--line); border-radius:3px; padding:11px 12px;}
+#view-mixology .stat .sv{display:block; font-family:var(--mono); font-size:19px; letter-spacing:-.5px;}
+#view-mixology .stat.big .sv{font-family:var(--serif); font-size:30px; letter-spacing:-.5px;}
+#view-mixology .stat.accent .sv{color:var(--brass);}
+#view-mixology .stat .sl{font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--dim);}
+#view-mixology .bar{position:relative; height:26px; background:var(--panel2); border:1px solid var(--line);
+  border-radius:3px; overflow:hidden;}
+#view-mixology .barfill{height:100%; width:0; background:linear-gradient(90deg,#8A6E2E,var(--brass)); transition:width .35s ease;}
+#view-mixology .barlabel{position:absolute; inset:0; display:grid; place-items:center; font-size:11px;
+  letter-spacing:.06em; color:var(--text); font-weight:700; text-shadow:0 1px 3px rgba(0,0,0,.75);}
+#view-mixology .vials{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px;}
+#view-mixology .vial{display:flex; gap:12px; align-items:flex-end;}
+#view-mixology .tube{position:relative; width:34px; height:96px; background:var(--panel2);
+  border:1px solid var(--line); border-radius:3px 3px 12px 12px; overflow:hidden; flex:none;}
+#view-mixology .fill{position:absolute; left:0; right:0; bottom:0; height:0; opacity:.85; transition:height .35s ease;}
+#view-mixology .capline{position:absolute; left:0; right:0; border-top:1px dashed #6A7A86; z-index:2; display:none;}
+#view-mixology .capline span{position:absolute; left:38px; top:-7px; font-size:9px; color:var(--dim); white-space:nowrap;}
+#view-mixology .vlabel{display:flex; flex-direction:column; gap:1px; padding-bottom:4px;}
+#view-mixology .vlabel strong{font-family:var(--mono); font-size:17px;}
+#view-mixology .vlabel span{font-size:11px; color:var(--dim);}
+#view-mixology .vlabel .tiny{font-size:10px; opacity:.7;}
+#view-mixology .split{display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:22px;}
+#view-mixology .line{display:flex; justify-content:space-between; gap:14px; padding:5px 0;
+  border-bottom:1px solid #1E272E; font-size:13px;}
+#view-mixology .line.sub{color:var(--dim); font-size:12px;}
+#view-mixology .line.strong{color:var(--brass); font-weight:600;}
+#view-mixology .secheader{margin-top:22px;}
+#view-mixology .secs{display:flex; flex-wrap:wrap; gap:7px;}
+#view-mixology .sec{background:var(--panel2); border:1px solid var(--line); border-radius:3px;
+  padding:4px 9px; font-size:12px; color:var(--dim);}
+#view-mixology .sec strong{font-family:var(--mono); color:var(--text);}
+#view-mixology .foot{font-size:12px; color:var(--dim); margin-top:12px;}
+#view-mixology .foot.good{color:var(--mox);}
+#view-mixology .foot strong{color:var(--text);}
+#view-mixology .warn{font-size:12.5px; color:var(--lye); margin-top:12px;}
+#view-mixology .empty{font-size:12.5px; color:var(--dim); font-style:italic; margin-top:6px;}
+#view-mixology .disclaimer{max-width:1000px; margin:22px auto 0; font-size:11.5px; color:var(--dim); opacity:.75; line-height:1.6;}
+#view-mixology .hide{display:none !important;}
+@media (max-width:820px){#view-mixology .grid3,#view-mixology .split,#view-mixology .vials{grid-template-columns:1fr;}
+#view-mixology .statrow{grid-template-columns:1fr 1fr;}
+#view-mixology .top{flex-direction:column;}
+#view-mixology .lvlbox{text-align:left; border-right:none; border-left:2px solid var(--brass); padding:0 0 0 12px;}
+#view-mixology h1{font-size:26px;}}
+@media (prefers-reduced-motion:reduce){#view-mixology,#view-mixology *{transition:none !important;}}

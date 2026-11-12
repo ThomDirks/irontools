@@ -1,0 +1,38 @@
+/* Iron Tools design tokens.
+   Wrought iron and parchment, with the gold of a level-up as the one accent. */
+:root {
+  --iron-950: #11171b;
+  --iron-900: #1a2227;
+  --iron-850: #1f292f;
+  --iron-800: #253139;
+  --iron-700: #2f3d46;
+  --iron-600: #3e4f5a;
+  --iron-500: #5a6d78;
+
+  --bone: #ece5d3;
+  --bone-2: #c9c3b3;
+  --slate: #93a1a8;
+  --slate-2: #6e7d85;
+
+  --gold: #e9c46a;
+  --gold-hi: #f6dc94;
+  --gold-lo: #a9862f;
+  --gold-wash: rgba(233, 196, 106, .12);
+
+  --moss: #9ccb78;
+  --moss-wash: rgba(156, 203, 120, .12);
+  --ember: #ef8a6b;
+  --ember-wash: rgba(239, 138, 107, .12);
+  --sky: #86b9d9;
+
+  --ui: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --pixel: "Silkscreen", ui-monospace, monospace;
+  --mark: "Cinzel", Georgia, serif;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+
+  --ease: cubic-bezier(.22, .8, .24, 1);
+  --side-w: 264px;
+}

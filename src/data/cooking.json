@@ -1,0 +1,947 @@
+{
+ "_source": "OSRS Wiki, {{Recipe}} and {{Skilling success chart}} on each cooked food page. Read 2026-11-12. Success = (1 + floor(low*(99-L)/98 + high*(L-1)/98 + 0.5)) / 256, clamped 0..1 (Module:Skilling success chart).",
+ "notes": {
+  "karambwan": "Needs Tai Bwo Wannai Trio to cook properly.",
+  "swordfish": "Cooking gauntlets on a fire give range odds; no effect at Hosidius."
+ },
+ "fish": [
+  {
+   "id": "shrimps",
+   "name": "Shrimps",
+   "raw": "Raw shrimps",
+   "level": 1,
+   "xp": 30,
+   "curves": {
+    "fire": [
+     128,
+     512
+    ],
+    "range": [
+     128,
+     512
+    ],
+    "hos5": [
+     140,
+     524
+    ],
+    "hos10": [
+     153,
+     537
+    ],
+    "lumbridge": [
+     138,
+     532
+    ]
+   }
+  },
+  {
+   "id": "anchovies",
+   "name": "Anchovies",
+   "raw": "Raw anchovies",
+   "level": 1,
+   "xp": 30,
+   "curves": {
+    "fire": [
+     128,
+     512
+    ],
+    "range": [
+     128,
+     512
+    ],
+    "hos5": [
+     140,
+     524
+    ],
+    "hos10": [
+     153,
+     537
+    ],
+    "lumbridge": [
+     138,
+     532
+    ]
+   }
+  },
+  {
+   "id": "sardine",
+   "name": "Sardine",
+   "raw": "Raw sardine",
+   "level": 1,
+   "xp": 40,
+   "curves": {
+    "fire": [
+     118,
+     492
+    ],
+    "range": [
+     118,
+     492
+    ],
+    "hos5": [
+     130,
+     504
+    ],
+    "hos10": [
+     143,
+     517
+    ],
+    "lumbridge": [
+     128,
+     512
+    ]
+   }
+  },
+  {
+   "id": "herring",
+   "name": "Herring",
+   "raw": "Raw herring",
+   "level": 5,
+   "xp": 50,
+   "curves": {
+    "fire": [
+     108,
+     472
+    ],
+    "range": [
+     108,
+     472
+    ],
+    "hos5": [
+     120,
+     484
+    ],
+    "hos10": [
+     133,
+     497
+    ],
+    "lumbridge": [
+     118,
+     492
+    ]
+   }
+  },
+  {
+   "id": "mackerel",
+   "name": "Mackerel",
+   "raw": "Raw mackerel",
+   "level": 10,
+   "xp": 60,
+   "curves": {
+    "fire": [
+     98,
+     452
+    ],
+    "range": [
+     98,
+     452
+    ],
+    "hos5": [
+     110,
+     464
+    ],
+    "hos10": [
+     123,
+     477
+    ],
+    "lumbridge": [
+     108,
+     472
+    ]
+   }
+  },
+  {
+   "id": "trout",
+   "name": "Trout",
+   "raw": "Raw trout",
+   "level": 15,
+   "xp": 70,
+   "curves": {
+    "fire": [
+     88,
+     432
+    ],
+    "range": [
+     88,
+     432
+    ],
+    "hos5": [
+     100,
+     444
+    ],
+    "hos10": [
+     113,
+     457
+    ],
+    "lumbridge": [
+     98,
+     452
+    ]
+   }
+  },
+  {
+   "id": "cod",
+   "name": "Cod",
+   "raw": "Raw cod",
+   "level": 18,
+   "xp": 75,
+   "curves": {
+    "fire": [
+     83,
+     422
+    ],
+    "range": [
+     88,
+     432
+    ],
+    "hos5": [
+     100,
+     444
+    ],
+    "hos10": [
+     113,
+     457
+    ],
+    "lumbridge": [
+     93,
+     442
+    ]
+   }
+  },
+  {
+   "id": "pike",
+   "name": "Pike",
+   "raw": "Raw pike",
+   "level": 20,
+   "xp": 80,
+   "curves": {
+    "fire": [
+     78,
+     412
+    ],
+    "range": [
+     78,
+     412
+    ],
+    "hos5": [
+     90,
+     424
+    ],
+    "hos10": [
+     103,
+     437
+    ],
+    "lumbridge": [
+     88,
+     432
+    ]
+   }
+  },
+  {
+   "id": "salmon",
+   "name": "Salmon",
+   "raw": "Raw salmon",
+   "level": 25,
+   "xp": 90,
+   "curves": {
+    "fire": [
+     68,
+     392
+    ],
+    "range": [
+     68,
+     392
+    ],
+    "hos5": [
+     80,
+     404
+    ],
+    "hos10": [
+     93,
+     417
+    ],
+    "lumbridge": [
+     78,
+     402
+    ]
+   }
+  },
+  {
+   "id": "red-crab-meat",
+   "name": "Red crab meat",
+   "raw": "Raw red crab meat",
+   "level": 21,
+   "xp": 85,
+   "curves": {
+    "fire": [
+     36,
+     426
+    ],
+    "range": [
+     36,
+     466
+    ],
+    "hos5": [
+     48,
+     478
+    ],
+    "hos10": [
+     61,
+     491
+    ]
+   }
+  },
+  {
+   "id": "slimy-eel",
+   "name": "Slimy eel",
+   "raw": "Raw slimy eel",
+   "level": 28,
+   "xp": 95,
+   "curves": {
+    "fire": [
+     63,
+     382
+    ],
+    "range": [
+     63,
+     382
+    ],
+    "hos5": [
+     75,
+     394
+    ],
+    "hos10": [
+     88,
+     407
+    ]
+   }
+  },
+  {
+   "id": "tuna",
+   "name": "Tuna",
+   "raw": "Raw tuna",
+   "level": 30,
+   "xp": 100,
+   "curves": {
+    "fire": [
+     58,
+     372
+    ],
+    "range": [
+     58,
+     372
+    ],
+    "hos5": [
+     70,
+     384
+    ],
+    "hos10": [
+     83,
+     397
+    ]
+   }
+  },
+  {
+   "id": "karambwan",
+   "name": "Karambwan",
+   "raw": "Raw karambwan",
+   "level": 30,
+   "xp": 190,
+   "curves": {
+    "fire": [
+     70,
+     255
+    ],
+    "range": [
+     70,
+     255
+    ],
+    "hos5": [
+     82,
+     267
+    ],
+    "hos10": [
+     95,
+     280
+    ]
+   }
+  },
+  {
+   "id": "rainbow-fish",
+   "name": "Rainbow fish",
+   "raw": "Raw rainbow fish",
+   "level": 35,
+   "xp": 110,
+   "curves": {
+    "fire": [
+     56,
+     370
+    ],
+    "range": [
+     56,
+     370
+    ],
+    "hos5": [
+     68,
+     382
+    ],
+    "hos10": [
+     81,
+     395
+    ]
+   }
+  },
+  {
+   "id": "cave-eel",
+   "name": "Cave eel",
+   "raw": "Raw cave eel",
+   "level": 38,
+   "xp": 115,
+   "curves": {
+    "fire": [
+     38,
+     332
+    ],
+    "range": [
+     38,
+     332
+    ],
+    "hos5": [
+     50,
+     344
+    ],
+    "hos10": [
+     63,
+     357
+    ]
+   }
+  },
+  {
+   "id": "lobster",
+   "name": "Lobster",
+   "raw": "Raw lobster",
+   "level": 40,
+   "xp": 120,
+   "curves": {
+    "fire": [
+     38,
+     332
+    ],
+    "range": [
+     38,
+     332
+    ],
+    "hos5": [
+     50,
+     344
+    ],
+    "hos10": [
+     63,
+     357
+    ],
+    "gauntlets": [
+     55,
+     368
+    ],
+    "hos5g": [
+     67,
+     380
+    ],
+    "hos10g": [
+     80,
+     393
+    ]
+   }
+  },
+  {
+   "id": "bass",
+   "name": "Bass",
+   "raw": "Raw bass",
+   "level": 43,
+   "xp": 130,
+   "curves": {
+    "fire": [
+     33,
+     312
+    ],
+    "range": [
+     33,
+     312
+    ],
+    "hos5": [
+     45,
+     324
+    ],
+    "hos10": [
+     58,
+     337
+    ]
+   }
+  },
+  {
+   "id": "swordfish",
+   "name": "Swordfish",
+   "raw": "Raw swordfish",
+   "level": 45,
+   "xp": 140,
+   "curves": {
+    "fire": [
+     18,
+     292
+    ],
+    "range": [
+     30,
+     310
+    ],
+    "hos5": [
+     42,
+     322
+    ],
+    "hos10": [
+     55,
+     335
+    ],
+    "gauntlets": [
+     30,
+     310
+    ]
+   }
+  },
+  {
+   "id": "blue-crab-meat",
+   "name": "Blue crab meat",
+   "raw": "Raw blue crab meat",
+   "level": 48,
+   "xp": 145,
+   "curves": {
+    "fire": [
+     -80,
+     320
+    ],
+    "range": [
+     -80,
+     352
+    ],
+    "hos5": [
+     -68,
+     364
+    ],
+    "hos10": [
+     -55,
+     377
+    ]
+   }
+  },
+  {
+   "id": "swordtip-squid",
+   "name": "Swordtip squid",
+   "raw": "Raw swordtip squid",
+   "level": 56,
+   "xp": 150,
+   "curves": {
+    "fire": [
+     -150,
+     295
+    ],
+    "range": [
+     -150,
+     325
+    ],
+    "hos5": [
+     -138,
+     337
+    ],
+    "hos10": [
+     -125,
+     350
+    ]
+   }
+  },
+  {
+   "id": "monkfish",
+   "name": "Monkfish",
+   "raw": "Raw monkfish",
+   "level": 62,
+   "xp": 150,
+   "curves": {
+    "fire": [
+     11,
+     275
+    ],
+    "range": [
+     13,
+     280
+    ],
+    "hos5": [
+     25,
+     292
+    ],
+    "hos10": [
+     38,
+     305
+    ],
+    "gauntlets": [
+     24,
+     290
+    ],
+    "hos5g": [
+     36,
+     302
+    ],
+    "hos10g": [
+     49,
+     315
+    ]
+   }
+  },
+  {
+   "id": "giant-krill",
+   "name": "Giant krill",
+   "raw": "Raw giant krill",
+   "level": 69,
+   "xp": 177.5,
+   "curves": {
+    "fire": [
+     -229,
+     242
+    ],
+    "range": [
+     -239,
+     252
+    ],
+    "hos5": [
+     -227,
+     264
+    ],
+    "hos10": [
+     -214,
+     277
+    ]
+   }
+  },
+  {
+   "id": "jumbo-squid",
+   "name": "Jumbo squid",
+   "raw": "Raw jumbo squid",
+   "level": 71,
+   "xp": 180,
+   "curves": {
+    "fire": [
+     -260,
+     230
+    ],
+    "range": [
+     -260,
+     250
+    ],
+    "hos5": [
+     -248,
+     262
+    ],
+    "hos10": [
+     -235,
+     275
+    ]
+   }
+  },
+  {
+   "id": "haddock",
+   "name": "Haddock",
+   "raw": "Raw haddock",
+   "level": 73,
+   "xp": 180,
+   "curves": {
+    "fire": [
+     -330,
+     237
+    ],
+    "range": [
+     -320,
+     247
+    ],
+    "hos5": [
+     -308,
+     259
+    ],
+    "hos10": [
+     -295,
+     272
+    ]
+   }
+  },
+  {
+   "id": "rainbow-crab-meat",
+   "name": "Rainbow crab meat",
+   "raw": "Raw rainbow crab meat",
+   "level": 77,
+   "xp": 200,
+   "curves": {
+    "fire": [
+     -325,
+     230
+    ],
+    "range": [
+     -325,
+     250
+    ],
+    "hos5": [
+     -313,
+     262
+    ],
+    "hos10": [
+     -300,
+     275
+    ]
+   }
+  },
+  {
+   "id": "yellowfin",
+   "name": "Yellowfin",
+   "raw": "Raw yellowfin",
+   "level": 79,
+   "xp": 200,
+   "curves": {
+    "fire": [
+     -505,
+     232
+    ],
+    "range": [
+     -495,
+     242
+    ],
+    "hos5": [
+     -483,
+     254
+    ],
+    "hos10": [
+     -470,
+     267
+    ]
+   }
+  },
+  {
+   "id": "shark",
+   "name": "Shark",
+   "raw": "Raw shark",
+   "level": 80,
+   "xp": 210,
+   "curves": {
+    "fire": [
+     1,
+     202
+    ],
+    "range": [
+     1,
+     232
+    ],
+    "hos5": [
+     13,
+     244
+    ],
+    "hos10": [
+     26,
+     257
+    ],
+    "gauntlets": [
+     15,
+     270
+    ],
+    "hos5g": [
+     27,
+     282
+    ],
+    "hos10g": [
+     40,
+     295
+    ]
+   }
+  },
+  {
+   "id": "sea-turtle",
+   "name": "Sea turtle",
+   "raw": "Raw sea turtle",
+   "level": 82,
+   "xp": 211.3,
+   "curves": {
+    "fire": [
+     1,
+     202
+    ],
+    "range": [
+     1,
+     222
+    ],
+    "hos5": [
+     13,
+     234
+    ],
+    "hos10": [
+     26,
+     247
+    ]
+   }
+  },
+  {
+   "id": "halibut",
+   "name": "Halibut",
+   "raw": "Raw halibut",
+   "level": 83,
+   "xp": 212.5,
+   "curves": {
+    "fire": [
+     -694,
+     227
+    ],
+    "range": [
+     -684,
+     237
+    ],
+    "hos5": [
+     -672,
+     249
+    ],
+    "hos10": [
+     -659,
+     262
+    ]
+   }
+  },
+  {
+   "id": "anglerfish",
+   "name": "Anglerfish",
+   "raw": "Raw anglerfish",
+   "level": 84,
+   "xp": 230,
+   "curves": {
+    "fire": [
+     1,
+     200
+    ],
+    "range": [
+     1,
+     220
+    ],
+    "hos5": [
+     13,
+     232
+    ],
+    "hos10": [
+     26,
+     245
+    ],
+    "gauntlets": [
+     12,
+     260
+    ],
+    "hos5g": [
+     24,
+     272
+    ],
+    "hos10g": [
+     37,
+     285
+    ]
+   }
+  },
+  {
+   "id": "bluefin",
+   "name": "Bluefin",
+   "raw": "Raw bluefin",
+   "level": 87,
+   "xp": 215,
+   "curves": {
+    "fire": [
+     -1007,
+     222
+    ],
+    "range": [
+     -997,
+     232
+    ],
+    "hos5": [
+     -985,
+     244
+    ],
+    "hos10": [
+     -972,
+     257
+    ]
+   }
+  },
+  {
+   "id": "dark-crab",
+   "name": "Dark crab",
+   "raw": "Raw dark crab",
+   "level": 90,
+   "xp": 215,
+   "curves": {
+    "fire": [
+     10,
+     222
+    ],
+    "range": [
+     10,
+     222
+    ],
+    "hos5": [
+     22,
+     234
+    ],
+    "hos10": [
+     35,
+     247
+    ]
+   }
+  },
+  {
+   "id": "manta-ray",
+   "name": "Manta ray",
+   "raw": "Raw manta ray",
+   "level": 91,
+   "xp": 216.3,
+   "curves": {
+    "fire": [
+     1,
+     202
+    ],
+    "range": [
+     1,
+     222
+    ],
+    "hos5": [
+     13,
+     234
+    ],
+    "hos10": [
+     26,
+     247
+    ]
+   }
+  },
+  {
+   "id": "marlin",
+   "name": "Marlin",
+   "raw": "Raw marlin",
+   "level": 91,
+   "xp": 225,
+   "curves": {
+    "fire": [
+     -1626,
+     217
+    ],
+    "range": [
+     -1616,
+     227
+    ],
+    "hos5": [
+     -1604,
+     239
+    ],
+    "hos10": [
+     -1591,
+     252
+    ]
+   }
+  }
+ ]
+}

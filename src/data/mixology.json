@@ -1,0 +1,702 @@
+{
+ "_source": "Moved from the original Iron Tools page; see the comments in the tool's source for where each table comes from.",
+ "HERBS": [
+  {
+   "id": "guam",
+   "name": "Guam leaf",
+   "paste": "mox",
+   "qty": 10
+  },
+  {
+   "id": "marrentill",
+   "name": "Marrentill",
+   "paste": "mox",
+   "qty": 13
+  },
+  {
+   "id": "tarromin",
+   "name": "Tarromin",
+   "paste": "mox",
+   "qty": 15
+  },
+  {
+   "id": "harralander",
+   "name": "Harralander",
+   "paste": "mox",
+   "qty": 20
+  },
+  {
+   "id": "ranarr",
+   "name": "Ranarr weed",
+   "paste": "lye",
+   "qty": 26
+  },
+  {
+   "id": "toadflax",
+   "name": "Toadflax",
+   "paste": "lye",
+   "qty": 32
+  },
+  {
+   "id": "irit",
+   "name": "Irit leaf",
+   "paste": "aga",
+   "qty": 30
+  },
+  {
+   "id": "avantoe",
+   "name": "Avantoe",
+   "paste": "lye",
+   "qty": 30
+  },
+  {
+   "id": "kwuarm",
+   "name": "Kwuarm",
+   "paste": "lye",
+   "qty": 33
+  },
+  {
+   "id": "huasca",
+   "name": "Huasca",
+   "paste": "aga",
+   "qty": 20
+  },
+  {
+   "id": "snapdragon",
+   "name": "Snapdragon",
+   "paste": "lye",
+   "qty": 40
+  },
+  {
+   "id": "cadantine",
+   "name": "Cadantine",
+   "paste": "aga",
+   "qty": 34
+  },
+  {
+   "id": "lantadyme",
+   "name": "Lantadyme",
+   "paste": "aga",
+   "qty": 40
+  },
+  {
+   "id": "dwarfweed",
+   "name": "Dwarf weed",
+   "paste": "aga",
+   "qty": 42
+  },
+  {
+   "id": "torstol",
+   "name": "Torstol",
+   "paste": "aga",
+   "qty": 44
+  }
+ ],
+ "POTIONS": {
+  "guam": [
+   {
+    "id": "attack",
+    "name": "Attack potion",
+    "lvl": 3,
+    "xp": 25,
+    "sec": [
+     {
+      "name": "Eye of newt",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "guamtar",
+    "name": "Guam tar",
+    "lvl": 19,
+    "xp": 30,
+    "sec": [
+     {
+      "name": "Swamp tar",
+      "qty": 15,
+      "save": false
+     }
+    ]
+   }
+  ],
+  "marrentill": [
+   {
+    "id": "antipoison",
+    "name": "Antipoison",
+    "lvl": 5,
+    "xp": 37.5,
+    "sec": [
+     {
+      "name": "Unicorn horn dust",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "marrtar",
+    "name": "Marrentill tar",
+    "lvl": 31,
+    "xp": 42.5,
+    "sec": [
+     {
+      "name": "Swamp tar",
+      "qty": 15,
+      "save": false
+     }
+    ]
+   }
+  ],
+  "tarromin": [
+   {
+    "id": "strength",
+    "name": "Strength potion",
+    "lvl": 12,
+    "xp": 50,
+    "sec": [
+     {
+      "name": "Limpwurt root",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "serum",
+    "name": "Serum 207",
+    "lvl": 15,
+    "xp": 50,
+    "sec": [
+     {
+      "name": "Ashes",
+      "qty": 1,
+      "save": false
+     }
+    ]
+   },
+   {
+    "id": "tarrtar",
+    "name": "Tarromin tar",
+    "lvl": 39,
+    "xp": 55,
+    "sec": [
+     {
+      "name": "Swamp tar",
+      "qty": 15,
+      "save": false
+     }
+    ]
+   }
+  ],
+  "harralander": [
+   {
+    "id": "compost",
+    "name": "Compost potion",
+    "lvl": 21,
+    "xp": 60,
+    "sec": [
+     {
+      "name": "Volcanic ash",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "restore",
+    "name": "Restore potion",
+    "lvl": 22,
+    "xp": 62.5,
+    "sec": [
+     {
+      "name": "Red spiders' eggs",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "energy",
+    "name": "Energy potion",
+    "lvl": 26,
+    "xp": 67.5,
+    "sec": [
+     {
+      "name": "Chocolate dust",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "combat",
+    "name": "Combat potion",
+    "lvl": 36,
+    "xp": 84,
+    "sec": [
+     {
+      "name": "Goat horn dust",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "harrtar",
+    "name": "Harralander tar",
+    "lvl": 44,
+    "xp": 72.5,
+    "sec": [
+     {
+      "name": "Swamp tar",
+      "qty": 15,
+      "save": false
+     }
+    ]
+   }
+  ],
+  "ranarr": [
+   {
+    "id": "defence",
+    "name": "Defence potion",
+    "lvl": 30,
+    "xp": 75,
+    "sec": [
+     {
+      "name": "White berries",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "prayer",
+    "name": "Prayer potion",
+    "lvl": 38,
+    "xp": 87.5,
+    "sec": [
+     {
+      "name": "Snape grass",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   }
+  ],
+  "toadflax": [
+   {
+    "id": "agility",
+    "name": "Agility potion",
+    "lvl": 34,
+    "xp": 80,
+    "sec": [
+     {
+      "name": "Toad's legs",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "antidoteplus",
+    "name": "Antidote+",
+    "lvl": 68,
+    "xp": 155,
+    "sec": [
+     {
+      "name": "Coconut milk",
+      "qty": 1,
+      "save": true
+     },
+     {
+      "name": "Yew roots",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "sarabrew",
+    "name": "Saradomin brew",
+    "lvl": 81,
+    "xp": 180,
+    "sec": [
+     {
+      "name": "Crushed nest",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   }
+  ],
+  "irit": [
+   {
+    "id": "superattack",
+    "name": "Super attack",
+    "lvl": 45,
+    "xp": 100,
+    "sec": [
+     {
+      "name": "Eye of newt",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "superantipoison",
+    "name": "Superantipoison",
+    "lvl": 48,
+    "xp": 106.3,
+    "sec": [
+     {
+      "name": "Unicorn horn dust",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "antidotepp",
+    "name": "Antidote++",
+    "lvl": 79,
+    "xp": 177.5,
+    "sec": [
+     {
+      "name": "Coconut milk",
+      "qty": 1,
+      "save": true
+     },
+     {
+      "name": "Magic roots",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   }
+  ],
+  "avantoe": [
+   {
+    "id": "fishing",
+    "name": "Fishing potion",
+    "lvl": 50,
+    "xp": 112.5,
+    "sec": [
+     {
+      "name": "Snape grass",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "superenergy",
+    "name": "Super energy",
+    "lvl": 52,
+    "xp": 117.5,
+    "sec": [
+     {
+      "name": "Mort myre fungus",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "hunter",
+    "name": "Hunter potion",
+    "lvl": 53,
+    "xp": 120,
+    "sec": [
+     {
+      "name": "Kebbit teeth dust",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   }
+  ],
+  "kwuarm": [
+   {
+    "id": "superstrength",
+    "name": "Super strength",
+    "lvl": 55,
+    "xp": 125,
+    "sec": [
+     {
+      "name": "Limpwurt root",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "weaponpoison",
+    "name": "Weapon poison",
+    "lvl": 60,
+    "xp": 137.5,
+    "sec": [
+     {
+      "name": "Dragon scale dust",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   }
+  ],
+  "huasca": [
+   {
+    "id": "prayerregen",
+    "name": "Prayer regeneration",
+    "lvl": 84,
+    "xp": 132,
+    "sec": [
+     {
+      "name": "Aldarium",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   }
+  ],
+  "snapdragon": [
+   {
+    "id": "superrestore",
+    "name": "Super restore",
+    "lvl": 63,
+    "xp": 142.5,
+    "sec": [
+     {
+      "name": "Red spiders' eggs",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   }
+  ],
+  "cadantine": [
+   {
+    "id": "superdefence",
+    "name": "Super defence",
+    "lvl": 66,
+    "xp": 150,
+    "sec": [
+     {
+      "name": "White berries",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   }
+  ],
+  "lantadyme": [
+   {
+    "id": "antifire",
+    "name": "Antifire potion",
+    "lvl": 69,
+    "xp": 157.5,
+    "sec": [
+     {
+      "name": "Dragon scale dust",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   },
+   {
+    "id": "magic",
+    "name": "Magic potion",
+    "lvl": 76,
+    "xp": 172.5,
+    "sec": [
+     {
+      "name": "Potato cactus",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   }
+  ],
+  "dwarfweed": [
+   {
+    "id": "ranging",
+    "name": "Ranging potion",
+    "lvl": 72,
+    "xp": 162.5,
+    "sec": [
+     {
+      "name": "Wine of Zamorak",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   }
+  ],
+  "torstol": [
+   {
+    "id": "zamorakbrew",
+    "name": "Zamorak brew",
+    "lvl": 78,
+    "xp": 175,
+    "sec": [
+     {
+      "name": "Jangerberries",
+      "qty": 1,
+      "save": true
+     }
+    ]
+   }
+  ]
+ },
+ "BASES": [
+  {
+   "id": "MMM",
+   "name": "Mammoth-might mix",
+   "mox": 30,
+   "aga": 0,
+   "lye": 0,
+   "xp": 190,
+   "rm": 20,
+   "ra": 0,
+   "rl": 0,
+   "lvl": 60,
+   "w": 5
+  },
+  {
+   "id": "AAA",
+   "name": "Alco-augmentator",
+   "mox": 0,
+   "aga": 30,
+   "lye": 0,
+   "xp": 190,
+   "rm": 0,
+   "ra": 20,
+   "rl": 0,
+   "lvl": 60,
+   "w": 5
+  },
+  {
+   "id": "LLL",
+   "name": "Liplack liquor",
+   "mox": 0,
+   "aga": 0,
+   "lye": 30,
+   "xp": 190,
+   "rm": 0,
+   "ra": 0,
+   "rl": 20,
+   "lvl": 60,
+   "w": 5
+  },
+  {
+   "id": "MMA",
+   "name": "Mystic mana amalgam",
+   "mox": 20,
+   "aga": 10,
+   "lye": 0,
+   "xp": 215,
+   "rm": 20,
+   "ra": 10,
+   "rl": 0,
+   "lvl": 63,
+   "w": 4
+  },
+  {
+   "id": "MML",
+   "name": "Marley's moonlight",
+   "mox": 20,
+   "aga": 0,
+   "lye": 10,
+   "xp": 240,
+   "rm": 20,
+   "ra": 0,
+   "rl": 10,
+   "lvl": 66,
+   "w": 4
+  },
+  {
+   "id": "AAM",
+   "name": "Azure aura mix",
+   "mox": 10,
+   "aga": 20,
+   "lye": 0,
+   "xp": 265,
+   "rm": 10,
+   "ra": 20,
+   "rl": 0,
+   "lvl": 69,
+   "w": 4
+  },
+  {
+   "id": "ALA",
+   "name": "Aqualux amalgam",
+   "mox": 0,
+   "aga": 20,
+   "lye": 10,
+   "xp": 290,
+   "rm": 0,
+   "ra": 20,
+   "rl": 10,
+   "lvl": 72,
+   "w": 4
+  },
+  {
+   "id": "MLL",
+   "name": "Megalite liquid",
+   "mox": 10,
+   "aga": 0,
+   "lye": 20,
+   "xp": 315,
+   "rm": 10,
+   "ra": 0,
+   "rl": 20,
+   "lvl": 75,
+   "w": 4
+  },
+  {
+   "id": "ALL",
+   "name": "Anti-leech lotion",
+   "mox": 0,
+   "aga": 10,
+   "lye": 20,
+   "xp": 340,
+   "rm": 0,
+   "ra": 10,
+   "rl": 20,
+   "lvl": 78,
+   "w": 4
+  },
+  {
+   "id": "MAL",
+   "name": "Mixalot",
+   "mox": 10,
+   "aga": 10,
+   "lye": 10,
+   "xp": 365,
+   "rm": 20,
+   "ra": 20,
+   "rl": 20,
+   "lvl": 81,
+   "w": 3
+  }
+ ],
+ "RECOMMENDED": {
+  "guam": "paste",
+  "marrentill": "paste",
+  "tarromin": "paste",
+  "harralander": "paste",
+  "ranarr": "prayer",
+  "toadflax": "sarabrew",
+  "irit": "superattack",
+  "avantoe": "superenergy",
+  "kwuarm": "superstrength",
+  "huasca": "paste",
+  "snapdragon": "superrestore",
+  "cadantine": "superdefence",
+  "lantadyme": "antifire",
+  "dwarfweed": "ranging",
+  "torstol": "zamorakbrew"
+ }
+}

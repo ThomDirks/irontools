@@ -1,0 +1,132 @@
+{
+ "_source": "Moved from the original Iron Tools page; see the comments in the tool's source for where each table comes from.",
+ "FURS": [
+  {
+   "name": "Moonlight antelope fur",
+   "craftXP": 2760,
+   "creature": "Moonlight antelope",
+   "huntLvl": 91,
+   "huntXP": 450,
+   "method": "Pitfall",
+   "xpHr": 160080
+  },
+  {
+   "name": "Sunlight antelope fur",
+   "craftXP": 2740,
+   "creature": "Sunlight antelope",
+   "huntLvl": 72,
+   "huntXP": 380,
+   "method": "Pitfall",
+   "xpHr": 158920
+  },
+  {
+   "name": "Dashing kebbit fur",
+   "craftXP": 2720,
+   "creature": "Dashing kebbit",
+   "huntLvl": 69,
+   "huntXP": 156,
+   "method": "Falconry",
+   "xpHr": 157760
+  },
+  {
+   "name": "Kyatt fur",
+   "craftXP": 2700,
+   "creature": "Sabre-toothed kyatt",
+   "huntLvl": 55,
+   "huntXP": 300,
+   "method": "Pitfall",
+   "xpHr": 156600
+  },
+  {
+   "name": "Dark kebbit fur",
+   "craftXP": 2700,
+   "creature": "Dark kebbit",
+   "huntLvl": 57,
+   "huntXP": 132,
+   "method": "Falconry",
+   "xpHr": 156600
+  },
+  {
+   "name": "Fox fur",
+   "craftXP": 2680,
+   "creature": "Pyre fox",
+   "huntLvl": 57,
+   "huntXP": 222,
+   "method": "Deadfall",
+   "xpHr": 155440
+  },
+  {
+   "name": "Spotted kebbit fur",
+   "craftXP": 2660,
+   "creature": "Spotted kebbit",
+   "huntLvl": 43,
+   "huntXP": 104,
+   "method": "Falconry",
+   "xpHr": 154280
+  },
+  {
+   "name": "Graahk fur",
+   "craftXP": 2640,
+   "creature": "Horned graahk",
+   "huntLvl": 41,
+   "huntXP": 240,
+   "method": "Pitfall",
+   "xpHr": 153120
+  },
+  {
+   "name": "Larupia fur",
+   "craftXP": 2620,
+   "creature": "Spined larupia",
+   "huntLvl": 31,
+   "huntXP": 180,
+   "method": "Pitfall",
+   "xpHr": 151960
+  },
+  {
+   "name": "Feldip weasel fur",
+   "craftXP": 2590,
+   "creature": "Feldip weasel",
+   "huntLvl": 7,
+   "huntXP": 48,
+   "method": "Tracking",
+   "xpHr": 150220
+  },
+  {
+   "name": "Common kebbit fur",
+   "craftXP": 2560,
+   "creature": "Common kebbit",
+   "huntLvl": 3,
+   "huntXP": 36,
+   "method": "Tracking",
+   "xpHr": 148480
+  },
+  {
+   "name": "Desert devil fur",
+   "craftXP": 2520,
+   "creature": "Desert devil",
+   "huntLvl": 13,
+   "huntXP": 66,
+   "method": "Tracking",
+   "xpHr": 146160
+  },
+  {
+   "name": "Polar kebbit fur",
+   "craftXP": 2480,
+   "creature": "Polar kebbit",
+   "huntLvl": 1,
+   "huntXP": 30,
+   "method": "Tracking",
+   "xpHr": 143840
+  },
+  {
+   "name": "Wyrmscraig goat fur",
+   "craftXP": 2440,
+   "creature": "Wyrmscraig goat",
+   "huntLvl": 60,
+   "huntXP": null,
+   "method": "Goat pit",
+   "xpHr": 141520,
+   "isGoat": true
+  }
+ ]
+}

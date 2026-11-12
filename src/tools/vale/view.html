@@ -1,0 +1,89 @@
+
+<section class="card">
+  <h2>What this run comes to</h2>
+  <div class="statrow" id="sum"></div>
+  <p class="foot" id="sum-note"></p>
+</section>
+
+<section class="card">
+  <h2>Your Fletching</h2>
+  <div class="grid g4">
+    <div class="field"><label>Level</label><input id="vt-lvl" type="number" min="1" max="99" value="75"></div>
+    <div class="field"><label>XP</label><input id="vt-xp" type="number" min="0" value="1210421"></div>
+    <div class="field"><label>Goal</label>
+      <select id="vt-goaltype">
+        <option value="level">Level</option>
+        <option value="xp">XP</option>
+        <option value="logs">Use up my logs</option>
+        <option value="offerings">Offerings</option>
+        <option value="points">Research points</option>
+      </select></div>
+    <div class="field"><label>Target</label><input id="vt-goal" type="number" min="0" value="99"></div>
+  </div>
+  <p class="hint" id="vt-note" style="margin-top:9px"></p>
+</section>
+
+<section class="card">
+  <h2>Logs and kit</h2>
+  <div class="grid g3">
+    <div class="field"><label>Log type</label><select id="vt-log"></select>
+      <span class="hint" id="vt-logh"></span></div>
+    <div class="field"><label>Logs in your bank</label><input id="vt-have" type="number" min="0" value="0">
+      <span class="hint" id="vt-haveh"></span></div>
+    <div class="field"><label>Decoration</label><select id="vt-dec"></select>
+      <span class="hint" id="vt-dech"></span></div>
+  </div>
+  <div class="chips" style="margin-top:14px">
+    <button class="chip" id="vt-knife" aria-pressed="false" type="button">
+      <span class="tick">&#10003;</span><span>Fletching knife<em>one tick off every fletch</em></span></button>
+    <button class="chip" id="vt-basket" aria-pressed="false" type="button">
+      <span class="tick">&#10003;</span><span>Log basket<em>a full round without banking</em></span></button>
+    <button class="chip" id="vt-fletch" aria-pressed="true" type="button">
+      <span class="tick">&#10003;</span><span>Fletch as you run<em>decorations made between sites</em></span></button>
+    <button class="chip" id="vt-house" aria-pressed="false" type="button">
+      <span class="tick">&#10003;</span><span>I own a house<em>Construction xp per build</em></span></button>
+  </div>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="field"><label>Wrong carvings a totem</label>
+      <select id="vt-wrong">
+        <option value="0">None, all three right</option>
+        <option value="1">One wrong</option>
+        <option value="2">Two wrong</option>
+        <option value="3">All three wrong</option>
+      </select><span class="hint">each wrong spirit costs 25% of the totem's xp</span></div>
+    <div class="field"><label>Totems an hour</label><input id="vt-rate" type="number" min="10" max="200" value="104">
+      <span class="hint" id="vt-rateh"></span></div>
+    <div class="field"><label>Construction level</label><input id="vt-con" type="number" min="1" max="99" value="70">
+      <span class="hint">1 xp per level, per totem built</span></div>
+  </div>
+  <div id="vt-warn"></div>
+</section>
+
+<section class="card">
+  <h2>The round <span class="sub">eight sites, start and finish at the Auburnvale bank</span></h2>
+  <div class="statrow" id="round-stats"></div>
+  <div id="round-lines" style="margin-top:16px"></div>
+  <p class="foot" id="round-foot"></p>
+</section>
+
+<section class="card">
+  <h2>What the ents leave you</h2>
+  <div class="statrow" id="off-stats"></div>
+  <details class="how"><summary>More detail</summary><p>Offerings are set by the totem's log type alone, not by what you decorate it with. Rummaging them
+  is what yields research points and the drops: the <strong>Fletching knife</strong> at roughly 1 in 333 and the
+  <strong>Greenman's mask</strong> at about 1 in 500, alongside ent branches and bow string spools. A hundred
+  offerings is worth one research point at Ranulph, so the two currencies move together.</p></details>
+  <div id="off-drops"></div>
+</section>
+
+<section class="card">
+  <h2>Every log type <span class="sub">at your level and kit</span></h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="l">Totem</th><th>Fletching</th><th>XP each</th><th>Offerings</th>
+      <th>Durability</th><th>XP an hour</th><th>Logs an hour</th></tr></thead>
+    <tbody id="tier-rows"></tbody>
+  </table></div>
+  <details class="how"><summary>More detail</summary><p>Experience per totem is the build, three carvings and four decorations together, straight from the
+  wiki's table. Durability is how many ent visits a totem survives before it collapses, so higher tiers stand longer
+  and need rebuilding less often.</p></details>
+</section>
