@@ -82,3 +82,17 @@ test("cooking: bank and target plans are consistent", () => {
   const back = cook.cookBank(xpForLevel(80), { shark: raw }, "range", true);
   assert.ok(back.endXp >= xpForLevel(90) - 300);
 });
+
+test("tithe: the last sack stops at the goal instead of overshooting", () => {
+  const r = tithe.simulate({ startXp: 32062, goal: { type: "level", value: 70 }, seed: "auto",
+    wishlist: ["can", "herbsack", "hat", "top", "legs", "boots"], owned: [] });
+  assert.ok(r.endXp >= xpForLevel(70));
+  // less than one fruit's worth over
+  const bologano = tithe.SEEDS.find(s => s.id === "bologano");
+  assert.ok(r.endXp - xpForLevel(70) < bologano.harvestXp + 2 * bologano.depositXp + 1, `over by ${r.endXp - xpForLevel(70)}`);
+  assert.ok(r.lastFruit < 100);
+});
+
+test("tithe: partial sack xp matches the full sack at 100", () => {
+  for (const s of tithe.SEEDS) assert.equal(tithe.partialSackXp(s, 100), tithe.sackXp(s));
+});

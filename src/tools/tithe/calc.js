@@ -14,8 +14,22 @@ export function sackXp(seed) {
 }
 
 /** Points for one sack: one per three fruit, plus two for the 100th. */
-export function sackPoints() {
-  return Math.floor(SACK.size / 3) * SACK.pointsPerThreeFruit + SACK.bonusPointsAt100;
+export function sackPoints(fruit = SACK.size) {
+  return Math.floor(fruit / 3) * SACK.pointsPerThreeFruit + (fruit >= SACK.size ? SACK.bonusPointsAt100 : 0);
+}
+
+/** Experience for depositing `fruit` (1..100) into one sack, before the outfit. */
+export function partialSackXp(seed, fruit) {
+  const normal = SACK.doubleFrom - 1;
+  const doubled = Math.max(0, fruit - normal);
+  return fruit * seed.harvestXp + Math.min(fruit, normal) * seed.depositXp + doubled * 2 * seed.depositXp
+    + (fruit >= SACK.doubleFrom ? seed.bonusXp : 0);
+}
+
+/** Fewest fruit in one sack that reach `need` xp, or null if a full sack can't. */
+export function fruitFor(seed, need, boost) {
+  for (let f = 1; f <= SACK.size; f++) if (partialSackXp(seed, f) * (1 + boost) >= need) return f;
+  return null;
 }
 
 export function outfitBoost(owned, rewards = REWARDS, setBonus = data.outfitSetBonus) {
@@ -52,7 +66,7 @@ export function simulate(o) {
 
   const events = [];
   const bySeed = {};
-  let runs = 0, earned = 0, seed = null, blocked = null;
+  let runs = 0, earned = 0, seed = null, blocked = null, lastFruit = SACK.size;
 
   while (runs < 50000) {
     if (xp >= goalXp || runs >= goalRuns) break;
@@ -65,10 +79,14 @@ export function simulate(o) {
       seed = pick;
     }
     const boost = outfitBoost(owned);
-    const gained = sackXp(seed) * (1 + boost);
+    // the last sack only needs as much fruit as the goal still asks for
+    let fruit = SACK.size;
+    if (isFinite(goalXp) && xp + sackXp(seed) * (1 + boost) > goalXp) fruit = fruitFor(seed, goalXp - xp, boost) || SACK.size;
+    const gained = partialSackXp(seed, fruit) * (1 + boost);
     xp = Math.min(MAX_XP, xp + gained);
     runs++;
-    const add = Math.min(perSack, SACK.pointsCap - points);
+    lastFruit = fruit;
+    const add = Math.min(sackPoints(fruit), SACK.pointsCap - points);
     points += add; earned += add;
     const b = (bySeed[seed.id] ||= { seed, runs: 0, xp: 0 });
     b.runs++; b.xp += gained;
@@ -83,7 +101,9 @@ export function simulate(o) {
 
   const startSeed = o.seed === "auto" ? bestSeed(levelFromXp(o.startXp)) : SEEDS.find(s => s.id === o.seed);
   return {
-    runs, fruit: runs * SACK.size, hours: runs * minutes / 60,
+    runs, lastFruit,
+    fruit: runs ? (runs - 1) * SACK.size + lastFruit : 0,
+    hours: runs ? (runs - 1 + lastFruit / SACK.size) * minutes / 60 : 0,
     startXp: o.startXp, endXp: xp, gained: xp - o.startXp,
     points, earned, events, bySeed: Object.values(bySeed), startSeed,
     owned, unbought: queue, blocked, boost: outfitBoost(owned)

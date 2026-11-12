@@ -76,7 +76,7 @@ export function mount(root) {
     }
     html += landing({ fromXp: startXp, toXp: r.endXp, skill: "Farming" });
     html += tiles([
-      stat(fmt(r.runs), plural(r.runs, "sack") + " of 100", "gold"),
+      stat(fmt(r.runs), r.lastFruit < 100 ? `${plural(r.runs, "sack")}, the last one ${r.lastFruit} fruit` : plural(r.runs, "sack") + " of 100", "gold"),
       stat(fmt(r.fruit), "fruit"),
       stat(duration(r.hours), "at " + fmt(v.pace || 19, 1).replace(/\.0$/, "") + " min a sack"),
       stat(fmt(r.earned), "points earned")
