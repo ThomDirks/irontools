@@ -1,0 +1,22 @@
+{
+  "_source": "OSRS Wiki: Pay-to-play Runecraft training (blood/soul runes in Arceuus table), Blood Altar (Kourend), Soul Altar (Kourend), Dark essence fragments, Dark essence block, Blood essence, Abyssal lantern, Raiments of the Eye. Read 2026-11-13.",
+  "_rates": "Hourly xp is the wiki's, with the medium Kourend & Kebos diary and running to the altar. Each dark essence block gives 2.5 xp at the Dark Altar and chisels into 4 fragments; one fragment makes one rune.",
+  "fragmentsPerBlock": 4,
+  "blockXp": 2.5,
+  "runes": [
+    { "id": "blood", "name": "Blood rune", "level": 77, "xp": 23.8, "xpHr": 36000, "craftingHr": 5755, "miningHr": 4211, "xpHrEssence": 34500, "craftingHrEssence": 5515, "miningHrEssence": 4036 },
+    { "id": "soul", "name": "Soul rune", "level": 90, "xp": 29.7, "xpHr": 44000, "craftingHr": 5666, "miningHr": 4146 }
+  ],
+  "outfit": { "pieces": [0, 0.1, 0.2, 0.3, 0.6] },
+  "eliteDiaryBlood": 0.1,
+  "lantern": [
+    { "id": "none", "name": "No lantern", "bonus": 0 },
+    { "id": "willow", "name": "Willow logs", "bonus": 0.05, "fm": 30 },
+    { "id": "blisterwood", "name": "Blisterwood logs", "bonus": 0.2, "bloodOnly": true, "fm": 62 },
+    { "id": "magic", "name": "Magic logs", "bonus": 0.1, "fm": 75 },
+    { "id": "redwood", "name": "Redwood logs", "bonus": 0.05, "fm": 90 }
+  ],
+  "_essence": "An active blood essence gives a 50% chance of one extra blood rune per fragment, no extra xp, 1,000 extra runes per essence.",
+  "bloodEssence": { "chance": 0.5, "charges": 1000 },
+  "reqs": { "mining": 38, "crafting": 38 }
+}

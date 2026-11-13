@@ -14,7 +14,17 @@ Skilling planners for Old School RuneScape ironmen, built on the OSRS Wiki's num
 | Prayer | Prayer | Bones through the Chaos altar, the Ectofuntus or the libation bowl, with zealot's robes. |
 | Giants' Foundry | Smithing | Alloys, moulds and shop-bought metal. |
 | Blast Furnace | Smithing | Your ore into bars and levels, or bars to a level, with coal, coffer, foreman and Ordan's prices. |
-| Miscellania | Kingdom | The in-game worker screen: set workers, approval and coffer, see what you collect after any number of days. |
+| Guardians of the Rift | Runecraft | Games to a level, pearls a search, Raiments of the Eye and the rest bought in your order with the hour each lands, runes and rare-drop odds over the plan. |
+| Blood & soul runes | Runecraft | Dense essence in Arceuus to a level or a number of runes: outfit, lantern, elite diary and blood essence, moving to soul runes at 90. |
+| Salvaging | Sailing | Every shipwreck's loot table: tick what to high alch, see Sailing xp, gp, Magic xp and nature runes an hour, and the hours to a level. |
+
+The Bank section of the sidebar:
+
+| Calculator | What it does |
+|---|---|
+| Miscellania | The in-game worker screen: set workers, approval and coffer, see what you collect after any number of days. |
+| Bank xp | The xp in the loaded group bank, skill by skill, using each calculator's maths (bones, raw fish, ores, planks, herb seeds). |
+| High alch planner | Every alchable item in the loaded group bank: tick what to alch, see gp, casts, Magic xp and nature runes. |
 
 Reward lists (Tithe Farm, Mahogany Homes) can be dragged into any order; wanted rewards are bought top to bottom.
 
@@ -56,6 +66,11 @@ tests/                   node --test checks
 - Mahogany Homes contracts an hour come from the wiki's xp-an-hour range per tier. Treat the hours as a guide.
 - Miscellania follows the wiki's calculator module (resource points from the coffer payment and approval, approval decay), except "teak and mahogany", which uses the 121 each the wiki observes rather than the module's 131.
 - Herb yields follow the wiki's herb farming calculator, which rounds each term down. One difference: planting xp is counted for dead patches too, as the wiki's seed table says you get it when clearing them.
+
+- Guardians of the Rift xp an hour is the wiki training table, which starts at 40; below that the 40 to 50 rate is used. Games an hour is yours to set.
+- Blood and soul runes: hourly xp is the wiki's; runes an hour follow from it (one rune a fragment, bonuses added on the base rune) and match the wiki's money making figures.
+- Salvage an hour and the crew's share come from the wiki's money making guide for each wreck. Main loot tables add up to exactly one roll a salvage; the rare rolls sit on top.
+- High alch values for the bank tools come from the OSRS Wiki's item mapping (prices.runescape.wiki), fetched when the planner opens. Untradeable items have no value there.
 
 ## Group bank
 

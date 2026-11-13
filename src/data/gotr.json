@@ -1,0 +1,51 @@
+{
+  "_source": "OSRS Wiki: Guardians of the Rift (Rewards, Temple Supplies), Rewards Guardian (drop tables after the 13 November 2024 changes), Abyssal pearls, Pay-to-play Runecraft training (Guardians of the Rift xp table). Read 2026-11-13.",
+  "level": 27,
+  "_rates": "Wiki training guide rates with the best pouches available. The table starts at 40; below that the 40-50 row is used. From 85 the wiki assumes small coordinated teams.",
+  "rates": [
+    { "from": 1, "rc": 25000, "crafting": 2300, "mining": 1200 },
+    { "from": 50, "rc": 40000, "crafting": 3700, "mining": 2000 },
+    { "from": 75, "rc": 50000, "crafting": 4700, "mining": 2500 },
+    { "from": 85, "rc": 65000, "crafting": 6200, "mining": 3200 },
+    { "from": 99, "rc": 70000, "crafting": 6600, "mining": 3500 }
+  ],
+  "_searches": "One search costs an elemental and a catalytic point; a point is 100 energy and a game caps at 1,200 energy (1,320 with a yew lantern), so 6 searches is a full game.",
+  "maxSearches": 6,
+  "maxSearchesYew": 6.6,
+  "_table": "Main table out of 140, or out of 125 once you own every essence pouch (or the colossal pouch).",
+  "denominator": { "pouches": 125, "missing": 140 },
+  "pearls": { "weight": 18, "avg": 15 },
+  "runes": [
+    { "name": "Air rune", "level": 1, "min": 400, "max": 500, "weight": 4 },
+    { "name": "Water rune", "level": 5, "min": 400, "max": 500, "weight": 4 },
+    { "name": "Earth rune", "level": 9, "min": 400, "max": 500, "weight": 4 },
+    { "name": "Fire rune", "level": 14, "min": 400, "max": 500, "weight": 4 },
+    { "name": "Mind rune", "level": 2, "min": 250, "max": 400, "weight": 4 },
+    { "name": "Body rune", "level": 20, "min": 80, "max": 150, "weight": 4 },
+    { "name": "Chaos rune", "level": 35, "min": 61, "max": 150, "weight": 10 },
+    { "name": "Cosmic rune", "level": 27, "min": 20, "max": 30, "weight": 10 },
+    { "name": "Nature rune", "level": 44, "min": 28, "max": 150, "weight": 10 },
+    { "name": "Law rune", "level": 54, "min": 5, "max": 120, "weight": 10 },
+    { "name": "Death rune", "level": 65, "min": 5, "max": 120, "weight": 10 },
+    { "name": "Blood rune", "level": 77, "min": 5, "max": 120, "weight": 10 }
+  ],
+  "_runesUnder": "Below a rune's level the amount is cut: amount x (level/required)^4, but never under a tenth of it (wiki note on the Rewards Guardian table).",
+  "rare": [
+    { "id": "needle", "name": "Abyssal needle", "rate": 300, "once": true },
+    { "id": "lantern", "name": "Abyssal lantern", "rate": 700 },
+    { "id": "cattalisman", "name": "Catalytic talisman", "rate": 200 },
+    { "id": "dye", "name": "Abyssal dye", "rate": 400 },
+    { "id": "pet", "name": "Abyssal protector", "rate": 4000 }
+  ],
+  "intricatePouch": 5,
+  "rewards": [
+    { "id": "hat", "name": "Hat of the Eye", "cost": 400, "effect": "+10% runes", "outfit": true },
+    { "id": "top", "name": "Robe top of the Eye", "cost": 350, "effect": "+10% runes", "outfit": true },
+    { "id": "bottoms", "name": "Robe bottoms of the Eye", "cost": 350, "effect": "+10% runes", "outfit": true },
+    { "id": "boots", "name": "Boots of the Eye", "cost": 250, "effect": "+10% runes", "outfit": true },
+    { "id": "needle", "name": "Abyssal needle", "cost": 750, "effect": "Colossal pouch, 56 Crafting" },
+    { "id": "ring", "name": "Ring of the elements", "cost": 400, "effect": "Teleports to the elemental altars" },
+    { "id": "lantern", "name": "Abyssal lantern", "cost": 1500, "effect": "More runes outside the minigame" },
+    { "id": "eye", "name": "Guardian's eye", "cost": 3000, "effect": "Pet recolour" }
+  ]
+}

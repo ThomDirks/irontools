@@ -1,5 +1,5 @@
 // Map camera, routing, sidebar, hiscores box and the arrival sequence.
-import { TOOLS, icon } from "../tools/registry.js";
+import { TOOLS, GROUPS, icon } from "../tools/registry.js";
 import { lookup, onStats, savedName } from "../lib/stats.js";
 import { levelFromXp } from "../lib/xp.js";
 import { esc } from "../lib/format.js";
@@ -25,7 +25,7 @@ function mk(tag, attrs) {
 function drawMarkers() {
   const g = $("markers");
   for (const t of TOOLS) {
-    for (const spot of t.spots || [{ place: t.place, x: t.x, y: t.y, labelBelow: t.labelBelow }]) {
+    for (const spot of (t.spots || [{ place: t.place, x: t.x, y: t.y, labelBelow: t.labelBelow }]).filter(sp => sp.x != null)) {
       const m = mk("g", { class: "marker", "data-tool": t.id, role: "link", "aria-label": `${t.title}, ${spot.place}` });
       m.appendChild(mk("circle", { class: "pulse", cx: spot.x, cy: spot.y, r: 26 }));
       m.appendChild(mk("circle", { class: "halo", cx: spot.x, cy: spot.y, r: 38 }));
@@ -61,12 +61,16 @@ function applySpot(t) {
 
 /* ---------------- sidebar ---------------- */
 function drawNav() {
-  $("nav").innerHTML = TOOLS.map(t => `
+  const item = t => `
     <a class="nav-item" href="#/${t.id}" data-tool="${t.id}">
       <span class="nav-ico">${icon(t.icon || t.skill)}</span>
       <span class="nav-name"><span>${esc(t.title)}${t.isNew ? '<i class="badge">new</i>' : ""}</span>${t.skillName !== t.title ? `<small>${esc(t.skillName)}</small>` : ""}</span>
       <span class="nav-lv" data-skill="${t.skill}"></span>
-    </a>`).join("");
+    </a>`;
+  $("nav").innerHTML = GROUPS.map(g => {
+    const list = TOOLS.filter(t => (t.group || "skills") === g.id);
+    return list.length ? `<div class="nav-group"><h2 class="nav-head">${esc(g.title)}</h2>${list.map(item).join("")}</div>` : "";
+  }).join("");
   $("nav").querySelectorAll(".nav-item").forEach(a => {
     const m = () => document.querySelectorAll(`.marker[data-tool="${a.dataset.tool}"]`);
     a.addEventListener("mouseenter", () => m().forEach(x => x.classList.add("hot")));
@@ -110,7 +114,7 @@ window.addEventListener("resize", () => {
   raf = requestAnimationFrame(() => {
     const prev = cam.style.transition;
     cam.style.transition = "none";
-    camTo(TOOLS.find(x => x.id === current) || null);  // resize recentres on the tool's main spot
+    camTo(TOOLS.find(x => x.id === current && x.x != null) || null);  // resize recentres on the tool's main spot
     requestAnimationFrame(() => { cam.style.transition = prev; });
   });
 });
@@ -127,7 +131,10 @@ function go(id) {
     views[t.id].classList.add("on");
     document.title = `${t.title} · Iron Tools`;
     document.dispatchEvent(new CustomEvent("irontools:view", { detail: t.id }));
-    if (!applySpot(t)) camTo(t);
+    if (!applySpot(t)) {
+      if (t.x != null) camTo(t);
+      else { camSet(null, 1.06); cam.style.filter = "brightness(.7)"; }  // no place on the map
+    }
     window.scrollTo(0, 0);
     setTimeout(() => views[t.id].querySelector("h1")?.focus({ preventScroll: true }), 350);
   } else {

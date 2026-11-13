@@ -256,3 +256,7 @@ input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; marg
   background: var(--iron-950); border: 1px solid var(--iron-600); color: var(--bone-2);
 }
 #gb-paste:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-wash); }
+
+/* sidebar sections */
+.nav-group + .nav-group { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, .06); }
+.nav-head { margin: 0 10px 4px; font-size: 12px; font-weight: 500; color: var(--slate-2); }

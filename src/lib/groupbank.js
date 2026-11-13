@@ -98,6 +98,13 @@ export function count(name) {
 
 export const isLoaded = () => members.length > 0;
 
+/** Every item the ticked members hold together, id -> amount. */
+export function items() {
+  const all = new Map();
+  for (const m of members) if (selected.has(m.name)) for (const [id, q] of m.items) all.set(id, (all.get(id) || 0) + q);
+  return all;
+}
+
 /** Markup for the fill button; hidden until a group bank is loaded. */
 export const fillButton = (label = "Fill from group bank") =>
   `<button type="button" class="gb-fill" data-gbfill hidden>${label}</button>`;
