@@ -1,0 +1,21 @@
+import{s as A,b as C}from"./form-DerNmqW7.js";import{x as E,o as H,g as R,i as F,l as J,M as P,a as n,d as U,e as $}from"./app-DDtPzl0Z.js";import{l as Y,n as g,c as G,t as W,d as y,g as j}from"./ui-m6iUulm7.js";const K="https://prices.runescape.wiki/api/v1/osrs/mapping",M="ironTools.itemdb";let p=null;function _(){return p||(p=(async()=>{let l=null;try{l=JSON.parse(sessionStorage.getItem(M)||"null")}catch{}if(!Array.isArray(l)){const s=await fetch(K);if(!s.ok)throw new Error("http");l=(await s.json()).map(o=>[o.id,o.name,o.highalch||0]);try{sessionStorage.setItem(M,JSON.stringify(l))}catch{}}return new Map(l.map(([s,u,o])=>[s,{name:u,ha:o}]))})(),p.catch(()=>{p=null}),p)}const et="Everything in the group bank worth a cast, and what it adds up to",at=["<b>55</b> Magic","Group bank loaded"],O=561,B=995,z=65,D=1200,L="ironTools.v2.alch.picks",st=`<div class="calc">
+  <form class="setup" onsubmit="return false">
+    <div class="group">
+      <h2>Magic</h2>
+      ${Y("m",55,E(55))}
+    </div>
+    <div class="group">
+      <h2>What to alch</h2>
+      <label class="field"><span>Tick items worth at least</span><input name="min" type="number" min="0" value="1000" inputmode="numeric"></label>
+      <label class="field"><span>Find an item</span><input name="q" type="search" placeholder="Name" data-nosave></label>
+      <label class="toggle"><input type="checkbox" name="staff" checked><span>Fire staff<small>Otherwise 5 fire runes a cast</small></span></label>
+      <p class="rw-note">Untick anything you'd rather keep. Your picks stay for next time.</p>
+    </div>
+  </form>
+  <div class="out" aria-live="polite"></div>
+</div>`;function nt(l){const s=l.querySelector(".out"),u=l.querySelector(".setup"),o=A(u,"mLvl","mXp");let b=null,k=!1,m=null,c={};try{c=JSON.parse(localStorage.getItem(L)||"{}")}catch{}const h=C(u,"alch",I);o.setXp(h.values().mXp),H(e=>{e.skills.magic!==void 0&&o.setXp(e.skills.magic)}),R(e=>{m=e.loaded?F():null,m&&!b&&!k&&_().then(a=>{b=a,h.refresh()},()=>{k=!0,h.refresh()}),h.refresh()}),s.addEventListener("change",e=>{const a=e.target.closest("[data-pick]");if(a){c[a.dataset.pick]=a.checked;try{localStorage.setItem(L,JSON.stringify(c))}catch{}h.refresh()}}),s.addEventListener("click",e=>{if(e.target.closest("[data-reset]")){c={};try{localStorage.removeItem(L)}catch{}h.refresh()}});function I(e){if(!m){s.innerHTML=g("Load your group bank in the sidebar (Group bank, under your stats) and every alchable item shows up here.");return}if(k){s.innerHTML=g("Couldn't reach the OSRS Wiki for item values. Check your connection and reload.","ember");return}if(!b){s.innerHTML=g("Reading item values from the OSRS Wiki…");return}const a=[];for(const[t,r]of m){const f=b.get(t);if(!f||!f.ha||t===B||t===O)continue;const N=t in c?c[t]:f.ha>=(e.min||0);a.push({id:t,qty:r,name:f.name,ha:f.ha,on:N})}a.sort((t,r)=>r.ha*r.qty-t.ha*t.qty);const X=a.filter(t=>t.on),i=X.reduce((t,r)=>t+r.qty,0),T=X.reduce((t,r)=>t+r.qty*r.ha,0),v=e.mXp,q=J(v),w=m.get(O)||0;let d="";q<55&&(d+=g(`High Level Alchemy needs 55 Magic. You're ${q}.`,"ember")),d+=G({fromXp:v,toXp:Math.min(P,v+i*z),skill:"Magic"}),d+=W([y(n(T),"gp","gold"),y(n(i),"casts"),y(U(i/D),"of alching"),y(n(i)+(e.staff?"":" + "+n(i*5)),e.staff?"nature runes":"nature + fire runes")]),i>w&&(d+=g(`You have ${n(w)} nature runes, ${n(i-w)} short.`,"ember"));const S=String(e.q||"").trim().toLowerCase(),x=(S?a.filter(t=>t.name.toLowerCase().includes(S)):a).map(t=>`<tr class="${t.on?"on":""}">
+      <td><label class="pick"><input type="checkbox" data-pick="${t.id}"${t.on?" checked":""} aria-label="Alch ${$(t.name)}"><span>${$(t.name)}</span></label></td>
+      <td class="n">${n(t.qty)}</td><td class="n">${n(t.ha)}</td><td class="n">${n(t.qty*t.ha)}</td></tr>`).join("");d+=j(`${n(a.length)} alchable items`,`<div class="tablewrap"><table class="grid-table">
+      <thead><tr><th>Item</th><th class="n">Amount</th><th class="n">High alch</th><th class="n">Total</th></tr></thead>
+      <tbody>${x||`<tr><td colspan="4">Nothing matches “${$(S)}”.</td></tr>`}</tbody></table></div>
+      <p class="fine">Only tradeable items have a value here. <button type="button" class="linkish" data-reset>Clear my picks</button></p>`),s.innerHTML=d}}export{st as html,nt as mount,at as reqs,et as subtitle};
