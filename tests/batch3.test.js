@@ -50,7 +50,23 @@ test("Salvage loot tables add up and default alchs match the wiki guide", () => 
   }
   const merc = WRECKS.find(w => w.id === "mercenary");
   const set = new Set(ALCHABLE.filter(defaultAlch).map(i => i.name));
-  const h = hour(merc, { kph: 1, share: 0.5, deck: 4, alch: n => set.has(n) });
+  const h = hour(merc, { kph: 1, mode: "solo", alch: n => set.has(n) });
   close(h.casts, (300 + 200 + 200 + 100 + 100 + 10) / 2440 + 1 / 700, 1e-6);
-  close(h.sailing, 138 * (0.5 + 0.5 * 0.4) + 63.5, 1e-9);
+  close(h.sailing, 138 + 63.5, 1e-9);
+});
+
+test("Salvage crew: each deckhand counts on its own, AFK is all crew", () => {
+  const merc = WRECKS.find(w => w.id === "mercenary");
+  const none = { alch: () => false };
+  // you plus a deckhandiness 4 crewmate is the wiki guide's own setup
+  close(hour(merc, { ...none, mode: "me", d1: 4 }).kph, merc.kph, 1e-9);
+  const p = merc.kph / 1.32;
+  const afk = hour(merc, { ...none, mode: "afk", d1: 4, d2: 3 });
+  close(afk.kph, p * (0.32 + 0.24), 1e-9);
+  close(afk.crewShare, 1, 1e-9);
+  close(afk.sailing, 138 * (p * 0.32 * 0.4 + p * 0.24 * 0.3) + afk.kph * 63.5, 1e-6);
+  // a typed rate keeps the split
+  const typed = hour(merc, { ...none, mode: "afk", d1: 4, d2: 3, kph: 100 });
+  close(typed.kph, 100, 1e-9);
+  close(typed.sailing / 100, afk.sailing / afk.kph, 1e-9);
 });

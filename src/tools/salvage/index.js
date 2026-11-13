@@ -1,4 +1,4 @@
-import { WRECKS, ALCHABLE, MAGIC_LEVEL, CASTS_PER_HOUR, slug, defaultAlch, bestWreck, hour } from "./calc.js";
+import { WRECKS, ALCHABLE, MAGIC_LEVEL, CASTS_PER_HOUR, CREW, deckOf, slug, defaultAlch, bestWreck, hour } from "./calc.js";
 import { bindForm, syncLevelXp } from "../../lib/form.js";
 import { onStats } from "../../lib/stats.js";
 import { xpForLevel, levelFromXp, MAX_XP } from "../../lib/xp.js";
@@ -8,6 +8,7 @@ import { landing, stat, tiles, section, table, note, levelXpFields } from "../..
 export const subtitle = "Alch or drop each find, and see what every shipwreck makes an hour";
 export const reqs = ["<b>15</b> Sailing", `High alch: <b>${MAGIC_LEVEL}</b> Magic`];
 
+const crewOptions = pick => CREW.map(c => `<option value="${c.id}"${c.id === pick ? " selected" : ""}>${esc(c.name)} (${c.d}, ${c.d * 10}% xp)</option>`).join("");
 const inWreck = name => WRECKS.filter(w => w.rows.some(r => r.n === name)).map(w => w.id).join(" ");
 
 export const html = `<div class="calc">
@@ -24,18 +25,13 @@ export const html = `<div class="calc">
         ${WRECKS.map(w => `<option value="${w.id}">${esc(w.name)} (${w.level})</option>`).join("")}
       </select></label>
       <label class="field"><span>Salvage an hour</span><input name="kph" type="number" min="0" max="2000" value="" inputmode="numeric" placeholder="Wiki figure"></label>
-      <label class="field"><span>Hooked by crew</span><select name="share">
-        <option value="guide">As the wiki guide</option>
-        <option value="0">Nothing, just me</option>
-        <option value="0.5">About half</option>
-        <option value="0.67">About two thirds</option>
+      <label class="field"><span>Who hooks</span><select name="mode">
+        <option value="me">Me and deckhand 1</option>
+        <option value="solo">Just me</option>
+        <option value="afk">Both deckhands (AFK)</option>
       </select></label>
-      <label class="field"><span>Crew deckhandiness</span><select name="deck">
-        <option value="4">4: Jenkins, Jolly Jim (40% xp)</option>
-        <option value="3">3: Jobless Jim, Siad (30% xp)</option>
-        <option value="2">2 (20% xp)</option>
-        <option value="1">1 (10% xp)</option>
-      </select></label>
+      <label class="field" data-show="mode:me,afk"><span>Deckhand 1</span><select name="d1">${crewOptions("jenkins")}</select></label>
+      <label class="field" data-show="mode:afk"><span>Deckhand 2</span><select name="d2">${crewOptions("joblessjim")}</select></label>
     </div>
     <div class="group">
       <h2>Alch or drop</h2>
@@ -60,19 +56,23 @@ export function mount(root) {
 
   function settings(v, w, ownKph) {
     return {
-      kph: ownKph && v.kph > 0 ? v.kph : w.kph,
-      share: v.share === "guide" ? w.crew : +v.share,
-      deck: +v.deck || 4,
+      kph: ownKph && v.kph > 0 ? v.kph : 0,
+      mode: v.mode || "me",
+      d1: deckOf(v.d1), d2: deckOf(v.d2),
       alch: name => !!v["alch-" + slug(name)]
     };
   }
 
   function paint(v) {
+    form.querySelectorAll("[data-show]").forEach(el => {
+      const [k, vals] = el.dataset.show.split(":");
+      el.hidden = !vals.split(",").includes(v[k]);
+    });
     const startXp = v.sXp, level = levelFromXp(startXp);
     const w = v.wreck === "auto" ? bestWreck(level) : WRECKS.find(x => x.id === v.wreck);
     form.querySelectorAll(".alch-list [data-in]").forEach(el => { el.hidden = !w || !el.dataset.in.split(" ").includes(w.id); });
     const kphIn = form.querySelector('[name="kph"]');
-    if (w) kphIn.placeholder = fmt(w.kph) + " (wiki)";
+    if (w) kphIn.placeholder = fmt(Math.round(hour(w, { ...settings(v, w, false), alch: () => false }).kph)) + (v.mode === "afk" ? " (estimate)" : " (wiki)");
     if (!w) { out.innerHTML = note(`Salvaging starts at ${WRECKS[0].level} Sailing. You're ${level}.`, "ember"); return; }
     if (level < w.level) { out.innerHTML = note(`${w.name}s need ${w.level} Sailing. You're ${level}.`, "ember"); return; }
 
@@ -129,8 +129,10 @@ export function mount(root) {
     })), " <small>an hour</small>");
 
     html += `<details class="how"><summary>How it's worked out</summary><ul>
-      <li>Salvage an hour comes from the wiki's money making guides for each wreck, with the share their crew hooks. Type your own if you're faster or slower.</li>
-      <li>Hooking gives the full xp; crew-hooked salvage gives 10% per point of deckhandiness. Sorting xp is the same either way.</li>
+      <li>Salvage an hour starts from the wiki's money making guide for each wreck. Type your own if you're faster or slower.</li>
+      <li>A deckhand rolls every 5 ticks to your 4, at their deckhandiness × 10% of your chance. So a deckhandiness 4 crewmate brings in 32% of what you would on the same hook.</li>
+      <li>Crew-hooked salvage gives 10% xp per point of deckhandiness. Sorting xp is the same whoever hooked it.</li>
+      <li>AFK rates are worked out from those two rules, not measured. Treat them as an estimate.</li>
       <li>Each sorted salvage rolls once on its main table, plus the rare rolls (bottles, collectibles, clues) on top.</li>
       <li>Coins and platinum tokens always count. Alching is 65 Magic xp and a nature rune a cast.</li>
       <li>Source: OSRS Wiki, Shipwreck salvaging and each salvage's loot table.</li>

@@ -24,16 +24,50 @@ export function bestWreck(level) {
   return best;
 }
 
+// Crewmates who can hook, with their deckhandiness (wiki: Shipwreck salvaging).
+export const CREW = [
+  { id: "jenkins", name: "Cabin Boy Jenkins", d: 4 },
+  { id: "jollyjim", name: "Jolly Jim", d: 4 },
+  { id: "joblessjim", name: "Jobless Jim", d: 3 },
+  { id: "siad", name: "Ex-Captain Siad", d: 3 },
+  { id: "olga", name: "Oarswoman Olga", d: 2 },
+  { id: "zarah", name: "Bosun Zarah", d: 2 },
+  { id: "virginia", name: "Spotter Virginia", d: 2 },
+  { id: "ada", name: "Adventurer Ada", d: 1 },
+  { id: "jittery", name: "Jittery Jim", d: 1 },
+  { id: "jakob", name: "Sailor Jakob", d: 1 }
+];
+export const deckOf = id => (CREW.find(c => c.id === id) || { d: 0 }).d;
+
+// A crewmate rolls every 5 ticks to your 4, at D x 10% of your chance:
+// on the same hook they bring in 0.8 x D x 10% of what you would.
+export const crewRate = d => 0.8 * d * 0.1;
+// The wiki guides for crewed wrecks have you on one hook and a
+// deckhandiness 4 crewmate on the other.
+const GUIDE_D = 4;
+
+/** Salvage an hour you'd get on one hook yourself, from the wiki guide. */
+export const playerRate = wreck => wreck.kph / (wreck.crew ? 1 + crewRate(GUIDE_D) : 1);
+
 /**
- * An hour at one wreck. `share` of the salvage is hooked by crew, who give
- * `deck` × 10% of the hook xp. Sorting xp is the same whoever hooked it.
+ * An hour at one wreck. Modes:
+ *  "me"   you on one hook, deckhand 1 on the other
+ *  "solo" just you
+ *  "afk"  both deckhands, you only sort
+ * Crew-hooked salvage gives D x 10% of the hook xp; sorting xp is the same.
+ * A typed salvage-an-hour replaces the total and keeps the same split.
  */
 export function hour(wreck, o) {
-  const kph = Math.max(0, o.kph ?? wreck.kph);
-  const share = Math.max(0, Math.min(1, o.share ?? wreck.crew));
-  const deck = Math.max(1, Math.min(4, o.deck || 4));
-  const hookXp = wreck.xp * ((1 - share) + share * deck * 0.1);
-  const sailing = kph * (hookXp + wreck.sortXp);
+  const p = playerRate(wreck);
+  const d1 = o.mode === "solo" ? 0 : (o.d1 || 0), d2 = o.mode === "afk" ? (o.d2 || 0) : 0;
+  const me = o.mode === "afk" ? 0 : p;
+  const crew = [d1, d2].filter(Boolean).map(d => ({ d, n: p * crewRate(d) }));
+  let total = me + crew.reduce((s, c) => s + c.n, 0);
+  const scale = o.kph > 0 && total > 0 ? o.kph / total : 1;
+  total *= scale;
+  const kph = total;
+  const hookXp = wreck.xp * (me * scale) + crew.reduce((s, c) => s + wreck.xp * c.d * 0.1 * c.n * scale, 0);
+  const sailing = hookXp + kph * wreck.sortXp;
   let gp = 0, casts = 0;
   const rows = wreck.rows.map(r => {
     const perHour = kph * r.p * r.q;
@@ -44,5 +78,5 @@ export function hour(wreck, o) {
     gp += value;
     return { ...r, perHour, alch, value };
   });
-  return { wreck, kph, sailing, gp, casts, magic: casts * ALCH_XP, natures: casts, rows };
+  return { wreck, kph, crewShare: kph ? 1 - me * scale / kph : 0, sailing, gp, casts, magic: casts * ALCH_XP, natures: casts, rows };
 }
