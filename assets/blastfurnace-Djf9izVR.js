@@ -1,4 +1,4 @@
-import{B,O as F,a as v,s as D,f as X,p as I,m as K,b as R,c as q}from"./calc-vyAVZ4mI.js";import{s as W,b as Y}from"./form-DerNmqW7.js";import{x as C,e as E,f as _,b as G,o as U,l as x,a as n,d as S,s as $}from"./app-DDtPzl0Z.js";import{l as z,s as M,n as b,c as P,t as A,d as h,g as w,e as y}from"./ui-m6iUulm7.js";const ae="Your ore into bars and levels, with coal, coffer and time",se=["Keldagrim","<b>72k</b> coffer an hour"],J=["iron","steel","gold","mithril","adamant","rune"],te=`<div class="calc">
+import{B,O as F,a as v,s as D,f as X,p as I,m as K,b as R,c as q}from"./calc-D_lfZX4q.js";import{s as W,b as Y}from"./form-DV4vtwhv.js";import{x as C,e as E,f as _,b as G,o as U,l as x,a as n,d as S,s as $}from"./app-B4I534aK.js";import{l as z,s as M,n as b,c as P,t as A,d as h,g as w,e as y}from"./ui--3pB3kqk.js";const ae="Your ore into bars and levels, with coal, coffer and time",se=["Keldagrim","<b>72k</b> coffer an hour"],J=["iron","steel","gold","mithril","adamant","rune"],te=`<div class="calc">
   <form class="setup" onsubmit="return false">
     <div class="group">
       <h2>Smithing</h2>

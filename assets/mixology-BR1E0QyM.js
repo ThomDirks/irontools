@@ -1,4 +1,4 @@
-import{f as _e}from"./legacy-k9eZ4lqB.js";import{f as Ve,b as Ze}from"./app-DDtPzl0Z.js";import{h as $e}from"./herbs-DHo3Ndt3.js";const Je=`<div class="hide" aria-hidden="true"><span id="hdr-level"></span><span id="hdr-cap"></span></div>
+import{f as _e}from"./legacy-0DQSGW7t.js";import{f as Ve,b as Ze}from"./app-B4I534aK.js";import{h as $e}from"./herbs-DHo3Ndt3.js";const Je=`<div class="hide" aria-hidden="true"><span id="hdr-level"></span><span id="hdr-cap"></span></div>
 
 <section class="card">
   <h2>Your Herblore</h2>

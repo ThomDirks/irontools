@@ -1,4 +1,4 @@
-import{B as m,p as M,f as q,t as C,M as g}from"./calc-BV5D_2EM.js";import{s as H,b as O}from"./form-DerNmqW7.js";import{x as T,e as X,f as F,b as W,o as z,l as R,a as c,d as A}from"./app-DDtPzl0Z.js";import{l as Y,s as L,n as w,c as B,t as x,g as S,e as P,d as h}from"./ui-m6iUulm7.js";const G="Your bones through the Chaos altar, the Ectofuntus or the libation bowl",I=["Libation bowl: <b>30</b> Prayer"],D=[["chaos","Chaos altar"],["ecto","Ectofuntus"],["libation","Libation bowl"]],J=`<div class="calc">
+import{B as m,p as M,f as q,t as C,M as g}from"./calc-DFWfuxqn.js";import{s as H,b as O}from"./form-DV4vtwhv.js";import{x as T,e as X,f as F,b as W,o as z,l as R,a as c,d as A}from"./app-B4I534aK.js";import{l as Y,s as L,n as w,c as B,t as x,g as S,e as P,d as h}from"./ui--3pB3kqk.js";const G="Your bones through the Chaos altar, the Ectofuntus or the libation bowl",I=["Libation bowl: <b>30</b> Prayer"],D=[["chaos","Chaos altar"],["ecto","Ectofuntus"],["libation","Libation bowl"]],J=`<div class="calc">
   <form class="setup" onsubmit="return false">
     <div class="group">
       <h2>Prayer</h2>
